@@ -1,8 +1,10 @@
 import { Text, View } from 'react-native';
 import React from 'react';
 
+import { Variant, VariantStyles } from '../types';
+
 const baseStyles = 'py-2 px-6 rounded-full';
-const variantStyles: { [key: string]: string } = {
+const variantStyles: VariantStyles = {
   default: 'bg-black',
   ghost: 'bg-slate-700',
   destructive: 'bg-red-500',
@@ -13,7 +15,7 @@ export default function CNBadge({
   variant,
 }: {
   label: string;
-  variant?: string;
+  variant?: Variant;
 }) {
   return (
     <View
