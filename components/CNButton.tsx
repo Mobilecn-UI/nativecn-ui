@@ -1,10 +1,11 @@
 import { Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 
+const baseStyles = 'py-2 px-6 rounded-lg';
 const variantStyles: { [key: string]: string } = {
   default: 'bg-black rounded-lg',
-  ghost: 'bg-stone-900',
-  // outline: 'bg-white-500 text-black',
+  ghost: 'bg-slate-700',
+  destructive: 'bg-red-500',
 };
 
 // TODO: make variant type an enum
@@ -14,17 +15,16 @@ export default function CNButton({
   variant,
 }: {
   label: string;
-  variant: string;
+  variant?: string;
 }) {
   return (
     <TouchableOpacity
       className={`
-      py-2 px-6
-      ${variantStyles.default}
-      ${variantStyles[variant]}
+      ${baseStyles}
+      ${variant ? variantStyles[variant] : variantStyles.default}
     `}
     >
-      <Text className="text-white text-lg">{label}</Text>
+      <Text className="text-center text-white text-lg">{label}</Text>
     </TouchableOpacity>
   );
 }
