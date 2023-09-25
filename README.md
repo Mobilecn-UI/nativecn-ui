@@ -10,9 +10,9 @@ Copy-paste `components` into your project. No need to install any package
 
 ## Components
 
+- [x] Badge
 - [x] Button
 - [ ] Avatar (WIP)
-- [ ] Badge (WIP)
 - [ ] Card (WIP)
 - [ ] Input (WIP)
 - [ ] Tabs (WIP)
