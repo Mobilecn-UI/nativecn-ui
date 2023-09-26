@@ -1,21 +1,52 @@
-import { Text, View } from 'react-native';
-import { styled } from 'nativewind';
+import { Text, View } from "react-native";
+import { styled } from "nativewind";
 
-import Avatar from './components/Avatar';
-import Button from './components/Button';
-import Badge from './components/Badge';
-import Card from './components/Card';
+import Avatar from "./components/Avatar";
+import Button from "./components/Button";
+import Badge from "./components/Badge";
+import Card from "./components/Card";
+
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "./components/Tabs";
+import { useState } from "react";
 
 const StyledView = styled(View);
 
 export default function App() {
+  const [activeTab, setActiveTab] = useState(0);
+
+  const tabs = [
+    { id: 0, title: "Tab 1" },
+    { id: 1, title: "Tab 2" },
+  ];
   return (
     <StyledView className="flex-1 py-20 px-10 dark:bg-black">
       <Text className="mb-2 text-3xl underline dark:text-white">
         nativecn-ui
       </Text>
 
-      <View className="flex gap-y-8">
+      <Tabs>
+        <TabsList>
+          {tabs.map((tab) => (
+            <TabsTrigger
+              key={tab.id}
+              title={tab.title}
+              setActiveTab={setActiveTab}
+              id={tab.id}
+              activeTab={activeTab}
+            />
+          ))}
+        </TabsList>
+        <TabsContent activeTab={activeTab}>
+          <View>
+            <Text className="text-black dark:text-white">Tab 1 content</Text>
+          </View>
+          <View>
+            <Text className="text-black dark:text-white">Tab 2 content</Text>
+          </View>
+        </TabsContent>
+      </Tabs>
+
+      <View>
         <View className="flex gap-2">
           <Text className="font-semibold text-xl dark:text-white">Avatar</Text>
           <StyledView className="flex justify-center flex-row space-x-4">
@@ -33,7 +64,9 @@ export default function App() {
             </View>
           </StyledView>
         </View>
+      </View>
 
+      <View className="mt-10">
         <View className="flex gap-2">
           <Text className="font-semibold text-xl dark:text-white">Badge</Text>
           <StyledView className="flex flex-row space-x-2">
@@ -49,7 +82,7 @@ export default function App() {
           </StyledView>
         </View>
 
-        <View className="flex gap-2">
+        <View className="flex gap-2 mt-4">
           <Text className="font-semibold text-xl dark:text-white">Button</Text>
           <StyledView className="flex flex-row space-x-2">
             <View>
@@ -64,7 +97,7 @@ export default function App() {
           </StyledView>
         </View>
 
-        <View className="flex gap-2">
+        <View className="flex gap-2 mt-4">
           <Text className="font-semibold text-xl dark:text-white">Card</Text>
           <View>
             <Card
