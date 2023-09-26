@@ -11,8 +11,8 @@ Beautiful, ready-to-use components to use in your next project. No package insta
 ## Usage
 
 1. `git clone git@github.com:Swiftcn-UI/nativecn-ui.git`
-2. `npm install`
-3. `npm run start`
+2. `yarn`
+3. `yarn start`
 
 ## Components
 
