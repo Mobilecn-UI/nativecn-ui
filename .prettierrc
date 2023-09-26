@@ -1,0 +1,17 @@
+{
+  "arrowParens": "avoid",
+  "printWidth": 100,
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "importOrder": [
+    "^(react/(.*)$)|^(react$)",
+    "^(next/(.*)$)|^(next$)",
+    "<THIRD_PARTY_MODULES>",
+    "^@/components/.*$",
+    "^@/lib/.*$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
