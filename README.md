@@ -16,9 +16,9 @@ Sleek, ready-to-use components for your next project. No package install, no bs.
 
 ## Components
 
+- [x] Avatar
 - [x] Badge
 - [x] Button
-- [ ] Avatar (WIP)
 - [ ] Card (WIP)
 - [ ] Input (WIP)
 - [ ] Tabs (WIP)

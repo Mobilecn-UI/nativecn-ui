@@ -10,10 +10,11 @@
   },
   "dependencies": {
     "expo": "~49.0.11",
+    "expo-image": "~1.3.3",
     "expo-status-bar": "~1.6.0",
+    "nativewind": "^2.0.11",
     "react": "18.2.0",
-    "react-native": "0.72.5",
-    "nativewind": "^2.0.11"
+    "react-native": "0.72.5"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
