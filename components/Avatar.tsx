@@ -10,8 +10,8 @@ interface AvatarProps {
 }
 export default function Avatar({
   src,
-  width = 50,
-  height = 50,
+  width = 60,
+  height = 60,
   fallback = 'AB',
 }: AvatarProps) {
   const [hasImageError, setHasImageError] = useState(false);

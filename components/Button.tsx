@@ -1,10 +1,9 @@
 import { Text, TouchableOpacity, useColorScheme } from 'react-native';
 
-import { baseClasses, darkTheme, lightTheme } from '../lib/theme';
 import { Variant, VariantStyles } from '../lib/types';
 
 // NOTE: pass classnames using https://www.nativewind.dev/api/StyledComponent
-export default function CNButton({
+export default function Button({
   label,
   variant,
 }: {
@@ -15,7 +14,7 @@ export default function CNButton({
 
   // NOTE: can't use dark: here :(
   const variantStyles: VariantStyles = {
-    default: colorScheme === 'light' ? lightTheme.bgColor : darkTheme.bgColor,
+    default: colorScheme === 'light' ? 'bg-black' : 'bg-white',
     ghost: 'bg-slate-700',
     destructive: 'bg-red-500',
   };
@@ -23,8 +22,7 @@ export default function CNButton({
   return (
     <TouchableOpacity
       className={`
-      rounded-lg
-      ${baseClasses}
+      py-2 px-6 rounded-lg
       ${variant ? variantStyles[variant] : variantStyles.default}
     `}
     >

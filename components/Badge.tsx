@@ -1,9 +1,8 @@
 import { Text, View, useColorScheme } from 'react-native';
 
-import { baseClasses, darkTheme, lightTheme } from '../lib/theme';
 import { Variant, VariantStyles } from '../lib/types';
 
-export default function CNBadge({
+export default function Badge({
   label,
   variant,
 }: {
@@ -13,7 +12,7 @@ export default function CNBadge({
   const colorScheme = useColorScheme();
 
   const variantStyles: VariantStyles = {
-    default: colorScheme === 'light' ? lightTheme.bgColor : darkTheme.bgColor,
+    default: colorScheme === 'light' ? 'bg-black' : 'bg-white',
     ghost: 'bg-slate-700',
     destructive: 'bg-red-500',
   };
@@ -21,8 +20,7 @@ export default function CNBadge({
   return (
     <View
       className={`
-      rounded-full
-      ${baseClasses}
+      px-3 py-1 rounded-full
       ${variant ? variantStyles[variant] : variantStyles.default}
     `}
     >
