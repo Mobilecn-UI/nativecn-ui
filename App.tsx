@@ -1,12 +1,14 @@
 import { useState } from 'react';
+
 import { Text, View } from 'react-native';
+
 import { styled } from 'nativewind';
 
 import Avatar from './components/Avatar';
-import Button from './components/Button';
 import Badge from './components/Badge';
+import Button from './components/Button';
 import Card from './components/Card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from './components/Tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
 
 const StyledView = styled(View);
 
@@ -20,7 +22,9 @@ export default function App() {
 
   return (
     <StyledView className="flex-1 py-20 px-10 dark:bg-black">
-      <Text className="mb-2 text-3xl underline dark:text-white">nativecn-ui</Text>
+      <Text className="mb-2 text-3xl underline dark:text-white">
+        nativecn-ui
+      </Text>
 
       <Tabs>
         <TabsList>
@@ -47,7 +51,9 @@ export default function App() {
       <StyledView>
         <View>
           <View className="flex gap-2">
-            <Text className="font-semibold text-xl dark:text-white">Avatar</Text>
+            <Text className="font-semibold text-xl dark:text-white">
+              Avatar
+            </Text>
             <StyledView className="flex justify-center flex-row space-x-4">
               <View>
                 <Avatar
@@ -82,7 +88,9 @@ export default function App() {
           </View>
 
           <View className="flex gap-2 mt-4">
-            <Text className="font-semibold text-xl dark:text-white">Button</Text>
+            <Text className="font-semibold text-xl dark:text-white">
+              Button
+            </Text>
             <StyledView className="flex flex-row space-x-2">
               <View>
                 <Button label="Button" />
