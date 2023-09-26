@@ -2,7 +2,7 @@
 
 shadcn/ui components for React Native.
 
-Beautiful, ready-to-use components to use in your next project. No package install, no bs.
+Sleek, ready-to-use components for your next project. No package install, no bs.
 
 |               Dark mode               |               Light mode               |
 | :-----------------------------------: | :------------------------------------: |
@@ -22,3 +22,11 @@ Beautiful, ready-to-use components to use in your next project. No package insta
 - [ ] Card (WIP)
 - [ ] Input (WIP)
 - [ ] Tabs (WIP)
+
+## Contributing
+
+Check out the [contributing guide](https://github.com/Swiftcn-UI/nativecn-ui/blob/main/CONTRIBUTING.md)
+
+## License
+
+Distributed under the [MIT license](https://github.com/Swiftcn-UI/nativecn-ui/blob/main/LICENSE).
