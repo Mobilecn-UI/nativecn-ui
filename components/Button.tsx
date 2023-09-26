@@ -1,10 +1,10 @@
-import { Text, View, useColorScheme } from 'react-native';
-import React from 'react';
+import { Text, TouchableOpacity, useColorScheme } from 'react-native';
 
 import { baseClasses, darkTheme, lightTheme } from '../lib/theme';
 import { Variant, VariantStyles } from '../lib/types';
 
-export default function CNBadge({
+// NOTE: pass classnames using https://www.nativewind.dev/api/StyledComponent
+export default function CNButton({
   label,
   variant,
 }: {
@@ -13,23 +13,24 @@ export default function CNBadge({
 }) {
   const colorScheme = useColorScheme();
 
+  // NOTE: can't use dark: here :(
   const variantStyles: VariantStyles = {
     default: colorScheme === 'light' ? lightTheme.bgColor : darkTheme.bgColor,
     ghost: 'bg-slate-700',
     destructive: 'bg-red-500',
   };
-  const textClasses =
-    colorScheme === 'light' ? lightTheme.textColor : darkTheme.textColor;
 
   return (
-    <View
+    <TouchableOpacity
       className={`
-      rounded-full
+      rounded-lg
       ${baseClasses}
       ${variant ? variantStyles[variant] : variantStyles.default}
     `}
     >
-      <Text className={`text-center ${textClasses}`}>{label}</Text>
-    </View>
+      <Text className="text-center text-base text-white dark:text-black">
+        {label}
+      </Text>
+    </TouchableOpacity>
   );
 }

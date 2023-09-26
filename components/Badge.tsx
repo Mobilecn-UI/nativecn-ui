@@ -1,11 +1,9 @@
-import { Text, TouchableOpacity, useColorScheme } from 'react-native';
-import React from 'react';
+import { Text, View, useColorScheme } from 'react-native';
 
 import { baseClasses, darkTheme, lightTheme } from '../lib/theme';
 import { Variant, VariantStyles } from '../lib/types';
 
-// NOTE: passing classnames doesn't work. Gotta work on a hack to compile them here.
-export default function CNButton({
+export default function CNBadge({
   label,
   variant,
 }: {
@@ -19,19 +17,16 @@ export default function CNButton({
     ghost: 'bg-slate-700',
     destructive: 'bg-red-500',
   };
-  // NOTE: may not be the best wa
-  const textClasses =
-    colorScheme === 'light' ? lightTheme.textColor : darkTheme.textColor;
 
   return (
-    <TouchableOpacity
+    <View
       className={`
-      rounded-lg
+      rounded-full
       ${baseClasses}
       ${variant ? variantStyles[variant] : variantStyles.default}
     `}
     >
-      <Text className={`text-center text-lg ${textClasses}`}>{label}</Text>
-    </TouchableOpacity>
+      <Text className="text-center text-white dark:text-black">{label}</Text>
+    </View>
   );
 }
