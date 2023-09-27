@@ -1,0 +1,41 @@
+
+
+## Overview
+
+`Button` is a React Native component designed for creating styled buttons. It provides customization through its `label` and `variant` properties and automatically adapts to the device's current color scheme.
+
+## Preview
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <div style={{ marginRight: "40px" }}>
+    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/buttons-light.png" />
+     <p>Light Mode</p>
+  </div>
+  <div style={{ marginRight: "40px" }}>
+    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/buttons-dark.png"  />
+    <p>Dark Mode</p>
+  </div>
+</div>
+
+## Installation
+
+Include the `Button.tsx` file in your React Native project. [File Link](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Button.tsx)
+
+## Properties
+
+- `label: string` (Required) - The label displayed on the button.
+- `variant?: Variant` (Optional) - The variant of the button. Can be one of 'default', 'ghost', or 'destructive'.
+
+> **Note**: The `variant` property determines the color of the button. The color scheme (light/dark mode) is automatically detected.
+
+## Usage
+
+### Basic Usage with variants
+
+Here's how you can use the `Button` component:
+
+```jsx
+<Button label="Button" /> // Default variant
+<Button label="Button" variant="ghost" />
+<Button label="Button" variant="destructive" />
+```

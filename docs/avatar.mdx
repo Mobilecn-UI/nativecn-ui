@@ -1,0 +1,52 @@
+
+
+## Overview
+
+`Avatar` is a React Native component designed for displaying user avatars. It offers the ability to show an image avatar from a given source URL. If the image fails to load, a fallback text can be displayed.
+
+## Preview
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+    <div style={{ marginRight: "40px" }}>
+        <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/avatars-light.png" width="150px" />
+        <p>Light Mode</p>
+    </div>
+    <div>
+        <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/avatars-dark.png" width="150px" />
+        <p>Dark Mode</p>
+    </div>
+</div>
+
+## Installation
+
+Include the `Avatar.tsx` file in your React Native project. [File Link](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Avatar.tsx)
+
+## Properties
+
+- `src: string` (Required) - The source URL of the avatar image.
+- `width?: number` (Optional) - The width of the avatar. Default is `60`.
+- `height?: number` (Optional) - The height of the avatar. Default is `60`.
+- `fallback?: string` (Optional) - The fallback text to display if the image fails to load. Default is `'AB'`.
+
+## Usage
+
+### Basic Usage
+
+Here's how you can use the `Avatar` component:
+
+```jsx
+<Avatar
+    src="https://example.com/path/to/avatar.jpg"
+    fallback="CG"
+/>
+```
+
+### Custom Size
+```jsx
+<Avatar
+    src="https://example.com/path/to/avatar.jpg"
+    width={100}
+    height={100}
+    fallback="CG"
+/>
+```
