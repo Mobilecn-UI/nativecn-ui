@@ -20,7 +20,7 @@ export default function Avatar({
 
   return hasImageError ? (
     <View className="border border-black px-4 py-4 rounded-full dark:border-white">
-      <Text className="text-base text-center text-black dark:text-white">
+      <Text className="text-base text-center font-bold  text-black dark:text-white">
         {fallback}
       </Text>
     </View>
