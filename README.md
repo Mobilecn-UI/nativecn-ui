@@ -21,6 +21,7 @@ Sleek, ready-to-use components for your next project. No package install, no bs.
 - [x] Button
 - [x] Card
 - [x] Tabs
+- [x] Toggle
 - [ ] Calendar (WIP)
 - [ ] Checkbox (WIP)
 - [ ] Input (WIP)
