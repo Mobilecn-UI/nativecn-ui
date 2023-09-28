@@ -48,7 +48,7 @@
 
     {
     "group": "Components",
-    "pages" : [ "avatar","button", "badge", "card", "tabs" ]
+    "pages" : [ "avatar","button", "badge", "card", "tabs", "toggle" ]
     }
    
   ],

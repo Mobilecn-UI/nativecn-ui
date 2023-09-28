@@ -1,0 +1,38 @@
+## Overview
+
+`Toggle` is a React Native component designed for creating a switch or toggle control. It offers easy customization through the `isEnabled` prop and automatically adjusts its appearance based on the device's color scheme (light or dark mode).
+
+## Preview
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <div style={{ marginRight: "40px" }}>
+    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/toggle-light.png" />
+    <p>Light Mode</p>
+  </div>
+  <div style={{ marginRight: "40px" }}>
+    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/toggle-dark.png" />
+    <p>Dark Mode</p>
+  </div>
+</div>
+
+## Installation
+
+Include the `Toggle.tsx` file in your React Native project. [File Link](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Toggle.tsx)
+
+## Properties
+
+- `isEnabled: boolean` (Required) - The current state of the toggle. `true` means it's enabled/on, and `false` means it's disabled/off.
+- `onToggle: (state: boolean) => void` (Required) - Callback function that receives the new state of the toggle when it is toggled.
+
+> **Note**: The appearance of the toggle automatically adjusts based on the current color scheme (light/dark mode).
+
+## Usage
+
+### Basic Usage
+
+Here's how you can use the `Toggle` component:
+
+```jsx
+const [isToggled, setToggled] = useState(false);
+
+return <Toggle isEnabled={isToggled} onToggle={setToggled} />;
