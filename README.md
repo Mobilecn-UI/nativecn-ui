@@ -20,10 +20,10 @@ Sleek, ready-to-use components for your next project. No package install, no bs.
 - [x] Badge
 - [x] Button
 - [x] Card
+- [x] Tabs
 - [ ] Calendar (WIP)
 - [ ] Checkbox (WIP)
 - [ ] Input (WIP)
-- [ ] Tabs (WIP)
 
 ## Contributing
 
