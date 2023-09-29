@@ -43,7 +43,9 @@ export default function Card({
 
       {content && (
         <View className="py-4">
-          <Text className="text-black dark:text-white">{content}</Text>
+          <Text className="text-base text-black dark:text-white">
+            {content}
+          </Text>
         </View>
       )}
 

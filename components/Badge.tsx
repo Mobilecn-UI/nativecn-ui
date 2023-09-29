@@ -13,8 +13,9 @@ export default function Badge({
 
   const variantStyles: VariantStyles = {
     default: colorScheme === 'light' ? 'bg-black' : 'bg-white',
-    ghost: 'bg-slate-700',
+    secondary: 'bg-slate-500',
     destructive: 'bg-red-500',
+    success: 'bg-green-500',
   };
 
   return (
@@ -24,7 +25,9 @@ export default function Badge({
       ${variant ? variantStyles[variant] : variantStyles.default}
     `}
     >
-      <Text className="text-center text-white dark:text-black">{label}</Text>
+      <Text className="font-medium text-center text-xs text-white dark:text-black">
+        {label}
+      </Text>
     </View>
   );
 }

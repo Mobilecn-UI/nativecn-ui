@@ -15,6 +15,7 @@ export default function Button({
   // NOTE: can't use dark: here :(
   const variantStyles: VariantStyles = {
     default: colorScheme === 'light' ? 'bg-black' : 'bg-white',
+    secondary: 'bg-slate-500',
     ghost: 'bg-slate-700',
     destructive: 'bg-red-500',
   };
