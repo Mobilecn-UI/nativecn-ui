@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import { View, TouchableOpacity, useColorScheme } from 'react-native';
+import { TouchableOpacity, View, useColorScheme } from 'react-native';
 
-export default function Toggle({
+export function Toggle({
   isEnabled,
   onToggle,
 }: {
@@ -12,15 +11,20 @@ export default function Toggle({
 
   const variantStyles = {
     default: isEnabled
-      ? colorScheme === 'light' ? 'bg-black' : 'bg-white'
+      ? colorScheme === 'light'
+        ? 'bg-black'
+        : 'bg-white'
       : 'bg-gray-500',
   };
 
   const toggleStyle = {
-    default: `translate-x-1 ${colorScheme === 'light' ? 'bg-white' : 'bg-black'}`,
-    enabled: `translate-x-7 ${colorScheme === 'light' ? 'bg-white' : 'bg-black'}`,
-};
-
+    default: `translate-x-1 ${
+      colorScheme === 'light' ? 'bg-white' : 'bg-black'
+    }`,
+    enabled: `translate-x-7 ${
+      colorScheme === 'light' ? 'bg-white' : 'bg-black'
+    }`,
+  };
 
   return (
     <TouchableOpacity

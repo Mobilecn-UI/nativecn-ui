@@ -3,7 +3,7 @@ import { Text, TouchableOpacity, useColorScheme } from 'react-native';
 import { Variant, VariantStyles } from '../lib/types';
 
 // NOTE: pass classnames using https://www.nativewind.dev/api/StyledComponent
-export default function Button({
+export function Button({
   label,
   variant,
 }: {

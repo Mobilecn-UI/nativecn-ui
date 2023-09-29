@@ -9,7 +9,7 @@ interface CardProps {
   title?: string;
   variant?: Variant;
 }
-export default function Card({
+export function Card({
   content,
   description,
   footer,

@@ -1,19 +1,18 @@
-
 ## Overview
 
 `Tabs` is a versatile React Native component designed for creating tab-based user interfaces. This component set comprises `Tabs`, `TabsList`, `TabsTrigger`, and `TabsContent`, which work together to deliver a seamless tabbing experience.
 
 ## Preview
 
-<div style={{ display: "flex", justifyContent: "center" }}>
-<div>
-    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/tabs-light.png"  />
-  <p>Light Mode</p>
-   </div>
-   <div>
-    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/tabs-dark.png"  />
-    <p>Dark Mode</p>
-    </div>
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <div>
+    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/tabs-light.png" />
+    <p>Light mode</p>
+  </div>
+  <div>
+    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/tabs-dark.png" />
+    <p>Dark mode</p>
+  </div>
 </div>
 
 ## Installation
@@ -58,28 +57,29 @@ Here's how you can use the Tabs component system:
 
 ```jsx
 const tabs = [
-    { id: 0, title: 'Tab 1' },
-    { id: 1, title: 'Tab 2' },
+  { id: 0, title: 'Tab 1' },
+  { id: 1, title: 'Tab 2' },
 ];
 
 <Tabs>
-    <TabsList>
-        {tabs.map(tab => (
-            <TabsTrigger
-                key={tab.id}
-                id={tab.id}
-                title={tab.title}
-                activeTab={activeTab}
-                setActiveTab={setActiveTab}
-            />
-        ))}
-    </TabsList>
-    <TabsContent activeTab={activeTab}>
-        <View>
-            <Text className="text-black dark:text-white">Tab 1 content</Text>
-        </View>
-        <View>
-            <Text className="text-black dark:text-white">Tab 2 content</Text>
-        </View>
-    </TabsContent>
-</Tabs>
+  <TabsList>
+    {tabs.map(tab => (
+      <TabsTrigger
+        key={tab.id}
+        id={tab.id}
+        title={tab.title}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
+    ))}
+  </TabsList>
+  <TabsContent activeTab={activeTab}>
+    <View>
+      <Text className="text-black dark:text-white">Tab 1 content</Text>
+    </View>
+    <View>
+      <Text className="text-black dark:text-white">Tab 2 content</Text>
+    </View>
+  </TabsContent>
+</Tabs>;
+```

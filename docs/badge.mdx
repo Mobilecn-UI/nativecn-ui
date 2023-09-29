@@ -1,21 +1,18 @@
-
-
 ## Overview
 
 `Badge` is a React Native component for displaying brief labels or tags with optional variants. It provides customization through its `label` and `variant` properties and automatically adapts to the device's current color scheme.
 
 ## Preview
 
-<div style={{ display: "flex", justifyContent: "center", gap: "20px" }}>
-    <div>
-        <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/badges-light.png"  />
-        <p>Badge (Default)</p>
-    </div>
-    <div>
-        <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/badges-dark.png"  />
-        <p>Badge (Ghost Variant)</p>
-    </div>
-   
+<div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+  <div>
+    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/badges-light.png" />
+    <p>Light mode</p>
+  </div>
+  <div>
+    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/badges-dark.png" />
+    <p>Dark mode</p>
+  </div>
 </div>
 
 ## Installation
@@ -25,7 +22,7 @@ Include the `Badge.tsx` file in your React Native project. [File Link](https://g
 ## Properties
 
 - `label: string` (Required) - The text displayed inside the badge.
-- `variant?: Variant` (Optional) - The variant of the badge. Can be one of 'default', 'ghost', or 'destructive'.
+- `variant?: Variant` (Optional) - The variant of the badge. Can be one of 'default', 'secondary', or 'destructive'.
 
 > **Note**: The `variant` property determines the color of the badge. The color scheme (light/dark mode) is automatically detected.
 
@@ -37,6 +34,6 @@ Here's how you can use the `Badge` component:
 
 ```jsx
 <Badge label="New" />
-<Badge label="Archived" variant="ghost" />
+<Badge label="Archived" variant="secondary" />
 <Badge label="Error" variant="destructive" />
 ```

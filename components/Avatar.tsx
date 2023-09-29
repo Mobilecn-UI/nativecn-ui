@@ -10,7 +10,7 @@ interface AvatarProps {
   height?: number;
   fallback?: string;
 }
-export default function Avatar({
+export function Avatar({
   src,
   width = 60,
   height = 60,

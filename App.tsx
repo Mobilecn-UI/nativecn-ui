@@ -4,10 +4,10 @@ import { ScrollView, Text, View } from 'react-native';
 
 import { styled } from 'nativewind';
 
-import Avatar from './components/Avatar';
-import Badge from './components/Badge';
-import Button from './components/Button';
-import Card from './components/Card';
+import { Avatar } from './components/Avatar';
+import { Badge } from './components/Badge';
+import { Button } from './components/Button';
+import { Card } from './components/Card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
 
 const StyledView = styled(View);
@@ -32,7 +32,7 @@ export default function App() {
             <View>
               <Avatar
                 src="https://pbs.twimg.com/profile_images/1706762093876453376/_d_KcNjw_400x400.jpg"
-                fallback="CG"
+                fallback="CGM"
               />
             </View>
             <View>

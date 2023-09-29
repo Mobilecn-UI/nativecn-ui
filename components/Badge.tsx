@@ -2,7 +2,7 @@ import { Text, View, useColorScheme } from 'react-native';
 
 import { Variant, VariantStyles } from '../lib/types';
 
-export default function Badge({
+export function Badge({
   label,
   variant,
 }: {
