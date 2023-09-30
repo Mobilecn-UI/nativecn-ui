@@ -1,0 +1,40 @@
+{
+  "name": "nativecn-ui",
+  "version": "0.0.1",
+  "description": "Reusable components for your React Native apps.",
+  "homepage": "https://github.com/Mobilecn-UI/nativecn-ui#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mobilecn-UI/nativecn-ui.git",
+    "directory": "packages/cli"
+  },
+  "keywords": [
+    "components",
+    "ui",
+    "tailwind",
+    "react-native",
+    "expo"
+  ],
+  "type": "module",
+  "bin": "./dist/index.js",
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.0.0",
+    "ora": "^7.0.1",
+    "prompts": "^2.4.2",
+    "zod": "^3.22.2"
+  },
+  "devDependencies": {
+    "@types/prompts": "^2.4.5",
+    "tsup": "^7.2.0"
+  }
+}
