@@ -7,4 +7,5 @@ export default defineConfig({
   clean: true,
   target: 'esnext',
   outDir: 'dist',
+  format: ['esm'],
 });

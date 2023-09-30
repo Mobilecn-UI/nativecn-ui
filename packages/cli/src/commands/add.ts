@@ -49,6 +49,8 @@ export const add = new Command()
       let selectedComponents = options.all
         ? ALL_COMPONENTS
         : options.components;
+
+      // If no components were passed in command, prompt the user.
       if (!options.components?.length && !options.all) {
         const { components } = await prompts({
           type: 'multiselect',
@@ -82,16 +84,16 @@ export const add = new Command()
         }
       }
 
-      // NOTE: may want to define payload here.
       const payload = await fetchComponents(selectedComponents);
 
       const spinner = ora(`Installing components...`).start();
       for (const item of payload) {
         spinner.text = `Installing ${item.name}...`;
 
+        // NOTE: might want to use config to figure out the right targetDir.
         const targetDir = options.path
           ? path.resolve(cwd, options.path)
-          : undefined;
+          : `${cwd}/components`;
         if (!targetDir) {
           continue;
         }
@@ -105,7 +107,7 @@ export const add = new Command()
         );
 
         if (existingComponent && !options.overwrite) {
-          if (selectedComponents.includes(item.name)) {
+          if (selectedComponents.includes(item.name.slice(0, -4))) {
             spinner.stop();
             const { overwrite } = await prompts({
               type: 'confirm',

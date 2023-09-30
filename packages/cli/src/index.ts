@@ -4,8 +4,6 @@ import { Command } from 'commander';
 import { add } from './commands/add';
 
 function main() {
-  console.log('Hello, world');
-
   const program = new Command();
 
   program
