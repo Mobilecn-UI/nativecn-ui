@@ -2,6 +2,7 @@
 import { Command } from 'commander';
 
 import { add } from './commands/add';
+import { init } from './commands/init';
 
 function main() {
   const program = new Command();
@@ -11,7 +12,7 @@ function main() {
     .description('add components to your expo project')
     .version('0.0.1');
 
-  program.addCommand(add);
+  program.addCommand(add).addCommand(init);
 
   program.parse();
 }

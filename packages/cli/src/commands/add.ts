@@ -7,8 +7,9 @@ import path from 'path';
 import prompts from 'prompts';
 import * as z from 'zod';
 
-import { logger } from '../utils/logger';
-import { ALL_COMPONENTS, fetchComponents } from '../utils/registry';
+import { handleError } from '@/src/utils/handle-error';
+import { logger } from '@/src/utils/logger';
+import { ALL_COMPONENTS, fetchComponents } from '@/src/utils/registry';
 
 const addOptionsSchema = z.object({
   components: z.array(z.string()).optional(),
@@ -137,12 +138,6 @@ export const add = new Command()
       }
       spinner.succeed(`Done.`);
     } catch (error) {
-      if (error instanceof Error) {
-        logger.error(error.message);
-        process.exit(1);
-      }
-
-      logger.error('Something went wrong. Please try again.');
-      process.exit(1);
+      handleError(error);
     }
   });
