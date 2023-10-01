@@ -9,10 +9,10 @@ function main() {
 
   program
     .name('nativecn-ui')
-    .description('add components to your expo project')
-    .version('0.0.1');
+    .description('add components and dependencies to your expo project')
+    .version('0.0.2');
 
-  program.addCommand(add).addCommand(init);
+  program.addCommand(init).addCommand(add);
 
   program.parse();
 }
