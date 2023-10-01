@@ -17,12 +17,29 @@ const TestToastContent = () => {
   const { addToast } = useToast();
 
   return (
-    <View className="flex justify-center items-center mt-[-10]">
-      <Button
-        label="Toast"
-        onPress={() => addToast('Successfully added toast', 'default')}
-      />
-    </View>
+    <>
+      <View className="flex flex-row justify-center items-center mt-[-10]">
+        <Button
+          label="Toast"
+          onPress={() => {
+            const variants = ['default', 'success', 'error', 'info'];
+
+            variants.forEach((variant, index) => {
+              setTimeout(() => {
+                if (['default', 'success', 'error', 'info'].includes(variant)) {
+                  addToast(
+                    `${
+                      variant.charAt(0).toUpperCase() + variant.slice(1)
+                    } toast`,
+                    variant as 'default' | 'success' | 'error' | 'info'
+                  );
+                }
+              }, index * 1000);
+            });
+          }}
+        />
+      </View>
+    </>
   );
 };
 
@@ -152,6 +169,7 @@ export default function App() {
               </Tabs>
             </View>
           </StyledView>
+
           <TestToastContent />
         </ScrollView>
       </View>
