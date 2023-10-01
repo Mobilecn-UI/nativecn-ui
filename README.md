@@ -10,16 +10,27 @@ Start building apps faster.
 
 ## Usage
 
-### How to run locally?
-
-1. `git clone git@github.com:Swiftcn-UI/nativecn-ui.git`
-2. `yarn`
-3. `yarn start`
-
-### How to add components to my Expo / React Native project?
+### How do I run this locally?
 
 ```bash
-npx nativenc-ui add Button
+# Clone the repo and cd into it
+git clone git@github.com:Swiftcn-UI/nativecn-ui.git
+cd nativecn-ui/
+
+# Install deps
+yarn
+
+# Run it with Expo
+yarn start
+```
+
+### How do I add components to my Expo project?
+
+We have an npx command for that.
+
+```bash
+# Run this inside your project's root dir
+npx nativecn-ui add Button
 ```
 
 ## Components
