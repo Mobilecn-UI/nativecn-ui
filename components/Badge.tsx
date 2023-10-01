@@ -22,7 +22,7 @@ export function Badge({
 
   const variantStyles: VariantStyles = {
     default: colorScheme === 'light' ? 'bg-black' : 'bg-white',
-    secondary: 'bg-slate-500',
+    secondary: 'bg-gray-500',
     destructive: 'bg-red-500',
     success: 'bg-green-500',
   };
