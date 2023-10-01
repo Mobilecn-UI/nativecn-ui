@@ -1,31 +1,28 @@
-import { Text, View, useColorScheme } from 'react-native';
+import { Text, View } from 'react-native';
 
-import { Variant, VariantStyles } from '../lib/types';
+const cardVariants = {
+  default: 'bg-white dark:bg-black',
+};
 
 interface CardProps {
   content?: string;
   description?: string;
   footer?: string;
   title?: string;
-  variant?: Variant;
+  variant?: keyof typeof cardVariants;
 }
 export function Card({
   content,
   description,
   footer,
   title,
-  variant,
+  variant = 'default',
 }: CardProps) {
-  const colorScheme = useColorScheme();
-  const variantStyles: VariantStyles = {
-    default: colorScheme === 'light' ? 'bg-white' : 'bg-black',
-  };
-
   return (
     <View
       className={`
       px-5 py-4 rounded-lg border shadow-sm dark:border-gray-700
-      ${variant ? variantStyles[variant] : variantStyles.default}
+      ${cardVariants[variant]}
     `}
     >
       <View>

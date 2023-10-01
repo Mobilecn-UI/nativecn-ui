@@ -1,15 +1,19 @@
-import { Text, TouchableOpacity, useColorScheme } from 'react-native';
-
-import { Variant, VariantStyles } from '../lib/types';
+import { Text, TouchableOpacity } from 'react-native';
 
 const defaultContainerClasses = 'py-2 px-5 rounded-lg';
 const defaultLabelClasses = 'text-base text-center text-white dark:text-black';
+const buttonVariants = {
+  default: 'bg-black dark:bg-white',
+  secondary: 'bg-gray-500',
+  ghost: 'bg-slate-700',
+  destructive: 'bg-red-500',
+};
 
 interface ButtonProps {
   label: string;
   containerClasses?: string;
   labelClasses?: string;
-  variant?: Variant;
+  variant?: keyof typeof buttonVariants;
   onPress?: () => void;
 }
 export function Button({
@@ -19,19 +23,10 @@ export function Button({
   variant = 'default',
   onPress = () => undefined,
 }: ButtonProps) {
-  const colorScheme = useColorScheme();
-
-  const variantStyles: VariantStyles = {
-    default: colorScheme === 'light' ? 'bg-black' : 'bg-white',
-    secondary: 'bg-gray-500',
-    ghost: 'bg-slate-700',
-    destructive: 'bg-red-500',
-  };
-
   return (
     <TouchableOpacity
       className={`${containerClasses} ${
-        containerClasses === defaultContainerClasses && variantStyles[variant]
+        containerClasses === defaultContainerClasses && buttonVariants[variant]
       }`}
       onPress={onPress}
     >

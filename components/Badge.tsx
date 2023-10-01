@@ -1,16 +1,20 @@
-import { Text, View, useColorScheme } from 'react-native';
-
-import { Variant, VariantStyles } from '../lib/types';
+import { Text, View } from 'react-native';
 
 const defaultContainerClasses = 'px-2 py-1 rounded-full';
 const defaultLabelClasses =
   'font-medium text-center text-xs text-white dark:text-black';
+const badgeVariants = {
+  default: 'bg-black dark:bg-white',
+  secondary: 'bg-gray-500',
+  destructive: 'bg-red-500',
+  success: 'bg-green-500',
+};
 
 interface BadgeProps {
   label: string;
   containerClasses?: string;
   labelClasses?: string;
-  variant?: Variant;
+  variant?: keyof typeof badgeVariants;
 }
 export function Badge({
   label,
@@ -18,20 +22,10 @@ export function Badge({
   labelClasses = defaultLabelClasses,
   variant = 'default',
 }: BadgeProps) {
-  const colorScheme = useColorScheme();
-
-  const variantStyles: VariantStyles = {
-    default: colorScheme === 'light' ? 'bg-black' : 'bg-white',
-    secondary: 'bg-gray-500',
-    destructive: 'bg-red-500',
-    success: 'bg-green-500',
-  };
-
-  // Only apply variant style if the containerClasses default has been overwritten.
   return (
     <View
       className={`${containerClasses} ${
-        containerClasses === defaultContainerClasses && variantStyles[variant]
+        containerClasses === defaultContainerClasses && badgeVariants[variant]
       }`}
     >
       <Text className={labelClasses}>{label}</Text>
