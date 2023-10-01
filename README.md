@@ -40,6 +40,7 @@ npx nativecn-ui add Button
 - [x] Button
 - [x] Card
 - [x] Tabs
+- [x] Toast
 - [x] Toggle
 - [ ] Calendar (WIP)
 - [ ] Checkbox (WIP)
