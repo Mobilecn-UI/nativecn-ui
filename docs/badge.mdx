@@ -1,6 +1,8 @@
 ## Overview
 
-`Badge` is a React Native component for displaying brief labels or tags with optional variants. It provides customization through its `label` and `variant` properties and automatically adapts to the device's current color scheme.
+`Badge` is a React Native component for displaying brief labels or tags with optional variants. It provides quick style
+customization through the `variant` prop, automatically adapting to the device's current color scheme. If you
+want to control style using Tailwind CSS classes, use the `containerClasses` and `labelClasses` props.
 
 ## Preview
 
@@ -21,19 +23,27 @@ Include the `Badge.tsx` file in your React Native project. [File Link](https://g
 
 ## Properties
 
-- `label: string` (Required) - The text displayed inside the badge.
-- `variant?: Variant` (Optional) - The variant of the badge. Can be one of 'default', 'secondary', or 'destructive'.
+- `label: string` (required) - The text displayed inside the badge.
+- `containerClasses?: string (optional)` - The classes for the parent container (overrides `variant`).
+- `labelClasses?: string (optional)` - The classes for the label's text.
+- `variant?: Variant` (optional) - The variant of the badge. Can be one of 'default', 'secondary', 'destructive', or 'success'.
 
-> **Note**: The `variant` property determines the color of the badge. The color scheme (light/dark mode) is automatically detected.
+> **Note**: The `variant` property determines the background color of the badge. The color scheme (light/dark mode) is automatically detected.
 
 ## Usage
 
-### Basic Usage with Variants
-
-Here's how you can use the `Badge` component:
+### Basic usage with `variant`
 
 ```jsx
 <Badge label="New" />
 <Badge label="Archived" variant="secondary" />
 <Badge label="Error" variant="destructive" />
+<Badge label="Accepted" variant="success" />
+```
+
+### Basic usage with custom classes
+
+```jsx
+<Badge label="New" containerClasses="px-4 py-3 rounded-md" />
+<Badge label="Accepted" labelClasses="font-semibold text-lg" />
 ```

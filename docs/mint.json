@@ -1,11 +1,11 @@
 {
-  "name": "Nativecn-UI",
-   "logo": {
+  "name": "nativecn-ui",
+  "logo": {
     "dark": "logo/logo-dark.png",
     "light": "logo/logo-light.png"
   },
-    "favicon": "/favicon.png",
-    "colors": {
+  "favicon": "/favicon.png",
+  "colors": {
     "primary": "#ffffff",
     "light": "#40dcfc",
     "dark": "#0D001D",
@@ -17,21 +17,16 @@
       "to": "#40dcfc"
     }
   },
-
-   
   "topbarCtaButton": {
     "name": "Contribute",
     "url": "https://github.com/Mobilecn-UI/nativecn-ui"
- 
   },
-  
-
   "anchors": [
     {
       "name": "Components",
       "icon": "rectangle-terminal",
       "color": "#40d1fc",
-      "url": "button"
+      "url": "introduction"
     },
     {
       "name": "Github",
@@ -45,16 +40,12 @@
       "group": "Getting Started",
       "pages": ["introduction"]
     },
-
     {
-    "group": "Components",
-    "pages" : [ "avatar","button", "badge", "card", "tabs", "toggle" ]
+      "group": "Components",
+      "pages": ["avatar", "button", "badge", "card", "tabs", "toggle"]
     }
-   
   ],
   "footerSocials": {
     "github": "https://github.com/Mobilecn-UI/nativecn-ui"
-   
   }
- 
 }
