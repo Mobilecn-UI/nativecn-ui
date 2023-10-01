@@ -56,6 +56,12 @@ export default function App() {
               <Badge label="Badge" variant="destructive" />
             </View>
             <View>
+              <Badge
+                label="Badge"
+                containerClasses="px-2 py-1 rounded-full bg-amber-400"
+              />
+            </View>
+            <View>
               <Badge label="Badge" variant="success" />
             </View>
           </StyledView>
