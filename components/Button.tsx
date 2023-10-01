@@ -2,14 +2,17 @@ import { Text, TouchableOpacity, useColorScheme } from 'react-native';
 
 import { Variant, VariantStyles } from '../lib/types';
 
+interface ButtonProps {
+  label: string;
+  variant?: Variant;
+  onPress?: () => void;
+}
 // NOTE: pass classnames using https://www.nativewind.dev/api/StyledComponent
 export function Button({
   label,
-  variant,
-}: {
-  label: string;
-  variant?: Variant;
-}) {
+  variant = 'default',
+  onPress = () => undefined,
+}: ButtonProps) {
   const colorScheme = useColorScheme();
 
   // NOTE: can't use dark: here :(
@@ -22,12 +25,10 @@ export function Button({
 
   return (
     <TouchableOpacity
-      className={`
-      py-2 px-6 rounded-lg
-      ${variant ? variantStyles[variant] : variantStyles.default}
-    `}
+      className={`py-2 px-6 rounded-lg ${variantStyles[variant]}`}
+      onPress={onPress}
     >
-      <Text className="text-center text-base text-white dark:text-black">
+      <Text className="text-base text-center text-white dark:text-black">
         {label}
       </Text>
     </TouchableOpacity>

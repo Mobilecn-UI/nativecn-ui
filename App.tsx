@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { ScrollView, Text, View } from 'react-native';
+import { Alert, ScrollView, Text, View } from 'react-native';
 
 import { styled } from 'nativewind';
 
@@ -64,13 +64,21 @@ export default function App() {
           <Text className="font-semibold text-xl dark:text-white">Button</Text>
           <StyledView className="flex flex-row space-x-2">
             <View>
-              <Button label="Button" />
+              <Button label="Button" onPress={() => Alert.alert('Pressed 1')} />
             </View>
             <View>
-              <Button label="Button" variant="secondary" />
+              <Button
+                label="Button"
+                variant="secondary"
+                onPress={() => Alert.alert('Pressed 2')}
+              />
             </View>
             <View>
-              <Button label="Button" variant="destructive" />
+              <Button
+                label="Button"
+                variant="destructive"
+                onPress={() => Alert.alert('Pressed 3')}
+              />
             </View>
           </StyledView>
         </View>
