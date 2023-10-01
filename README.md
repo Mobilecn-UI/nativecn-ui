@@ -1,8 +1,8 @@
 # nativecn-ui
 
-shadcn/ui components for React Native.
+Beautiful and customizable React Native components, inspired by [shadcn-ui](https://github.com/shadcn-ui/ui).
 
-Sleek, ready-to-use components for your next project. No package install, no bs.
+Start building apps faster.
 
 |               Dark mode               |               Light mode               |
 | :-----------------------------------: | :------------------------------------: |
@@ -10,9 +10,17 @@ Sleek, ready-to-use components for your next project. No package install, no bs.
 
 ## Usage
 
+### How to run locally?
+
 1. `git clone git@github.com:Swiftcn-UI/nativecn-ui.git`
 2. `yarn`
 3. `yarn start`
+
+### How to add components to my Expo / React Native project?
+
+```bash
+npx nativenc-ui add Button
+```
 
 ## Components
 
