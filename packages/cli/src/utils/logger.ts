@@ -1,4 +1,4 @@
-// Taken from https://github.com/shadcn-ui/ui/blob/main/packages/cli/src/utils/logger.ts
+// Stolen from https://github.com/shadcn-ui/ui/blob/main/packages/cli/src/utils/logger.ts
 import chalk from 'chalk';
 
 export const logger = {

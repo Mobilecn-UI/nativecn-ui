@@ -11,6 +11,7 @@
     "<THIRD_PARTY_MODULES>",
     "^@/components/.*$",
     "^@/lib/.*$",
+    "^@/src/.*$",
     "^[./]"
   ],
   "importOrderSeparation": true,
