@@ -23,8 +23,7 @@ const initOptionsSchema = z.object({
 export const init = new Command()
   .name('init')
   .description('initialize your project and install dependencies')
-  .argument('[components...]', 'the components to add')
-  .option('-y, --yes', 'skip confirmation prompt.', true)
+  .option('-y, --yes', 'skip confirmation prompt.', false)
   .option(
     '-c, --cwd <cwd>',
     'the working directory. defaults to the current directory.',
