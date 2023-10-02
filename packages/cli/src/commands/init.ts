@@ -31,7 +31,6 @@ export const init = new Command()
   )
   .action(async opts => {
     try {
-      console.log('INIT');
       const options = initOptionsSchema.parse(opts);
       const cwd = path.resolve(options.cwd);
 
