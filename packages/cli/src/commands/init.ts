@@ -54,6 +54,9 @@ export async function runInit(cwd: string) {
     'utf8'
   );
 
+  // Write babel config.
+  await fs.writeFile(`${cwd}/babel.config.js`, templates.BABEL_CONFIG, 'utf8');
+
   spinner?.succeed();
 
   // Install dependencies.
@@ -62,7 +65,6 @@ export async function runInit(cwd: string) {
   const packageCommand = packageManager === 'npm' ? 'install' : 'add';
 
   await execa(packageManager, [packageCommand, ...DEPENDENCIES], { cwd });
-
   await execa(
     packageManager,
     [
@@ -72,5 +74,6 @@ export async function runInit(cwd: string) {
     ],
     { cwd }
   );
+
   dependenciesSpinner?.succeed();
 }

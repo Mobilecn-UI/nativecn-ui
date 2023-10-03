@@ -10,3 +10,11 @@ module.exports = {
   },
   plugins: [],
 };`;
+
+export const BABEL_CONFIG = `module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: ['babel-preset-expo'],
+    plugins: ['nativewind/babel'],
+  };
+};`;

@@ -3,32 +3,46 @@ title: Introduction
 description: 'A UI library of customizable and easy-to-use React Native components.'
 ---
 
-Inspired by [Shadcn UI](https://ui.shadcn.com/)
+Inspired by [shadcn/ui](https://ui.shadcn.com/)
 
 ## Why Nativecn UI?
 
+- **Beautifully Designed**: With a focus on aesthetics, each component is carefully crafted to provide a great UI/UX experience.
+- **Customizable**: Modify components easily using Tailwind CSS classes.
+- **Effortless Integration**: Import components into your project as needed. No package installs.
 - **TypeScript Integrated**: Static typing for all components.
-- **Customizable**: Modify components using Tailwind CSS classes.
-- **Effortless Integration**: Incorporate the component files into your project. No intricate prerequisites.
-- **Beautifully Designed**: With a focus on aesthetics, each component is carefully crafted to provide a visually appealing experience.
 
 ## Installation
 
-#### 1. Create a new typescript expo project
+#### 1. Create a new Typescript Expo project
 
 ```bash
 npx create-expo-app -t expo-template-blank-typescript
 ```
 
-#### 2. Setup Tailwind CSS
+#### 2. Setup [NativeWind](https://www.nativewind.dev/quick-starts/expo) for using Tailwind CSS classes
 
-[Nativewind](https://www.nativewind.dev/quick-starts/expo)
+```bash
+# Install dependencies
+yarn add nativewind
+yarn add --dev tailwindcss
 
-#### 3. Add Nativecn UI Components
+# Create a tailwind.config.js file
+npx tailwindcss init
+```
 
-[Nativecn UI Components](https://github.com/Mobilecn-UI/nativecn-ui)
+Finally, add `"nativewind/babel"` to your `babel.config.js` file.
 
-Simply add the components directory or copy paste the required components.
+#### 3. Add nativecn-ui components
+
+You can use our CLI:
+
+```bash
+npx nativecn-ui init
+npx nativecn-ui add Button
+```
+
+Or simply copy-paste from the [components directory](https://github.com/Mobilecn-UI/nativecn-ui/tree/main/components).
 
 ## Examples
 
@@ -38,4 +52,4 @@ Simply add the components directory or copy paste the required components.
 
 ## Community and Contributions
 
-Feel free to submit pull requests or report issues on our [GitHub Repository](https://github.com/Mobilecn-UI/nativecn-ui)
+Feel free to open PRs or report issues on our [GitHub repository](https://github.com/Mobilecn-UI/nativecn-ui).

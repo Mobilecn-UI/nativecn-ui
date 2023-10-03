@@ -1,6 +1,6 @@
 {
   "name": "nativecn-ui",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Add nativecn-ui components to your React Native apps.",
   "homepage": "https://github.com/Mobilecn-UI/nativecn-ui#readme",
   "publishConfig": {
