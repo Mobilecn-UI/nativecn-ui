@@ -1,6 +1,7 @@
 ## Overview
 
-`Tabs` is a versatile React Native component designed for creating tab-based user interfaces. This component set comprises `Tabs`, `TabsList`, `TabsTrigger`, and `TabsContent`, which work together to deliver a seamless tabbing experience.
+`Tabs` is a versatile controlled component designed for creating tab-based user interfaces.
+This component set comprises `Tabs`, `TabsList`, `TabsTrigger`, and `TabsContent`, which work together to deliver a seamless tabbing experience.
 
 ## Preview
 
@@ -17,7 +18,12 @@
 
 ## Installation
 
-Include the `Tabs.tsx` components in your React Native project. [File Link](https://github.com/nativecn-UI/nativecn-playground/blob/main/Nativecn%20Playground.components/Tabs.tsx)
+1. [Download](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Tabs.tsx) the `Tabs` component
+2. Import the module
+
+```jsx
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
+```
 
 ## Components
 
@@ -25,61 +31,48 @@ Include the `Tabs.tsx` components in your React Native project. [File Link](http
 
 The parent container for the tabbing system.
 
-- `children`: Components to be rendered inside the Tabs container.
+- `defaultValue: string` - The value of the tab that should be active when initially rendered.
+- `children` - Components to be rendered inside the Tabs container. Mainly `TabsList` and `TabsContent`.
 
 ### TabsList
 
 The container for individual tab triggers.
 
-- `children`: `TabsTrigger` components.
+- `children` - `TabsTrigger` components.
 
 ### TabsTrigger
 
-Triggers or buttons for each tab.
+Triggers or buttons for each tab. Should be placed inside `TabsList`.
 
-- `id: number` (Required) - A unique identifier for the tab.
-- `title: string` (Required) - The label displayed on the tab trigger.
-- `activeTab: number` (Required) - The ID of the currently active tab.
-- `setActiveTab: (id: number) => void` (Required) - A function to change the active tab.
+- `id: string` - A unique identifier for the tab.
+- `title: string` - The label displayed on the tab trigger.
 
 ### TabsContent
 
 Container for the content of each tab.
 
-- `activeTab: number` (Required) - The ID of the currently active tab.
-- `children`: The content of each tab. This should match the number of `TabsTrigger` components.
+- `value: string` - A unique value that associates the content with a trigger.
+- `children` - The content to display when the tab is active.
 
 ## Usage
 
-### Basic Usage
-
-Here's how you can use the Tabs component system:
+### Basic usage
 
 ```jsx
-const tabs = [
-  { id: 0, title: 'Tab 1' },
-  { id: 1, title: 'Tab 2' },
-];
-
-<Tabs>
+<Tabs defaultValue="account">
   <TabsList>
-    {tabs.map(tab => (
-      <TabsTrigger
-        key={tab.id}
-        id={tab.id}
-        title={tab.title}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-      />
-    ))}
+    <TabsTrigger id="account" title="Account" />
+    <TabsTrigger id="password" title="Password" />
   </TabsList>
-  <TabsContent activeTab={activeTab}>
-    <View>
-      <Text className="text-black dark:text-white">Tab 1 content</Text>
-    </View>
-    <View>
-      <Text className="text-black dark:text-white">Tab 2 content</Text>
-    </View>
+  <TabsContent value="account">
+    <Text className="text-black dark:text-white">
+      Make changes to your account here.
+    </Text>
   </TabsContent>
-</Tabs>;
+  <TabsContent value="password">
+    <Text className="text-black dark:text-white">
+      Change your password here.
+    </Text>
+  </TabsContent>
+</Tabs>
 ```

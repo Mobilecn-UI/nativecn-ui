@@ -1,46 +1,58 @@
-import React from 'react';
+import React, { ReactNode, createContext, useContext, useState } from 'react';
 
 import { Text, TouchableOpacity, View } from 'react-native';
 
-export function Tabs({ children }: any) {
-  return <View className="flex-1 gap-2">{children}</View>;
+interface TabsContextProps {
+  activeTab: string;
+  setActiveTab: (id: string) => void;
 }
+const TabsContext = createContext<TabsContextProps>({
+  activeTab: '',
+  setActiveTab: () => {},
+});
 
-export function TabsList({ children }: any) {
+interface TabsProps {
+  defaultValue: string;
+  children: ReactNode;
+}
+export function Tabs({ defaultValue, children }: TabsProps) {
+  const [activeTab, setActiveTab] = useState(defaultValue);
+
   return (
-    <View className="m-2 flex-row  items-center justify-center rounded-md">
-      {children}
+    <View className="px-2 py-2">
+      <TabsContext.Provider value={{ activeTab, setActiveTab }}>
+        {children}
+      </TabsContext.Provider>
     </View>
   );
 }
 
-interface TabsTriggerProps {
-  id: number;
-  title: string;
-  activeTab: number;
-  setActiveTab: (id: number) => void;
+export function TabsList({ children }: { children: ReactNode }) {
+  return <View className="flex flex-row justify-center">{children}</View>;
 }
-export function TabsTrigger({
-  id,
-  title,
-  activeTab,
-  setActiveTab,
-}: TabsTriggerProps) {
+
+interface TabsTriggerProps {
+  id: string;
+  title: string;
+}
+export function TabsTrigger({ id, title }: TabsTriggerProps) {
+  const { activeTab, setActiveTab } = useContext(TabsContext);
+
   return (
     <TouchableOpacity
-      className={`px-14 py-3 ${
+      className={`px-8 py-3 rounded-md w-1/2 ${
         activeTab === id
           ? 'bg-black dark:bg-white'
-          : 'bg-gray-200 dark:bg-gray-700'
-      } rounded-md m-2 `}
+          : 'bg-gray-200 dark:bg-gray-800'
+      }`}
       onPress={() => setActiveTab(id)}
     >
       <Text
-        className={`${
+        className={`font-bold text-center ${
           activeTab === id
             ? 'text-white dark:text-black'
-            : 'text-gray-400 dark:text-gray-500'
-        } font-bold`}
+            : 'text-gray-400 dark:text-gray-300'
+        }`}
       >
         {title}
       </Text>
@@ -48,10 +60,19 @@ export function TabsTrigger({
   );
 }
 
-export function TabsContent({ activeTab, children }: any) {
-  return (
-    <View className="flex-1 px-2 py-3">
-      {React.Children.toArray(children)[activeTab]}
-    </View>
-  );
+interface TabsContent {
+  value: string;
+  children: ReactNode;
+}
+export function TabsContent({ value, children }: TabsContent) {
+  const { activeTab } = useContext(TabsContext);
+
+  if (value === activeTab)
+    return (
+      <View className="border border-gray-600 mt-2 px-4 py-4 rounded-xl">
+        {children}
+      </View>
+    );
+
+  return null;
 }

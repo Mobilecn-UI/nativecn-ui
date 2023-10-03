@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { Alert, ScrollView, Text, View } from 'react-native';
 
 import { styled } from 'nativewind';
@@ -44,16 +42,9 @@ function ExampleToast() {
 }
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState(0);
-
-  const tabs = [
-    { id: 0, title: 'Tab 1' },
-    { id: 1, title: 'Tab 2' },
-  ];
-
   return (
-    <ToastProvider>
-      <ScrollView className="flex-1 py-16 px-10 dark:bg-black">
+    <ScrollView className="flex-1 py-16 px-10 dark:bg-black">
+      <ToastProvider>
         <Text className="mb-6 text-3xl underline dark:text-white">
           nativecn-ui
         </Text>
@@ -140,31 +131,29 @@ export default function App() {
           </View>
           <View className="flex gap-2">
             <Text className="font-semibold text-xl dark:text-white">Tabs</Text>
-            <Tabs>
+            <Tabs defaultValue="account">
               <TabsList>
-                {tabs.map(tab => (
-                  <TabsTrigger
-                    key={tab.id}
-                    id={tab.id}
-                    title={tab.title}
-                    activeTab={activeTab}
-                    setActiveTab={setActiveTab}
-                  />
-                ))}
+                <TabsTrigger id="account" title="Account" />
+                <TabsTrigger id="password" title="Password" />
               </TabsList>
-              <TabsContent activeTab={activeTab}>
+              <TabsContent value="account">
                 <Text className="text-black dark:text-white">
-                  Tab 1 content
+                  Make changes to your account here.
                 </Text>
+              </TabsContent>
+              <TabsContent value="password">
                 <Text className="text-black dark:text-white">
-                  Tab 2 content
+                  Change your password here.
                 </Text>
               </TabsContent>
             </Tabs>
           </View>
+          <View className="flex gap-2">
+            <Text className="font-semibold text-xl dark:text-white">Toast</Text>
+            <ExampleToast />
+          </View>
         </StyledView>
-        <ExampleToast />
-      </ScrollView>
-    </ToastProvider>
+      </ToastProvider>
+    </ScrollView>
   );
 }
