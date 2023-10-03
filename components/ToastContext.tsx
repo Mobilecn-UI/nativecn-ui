@@ -10,38 +10,34 @@ import { View } from 'react-native';
 
 import { Toast } from './Toast';
 
+export type ToastVariants = 'default' | 'success' | 'destructive' | 'info';
+
 interface ToastMessage {
   id: number;
   text: string;
-  variant: 'default' | 'success' | 'error' | 'info';
+  variant: ToastVariants;
   duration?: number;
 }
 
 interface ToastContextProps {
-  addToast: (
-    message: string,
-    variant?: 'default' | 'success' | 'error' | 'info',
-    duration?: number
-  ) => void;
+  toast: (message: string, variant?: ToastVariants, duration?: number) => void;
   removeToast: (id: number) => void;
 }
 
 const ToastContext = createContext<ToastContextProps | undefined>(undefined);
 
-export const ToastProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+export function ToastProvider({ children }: { children: ReactNode }) {
   const [messages, setMessages] = useState<ToastMessage[]>([]);
 
-  const addToast = useCallback(
+  const toast = useCallback(
     (
       message: string,
-      variant: 'default' | 'success' | 'error' | 'info' = 'default',
-      duration?: number
+      variant: ToastVariants = 'default',
+      duration: number = 3000
     ) => {
       setMessages(prev => [
         ...prev,
-        { text: message, id: Date.now(), variant, duration },
+        { id: Date.now(), text: message, variant, duration },
       ]);
     },
     []
@@ -52,35 +48,28 @@ export const ToastProvider: React.FC<{ children: ReactNode }> = ({
   }, []);
 
   return (
-    <ToastContext.Provider value={{ addToast, removeToast }}>
+    <ToastContext.Provider value={{ toast, removeToast }}>
       {children}
-      <View
-        style={{
-          position: 'absolute',
-          top: 45,
-          left: 0,
-          right: 0,
-        }}
-      >
-        {messages.map(messageObj => (
+      <View className="absolute top-[45px] left-0 right-0">
+        {messages.map(message => (
           <Toast
-            key={messageObj.id}
-            id={messageObj.id}
-            message={messageObj.text}
-            variant={messageObj.variant}
-            duration={messageObj.duration}
+            key={message.id}
+            id={message.id}
+            message={message.text}
+            variant={message.variant}
+            duration={message.duration}
             onHide={removeToast}
           />
         ))}
       </View>
     </ToastContext.Provider>
   );
-};
+}
 
-export const useToast = () => {
+export function useToast() {
   const context = useContext(ToastContext);
   if (!context) {
-    throw new Error('useToast must be used within a ToastProvider');
+    throw new Error('useToast must be used within ToastProvider');
   }
   return context;
-};
+}
