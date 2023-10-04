@@ -1,0 +1,83 @@
+## Overview
+
+`Toast` is a React Native component designed to provide quick feedback in the form of a temporary, dismissible message. It can be customized based on various variants such as `default`, `success`, `destructive`, and `info`.
+
+## Preview
+
+<div>
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <div style={{ marginRight: '40px' }}>
+    <img
+      src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/avatars-light.png"
+      width="150px"
+    />
+    <p>Light Mode</p>
+  </div>
+  <div>
+    <img
+      src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/avatars-dark.png"
+      width="150px"
+    />
+    <p>Dark Mode</p>
+  </div>
+</div>
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <div style={{ marginRight: '40px' }}>
+    <img
+      src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/avatars-light.png"
+      width="150px"
+    />
+    <p>Light Mode (with progress)</p>
+  </div>
+  <div>
+    <img
+      src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/avatars-dark.png"
+      width="150px"
+    />
+    <p>Dark Mode (with progress)</p>
+  </div>
+</div>
+
+</div>
+
+## Installation
+
+1. Ensure you have both the [Toast](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Avatar.tsx) and [ToastContext](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Avatar.tsx) in your `Components` folder.
+2. Wrap your main component, or the part of your app where you want to use the toast, with the `ToastProvider`.
+3. Import and use the `useToast` hook to get access to the `toast` function.
+
+## Usage
+
+### Basic usage
+
+```jsx
+export function ExampleButtonComponent() {
+  const { toast } = useToast();
+
+  return (
+    <Button
+      label="Show Default Toast"
+      onPress={() => {
+        toast('This is a default toast');
+      }}
+    />
+  );
+}
+
+// Wrapping the ExampleButtonComponent with ToastProvider
+<ToastProvider position="top">
+  <ExampleButtonComponent />
+</ToastProvider>;
+```
+
+### Custom Usage
+
+```jsx
+// with variant, duration
+toast('This is a success toast', 'success', 4000);
+
+// with variant, duration, showProgress
+toast('This is a success toast', 'success', 4000, true);
+```

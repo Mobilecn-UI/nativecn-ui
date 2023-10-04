@@ -42,7 +42,7 @@
     },
     {
       "group": "Components",
-      "pages": ["avatar", "button", "badge", "card", "tabs", "toggle"]
+      "pages": ["avatar", "button", "badge", "card", "tabs", "toast", "toggle"]
     }
   ],
   "footerSocials": {
