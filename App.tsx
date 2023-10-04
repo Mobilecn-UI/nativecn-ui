@@ -38,7 +38,7 @@ function ExampleToast() {
 
           variants.forEach((variant, index) => {
             setTimeout(() => {
-              toast(`${variant} toast`, variant);
+              toast(`${variant} toast`, variant, 3000, 'top', true);
             }, index * 1000);
           });
         }}
@@ -49,9 +49,9 @@ function ExampleToast() {
 
 export default function App() {
   return (
-    <ScrollView className="flex-1 py-16 px-10 dark:bg-black">
-      <ToastProvider>
-        <Text className="mb-6 text-3xl underline dark:text-white">
+    <ToastProvider position="top">
+      <ScrollView className="flex-1 py-16 px-10 dark:bg-black">
+        <Text className="mb-2 text-3xl underline dark:text-white">
           nativecn-ui
         </Text>
         <StyledView className="flex gap-y-3">
@@ -166,12 +166,13 @@ export default function App() {
               </TabsContent>
             </Tabs>
           </View>
-          <View className="flex gap-2">
+          <View className="mt-80">
             <Text className="font-semibold text-xl dark:text-white">Toast</Text>
+
             <ExampleToast />
           </View>
         </StyledView>
-      </ToastProvider>
-    </ScrollView>
+      </ScrollView>
+    </ToastProvider>
   );
 }
