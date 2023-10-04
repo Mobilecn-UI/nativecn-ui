@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Animated, Text } from 'react-native';
+import { Animated, Text, View } from 'react-native';
 
 import { ToastVariants } from './ToastContext';
 
@@ -9,15 +9,19 @@ interface ToastProps {
   onHide: (id: number) => void;
   variant?: ToastVariants;
   duration?: number;
+  showProgress?: boolean;
 }
+
 export function Toast({
   id,
   message,
   onHide,
   variant = 'default',
   duration = 3000,
+  showProgress = true,
 }: ToastProps) {
   const opacity = useRef(new Animated.Value(0)).current;
+  const progress = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     Animated.sequence([
@@ -26,7 +30,11 @@ export function Toast({
         duration: 500,
         useNativeDriver: true,
       }),
-      Animated.delay(duration),
+      Animated.timing(progress, {
+        toValue: 1,
+        duration: duration - 1000,
+        useNativeDriver: false,
+      }),
       Animated.timing(opacity, {
         toValue: 0,
         duration: 500,
@@ -60,9 +68,23 @@ export function Toast({
         ],
       }}
     >
-      <Text className="font-semibold text-center text-white dark:text-black">
+      <Text className="font-semibold text-left text-white dark:text-black">
         {message}
       </Text>
+
+      {showProgress && (
+        <View className="h-2 mt-2 rounded">
+          <Animated.View
+            className="h-2 bg-white dark:bg-black rounded opacity-30"
+            style={{
+              width: progress.interpolate({
+                inputRange: [0, 1],
+                outputRange: ['0%', '100%'],
+              }),
+            }}
+          />
+        </View>
+      )}
     </Animated.View>
   );
 }
