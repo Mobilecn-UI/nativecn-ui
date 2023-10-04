@@ -1,45 +1,121 @@
 ## Overview
 
-`Card` is a versatile React Native component that provides a structured format for displaying content. The card can display title, description, main content, and footer text. It also comes with automatic adaptation to the device's current color scheme.
+`Card` is a versatile React Native component that provides a structured format for displaying content.
+Cards can display title, description, content, and footer. It also adapts automatically to the current color scheme.
 
 ## Preview
 
-<div style={{ display: "flex", justifyContent: "center" }}>
-<div>
-    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/card-light.png"  />
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <div>
+    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/card-light.png" />
     <p>Light mode</p>
-    </div>
-    <div>
-    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/card-dark.png"  />
+  </div>
+  <div>
+    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/card-dark.png" />
     <p>Dark mode</p>
-    </div>
-
+  </div>
 </div>
 
 ## Installation
 
-Include the `Card.tsx` file in your React Native project. [File Link](https://github.com/nativecn-UI/nativecn-playground/blob/main/Nativecn%20Playground.components/Card.tsx)
+1. [Download](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Cards.tsx) the `Cards` component
+2. Import the modules
 
-## Properties
+```jsx
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from './components/Card';
+```
 
-- `title?: string` (Optional) - The title of the card.
-- `description?: string` (Optional) - A brief description or subtitle.
-- `content?: string` (Optional) - The main content inside the card.
-- `footer?: string` (Optional) - Text to display at the bottom of the card.
-- `variant?: Variant` (Optional) - The variant of the card. Currently, only the 'default' variant is supported which determines the card's color based on the color scheme.
+## Components
 
-> **Note**: The `variant` property determines the color of the card. The color scheme (light/dark mode) is automatically detected.
+### Card
+
+The parent container for the card system.
+
+- `children` - Components to be rendered inside the Cards container. Mainly `CardHeader`, `CardContent`, and `CardFooter`.
+- `className?: string` - Tailwind CSS classes to be applied to the `View`.
+
+### CardHeader
+
+The container for the card header.
+
+- `children` - Components to be rendered inside the Cards container. Mainly `CardTitle` and `CardDescription`.
+- `className?: string` - Tailwind CSS classes to be applied to the `View`.
+
+### CardTitle
+
+The main text shown in the header.
+
+- `children` - Text to be rendered inside the `Text` element.
+- `className?: string` - Tailwind CSS classes to be applied to the `Text`.
+
+### CardDescription
+
+The secondary text shown in the header.
+
+- `children` - Text to be rendered inside the `Text` element.
+- `className?: string` - Tailwind CSS classes to be applied to the `Text`.
+
+### CardContent
+
+The body of the card.
+
+- `children` - Components to be rendered inside the `View` element.
+- `className?: string` - Tailwind CSS classes to be applied to the `View`.
+
+### CardFooter
+
+The footer of the card.
+
+- `children` - Components to be rendered inside the `View` element.
+- `className?: string` - Tailwind CSS classes to be applied to the `View`.
+
+### SimpleCard
+
+A pre-built `Card` component taking text as input
+
+- `className?: string` - Tailwind CSS classes to be applied to the `View`.
+- `title?: string` - The title of the card.
+- `description?: string` - A brief description or subtitle.
+- `content?: string` - The main content inside the card.
+- `footer?: string` - Text to display at the bottom of the card.
 
 ## Usage
 
-### Basic Usage
-
-Here's how you can use the `Card` component:
+### Basic usage
 
 ```jsx
-<Card
+<Card>
+  <CardHeader>
+    <CardTitle>Accelerate UI</CardTitle>
+    <CardDescription>Enter a new development experience</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <Text className="text-base text-black dark:text-white">
+      Sleek, easy to use components to build your next app faster.
+    </Text>
+  </CardContent>
+  <CardFooter>
+    <Text className="text-sm text-gray-700 dark:text-gray-400">
+      Inspired by shadcn/ui
+    </Text>
+  </CardFooter>
+</Card>
+```
+
+### Basic usage with `SimpleCard` component
+
+```jsx
+<SimpleCard
   title="Accelerate UI"
   description="Enter a new development experience"
-  content="Sleek, easy to use components to build your next mobile app faster. Inspired by the legendary shadcn/ui."
+  content="Sleek, easy to use components to build your next app faster."
+  footer="Inspired by shadcn/ui"
 />
 ```
