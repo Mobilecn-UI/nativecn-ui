@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-
 import { Text, View } from 'react-native';
 
 interface GenericCardProps {
@@ -9,7 +8,7 @@ interface GenericCardProps {
 
 function Card({
   children,
-  className = 'px-5 py-4 rounded-lg border shadow-sm dark:border-gray-700',
+  className = 'border px-5 py-4 rounded-xl dark:border-gray-700',
 }: GenericCardProps) {
   return <View className={className}>{children}</View>;
 }

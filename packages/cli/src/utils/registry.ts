@@ -24,6 +24,7 @@ export async function fetchComponents(components: string[]) {
 
     return fetchedComponents;
   } catch (error) {
+    console.error(error);
     throw new Error(`Failed to fetch components from registry.`);
   }
 }

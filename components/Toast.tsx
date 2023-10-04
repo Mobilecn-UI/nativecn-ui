@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-
 import { Animated, Text } from 'react-native';
 
 import { ToastVariants } from './ToastContext';

@@ -5,7 +5,6 @@ import React, {
   useContext,
   useState,
 } from 'react';
-
 import { View } from 'react-native';
 
 import { Toast } from './Toast';

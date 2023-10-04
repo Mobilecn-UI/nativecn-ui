@@ -1,5 +1,4 @@
 import React, { ReactNode, createContext, useContext, useState } from 'react';
-
 import { Text, TouchableOpacity, View } from 'react-native';
 
 interface TabsContextProps {
@@ -60,11 +59,11 @@ export function TabsTrigger({ id, title }: TabsTriggerProps) {
   );
 }
 
-interface TabsContent {
+interface TabsContentProps {
   value: string;
   children: ReactNode;
 }
-export function TabsContent({ value, children }: TabsContent) {
+export function TabsContent({ value, children }: TabsContentProps) {
   const { activeTab } = useContext(TabsContext);
 
   if (value === activeTab)

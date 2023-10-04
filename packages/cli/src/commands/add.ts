@@ -132,7 +132,7 @@ export const add = new Command()
           }
         }
 
-        let filePath = path.resolve(targetDir, item.name);
+        const filePath = path.resolve(targetDir, item.name);
 
         await fs.writeFile(filePath, item.content);
       }

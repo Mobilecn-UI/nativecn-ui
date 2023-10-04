@@ -1,6 +1,5 @@
-import { Alert, ScrollView, Text, View } from 'react-native';
-
 import { styled } from 'nativewind';
+import { Alert, ScrollView, Text, View } from 'react-native';
 
 import { Avatar } from './components/Avatar';
 import { Badge } from './components/Badge';

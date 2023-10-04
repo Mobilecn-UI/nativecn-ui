@@ -1,8 +1,6 @@
-import { useState } from 'react';
-
-import { Text, View } from 'react-native';
-
 import { Image } from 'expo-image';
+import { useState } from 'react';
+import { Text, View } from 'react-native';
 
 interface AvatarProps {
   src: string;

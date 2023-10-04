@@ -5,9 +5,6 @@
   "singleQuote": true,
   "trailingComma": "es5",
   "importOrder": [
-    "^(react/(.*)$)|^(react$)",
-    "^(react-native/(.*)$)|^(react-native$)",
-    "^(expo/(.*)$)|^(expo$)",
     "<THIRD_PARTY_MODULES>",
     "^@/components/.*$",
     "^@/lib/.*$",
