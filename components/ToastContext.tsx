@@ -1,64 +1,63 @@
-import React, {
-  ReactNode,
-  createContext,
-  useCallback,
-  useContext,
-  useState,
-} from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { View } from 'react-native';
 
-import { Toast } from './Toast';
+import { Toast, toastVariants } from './Toast';
 
-export type ToastVariants = 'default' | 'success' | 'destructive' | 'info';
+export type ToastVariant = keyof typeof toastVariants;
 
 interface ToastMessage {
   id: number;
   text: string;
-  variant: ToastVariants;
+  variant: ToastVariant;
   duration?: number;
+  position?: string;
   showProgress?: boolean;
 }
 interface ToastContextProps {
   toast: (
     message: string,
-    variant?: ToastVariants,
+    variant?: keyof typeof toastVariants,
     duration?: number,
     position?: 'top' | 'bottom',
     showProgress?: boolean
   ) => void;
   removeToast: (id: number) => void;
 }
-
 const ToastContext = createContext<ToastContextProps | undefined>(undefined);
 
+// TODO: refactor to pass position to Toast instead of ToastProvider
 export function ToastProvider({
   children,
   position = 'top',
 }: {
-  children: ReactNode;
+  children: React.ReactNode;
   position?: 'top' | 'bottom';
 }) {
   const [messages, setMessages] = useState<ToastMessage[]>([]);
 
-  const toast = useCallback(
-    (
-      message: string,
-      variant: ToastVariants = 'default',
-      duration: number = 3000,
-      position: 'top' | 'bottom' = 'top', // Assuming you want to handle position here too
-      showProgress: boolean = true // Default is true, change as needed
-    ) => {
-      setMessages(prev => [
-        ...prev,
-        { id: Date.now(), text: message, variant, duration, showProgress },
-      ]);
-    },
-    []
-  );
+  const toast: ToastContextProps['toast'] = (
+    message: string,
+    variant: ToastVariant = 'default',
+    duration: number = 3000,
+    position: 'top' | 'bottom' = 'top',
+    showProgress: boolean = true
+  ) => {
+    setMessages(prev => [
+      ...prev,
+      {
+        id: Date.now(),
+        text: message,
+        variant,
+        duration,
+        position,
+        showProgress,
+      },
+    ]);
+  };
 
-  const removeToast = useCallback((id: number) => {
+  const removeToast = (id: number) => {
     setMessages(prev => prev.filter(message => message.id !== id));
-  }, []);
+  };
 
   return (
     <ToastContext.Provider value={{ toast, removeToast }}>
@@ -75,7 +74,7 @@ export function ToastProvider({
             message={message.text}
             variant={message.variant}
             duration={message.duration}
-            showProgress={message.showProgress} // Pass it down here
+            showProgress={message.showProgress}
             onHide={removeToast}
           />
         ))}

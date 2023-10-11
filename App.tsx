@@ -15,46 +15,20 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
 import {
   ToastProvider,
-  ToastVariants,
+  ToastVariant,
   useToast,
 } from './components/ToastContext';
 
 const StyledView = styled(View);
 
-function ExampleToast() {
-  const { toast } = useToast();
-
-  return (
-    <View className="flex flex-row justify-center items-center mt-[-10]">
-      <Button
-        label="Toast"
-        onPress={() => {
-          const variants: ToastVariants[] = [
-            'default',
-            'success',
-            'destructive',
-            'info',
-          ];
-
-          variants.forEach((variant, index) => {
-            setTimeout(() => {
-              toast(`${variant} toast`, variant, 3000, 'top', true);
-            }, index * 1000);
-          });
-        }}
-      />
-    </View>
-  );
-}
-
 export default function App() {
   return (
     <ToastProvider position="top">
-      <ScrollView className="flex-1 py-16 px-10 dark:bg-black">
+      <ScrollView className="bg-white dark:bg-black flex-1 py-16 px-10">
         <Text className="mb-2 text-3xl underline dark:text-white">
           nativecn-ui
         </Text>
-        <StyledView className="flex gap-y-3">
+        <StyledView className="flex gap-y-2">
           <View className="flex gap-2">
             <Text className="font-semibold text-xl dark:text-white">
               Avatar
@@ -166,13 +140,37 @@ export default function App() {
               </TabsContent>
             </Tabs>
           </View>
-          <View className="mt-80">
+          <View>
             <Text className="font-semibold text-xl dark:text-white">Toast</Text>
-
-            <ExampleToast />
+            <View className="flex mx-auto">
+              <ExampleToast />
+            </View>
           </View>
         </StyledView>
       </ScrollView>
     </ToastProvider>
+  );
+}
+
+function ExampleToast() {
+  const { toast } = useToast();
+  const variants: ToastVariant[] = [
+    'default',
+    'success',
+    'destructive',
+    'info',
+  ];
+
+  return (
+    <Button
+      label="Toast"
+      onPress={() => {
+        variants.forEach((variant, index) => {
+          setTimeout(() => {
+            toast(`${variant} toast`, variant, 3000, 'bottom', true);
+          }, index * 1000);
+        });
+      }}
+    />
   );
 }

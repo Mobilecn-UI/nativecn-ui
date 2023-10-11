@@ -1,12 +1,8 @@
+import { useState } from 'react';
 import { TouchableOpacity, View, useColorScheme } from 'react-native';
 
-export function Toggle({
-  isEnabled,
-  onToggle,
-}: {
-  isEnabled: boolean;
-  onToggle: (state: boolean) => void;
-}) {
+export function Toggle({ isEnabled }: { isEnabled: boolean }) {
+  const [enabled, setEnabled] = useState(isEnabled);
   const colorScheme = useColorScheme();
 
   const variantStyles = {
@@ -28,16 +24,16 @@ export function Toggle({
 
   return (
     <TouchableOpacity
-      onPress={() => onToggle(!isEnabled)}
+      onPress={() => setEnabled(!enabled)}
       className={`
-        w-16 h-8 rounded-full relative p-1 transition-colors duration-500
+        w-16 h-8 rounded-full items-center justify-center flex relative transition-colors duration-500
         ${variantStyles.default}
       `}
     >
       <View
         className={`
-          w-6 h-6 rounded-full absolute top-1 left-1 transform transition-transform duration-500
-          ${isEnabled ? toggleStyle.enabled : toggleStyle.default}
+          w-6 h-6 rounded-full absolute left-1 transform transition-transform duration-500
+          ${enabled ? toggleStyle.enabled : toggleStyle.default}
         `}
       />
     </TouchableOpacity>

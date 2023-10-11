@@ -1,17 +1,21 @@
 import { useEffect, useRef } from 'react';
 import { Animated, Text, View } from 'react-native';
 
-import { ToastVariants } from './ToastContext';
+export const toastVariants = {
+  default: 'bg-black dark:bg-white',
+  destructive: 'bg-red-500',
+  success: 'bg-green-500',
+  info: 'bg-blue-500',
+};
 
 interface ToastProps {
   id: number;
   message: string;
   onHide: (id: number) => void;
-  variant?: ToastVariants;
+  variant?: keyof typeof toastVariants;
   duration?: number;
   showProgress?: boolean;
 }
-
 export function Toast({
   id,
   message,
@@ -43,18 +47,11 @@ export function Toast({
     ]).start(() => onHide(id));
   }, [duration]);
 
-  const variantStyles = {
-    default: 'bg-black dark:bg-white',
-    destructive: 'bg-red-500',
-    success: 'bg-green-500',
-    info: 'bg-blue-500',
-  };
-
   return (
     <Animated.View
       className={`
-        ${variantStyles[variant]}
-        p-4 m-2 mb-1 rounded-lg shadow-md transform transition-all
+        ${toastVariants[variant]}
+        m-2 mb-1 p-4 rounded-lg shadow-md transform transition-all
       `}
       style={{
         opacity,
@@ -71,11 +68,10 @@ export function Toast({
       <Text className="font-semibold text-left text-white dark:text-black">
         {message}
       </Text>
-
       {showProgress && (
-        <View className="h-2 mt-2 rounded">
+        <View className="mt-2 rounded">
           <Animated.View
-            className="h-2 bg-white dark:bg-black rounded opacity-30"
+            className="bg-white dark:bg-black h-2 opacity-30 rounded"
             style={{
               width: progress.interpolate({
                 inputRange: [0, 1],
