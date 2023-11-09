@@ -1,0 +1,66 @@
+## Overview
+
+`Input` is a React Native component for creating text input fields with customizable styles and behaviors. This component allows the input field to be easily integrated with form functionalities, providing properties for label display, placeholder text, keyboard type configuration, and more. It utilizes Tailwind CSS classes for style customization.
+
+## Preview
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <div style={{ marginRight: '40px' }}>
+    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/input-light.png" />
+    <p>Light mode</p>
+  </div>
+  <div style={{ marginRight: '40px' }}>
+    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/input-dark.png" />
+    <p>Dark mode</p>
+  </div>
+</div>
+
+## Installation
+
+To use the `Input` component, include the `Input.tsx` file in your React Native project.
+
+## Properties
+
+- `label?: string` (optional) - The label text for the input field.
+- `placeholder?: string` (optional) - The placeholder text shown inside the input field when it's empty.
+- `keyboardType?: KeyboardTypeOptions` (optional) - Determines the keyboard type to be displayed (default is 'default').
+- `value?: string` (optional) - The input value which can be controlled externally.
+- `onChange?: (value: string) => void` (optional) - Callback function called when the input text changes.
+- `containerClasses?: string` (optional) - Custom classes for the container wrapping the input field and its label.
+- `inputClasses?: string` (optional) - Custom classes for styling the input field.
+- `labelClasses?: string` (optional) - Custom classes for styling the label.
+
+> **Note**: Tailwind CSS is used for styling the component, and the default styles are set for both light and dark modes.
+
+## Usage
+
+### Basic usage with `label`
+
+```jsx
+<Input label="Email" placeholder="Enter your email" />
+```
+
+### Usage with keyboard type and custom styles
+
+```jsx
+<Input
+  label="Phone Number"
+  placeholder="123-456-7890"
+  keyboardType="phone-pad"
+  containerClasses="flex flex-row items-center gap-2"
+  inputClasses="border-2 border-blue-500"
+  labelClasses="text-lg text-blue-600"
+/>
+```
+
+### Controlled Component
+
+```jsx
+const [inputValue, setInputValue] = useState('');
+// ...
+<Input
+  value={inputValue}
+  onChange={setInputValue}
+  placeholder="Controlled Input"
+/>;
+```

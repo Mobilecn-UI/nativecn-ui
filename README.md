@@ -39,12 +39,12 @@ npx nativecn-ui add Button
 - [x] Badge
 - [x] Button
 - [x] Card
+- [x] Input
 - [x] Tabs
 - [x] Toast
 - [x] Toggle
-- [ ] Calendar (WIP)
 - [ ] Checkbox (WIP)
-- [ ] Input (WIP)
+- [ ] Skeleton
 
 ## Contributing
 

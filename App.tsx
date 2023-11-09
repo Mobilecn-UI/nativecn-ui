@@ -1,4 +1,5 @@
 import { styled } from 'nativewind';
+import { useState } from 'react';
 import { Alert, ScrollView, Text, View } from 'react-native';
 
 import { Avatar } from './components/Avatar';
@@ -12,6 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from './components/Card';
+import { Input } from './components/Input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
 import {
   ToastProvider,
@@ -22,6 +24,8 @@ import {
 const StyledView = styled(View);
 
 export default function App() {
+  const [inputText, onChangeText] = useState('');
+
   return (
     <ToastProvider position="top">
       <ScrollView className="bg-white dark:bg-black flex-1 py-16 px-10">
@@ -119,6 +123,16 @@ export default function App() {
                   </Text>
                 </CardFooter>
               </Card>
+            </View>
+          </View>
+          <View className="flex gap-2">
+            <Text className="font-semibold text-xl dark:text-white">Input</Text>
+            <View>
+              <Input
+                placeholder="Email"
+                value={inputText}
+                onChange={onChangeText}
+              />
             </View>
           </View>
           <View className="flex gap-2">
