@@ -45,6 +45,7 @@ npx nativecn-ui add Button
 - [x] Toggle
 - [ ] Checkbox (WIP)
 - [ ] Skeleton
+- [ ] Form
 
 ## Contributing
 
