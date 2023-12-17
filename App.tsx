@@ -14,6 +14,7 @@ import {
   CardTitle,
 } from './components/Card';
 import { Input } from './components/Input';
+import { Skeleton } from './components/Skeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
 import {
   ToastProvider,
@@ -133,6 +134,16 @@ export default function App() {
                 value={inputText}
                 onChange={onChangeText}
               />
+            </View>
+          </View>
+          <View className="flex gap-2">
+            <Text className="font-semibold text-xl dark:text-white">
+              Skeleton
+            </Text>
+            <View className="flex">
+              <Skeleton classes="w-48 h-4 mb-1" />
+              <Skeleton classes="w-60 h-4 mb-1" />
+              <Skeleton classes="w-36 h-4" />
             </View>
           </View>
           <View className="flex gap-2">

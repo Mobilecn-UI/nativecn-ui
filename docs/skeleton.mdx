@@ -1,0 +1,34 @@
+## Overview
+
+`Skeleton` is a React Native component that serves as a placeholder for content during the loading state, providing a smooth, pulsating animation similar to TailwindCSS's animate-pulse.
+
+## Preview
+
+<div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+  <div>
+    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/skeleton-light.png" />
+    <p>Light mode</p>
+  </div>
+  <div>
+    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/skeleton-dark.png" />
+    <p>Dark mode</p>
+  </div>
+</div>
+
+## Installation
+
+Include the `Skeleton.tsx` file in your React Native project. [File Link](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Skeleton.tsx)
+
+## Properties
+
+- `classes?: string` (optional) - The classes for the container.
+
+## Usage
+
+### Basic usage with custom classes
+
+```jsx
+<Skeleton classes="w-48 h-4 mb-1" />
+<Skeleton classes="w-60 h-4 mb-1" />
+<Skeleton classes="w-36 h-4" />
+```

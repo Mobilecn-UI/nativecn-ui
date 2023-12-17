@@ -40,11 +40,12 @@ npx nativecn-ui add Button
 - [x] Button
 - [x] Card
 - [x] Input
+- [x] Skeleton
 - [x] Tabs
 - [x] Toast
 - [x] Toggle
 - [ ] Checkbox (WIP)
-- [ ] Skeleton
+- [ ] Form
 
 ## Contributing
 
