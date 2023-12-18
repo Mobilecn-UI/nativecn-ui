@@ -1,34 +1,50 @@
+import { type VariantProps, cva } from 'class-variance-authority';
 import { Text, View } from 'react-native';
 
-const defaultContainerClasses = 'px-2 py-1 rounded-full';
-const defaultLabelClasses =
-  'font-medium text-center text-xs text-white dark:text-black';
-const badgeVariants = {
-  default: 'bg-black dark:bg-white',
-  secondary: 'bg-gray-500',
-  destructive: 'bg-red-500',
-  success: 'bg-green-500',
-};
+import { cn } from '../lib/utils';
 
-interface BadgeProps {
+const badgeVariants = cva(
+  'inline-flex items-center rounded-full px-2 py-1 text-xs font-semibold',
+  {
+    variants: {
+      variant: {
+        default: 'bg-black dark:bg-white',
+        secondary: 'bg-gray-500',
+        destructive: 'bg-red-500',
+        success: 'bg-green-500',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  }
+);
+
+export interface BadgeProps
+  extends React.ComponentPropsWithoutRef<typeof View>,
+    VariantProps<typeof badgeVariants> {
   label: string;
-  containerClasses?: string;
   labelClasses?: string;
-  variant?: keyof typeof badgeVariants;
 }
-export function Badge({
+function Badge({
   label,
-  containerClasses = defaultContainerClasses,
-  labelClasses = defaultLabelClasses,
-  variant = 'default',
+  labelClasses,
+  className,
+  variant,
+  ...props
 }: BadgeProps) {
   return (
-    <View
-      className={`${containerClasses} ${
-        containerClasses === defaultContainerClasses && badgeVariants[variant]
-      }`}
-    >
-      <Text className={labelClasses}>{label}</Text>
+    <View className={cn(badgeVariants({ variant }), className)} {...props}>
+      <Text
+        className={cn(
+          labelClasses,
+          'font-medium text-center text-xs text-white dark:text-black'
+        )}
+      >
+        {label}
+      </Text>
     </View>
   );
 }
+
+export { Badge, badgeVariants };

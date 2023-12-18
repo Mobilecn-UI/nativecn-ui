@@ -56,24 +56,11 @@ export default function App() {
           <View className="flex gap-2">
             <Text className="font-semibold text-xl dark:text-white">Badge</Text>
             <StyledView className="flex flex-row space-x-2">
-              <View>
-                <Badge label="Badge" />
-              </View>
-              <View>
-                <Badge label="Badge" variant="secondary" />
-              </View>
-              <View>
-                <Badge label="Badge" variant="destructive" />
-              </View>
-              <View>
-                <Badge
-                  label="Badge"
-                  containerClasses="px-2 py-1 rounded-full bg-amber-400"
-                />
-              </View>
-              <View>
-                <Badge label="Badge" variant="success" />
-              </View>
+              <Badge className="asd" label="Badge" />
+              <Badge label="Badge" variant="secondary" />
+              <Badge label="Badge" variant="destructive" />
+              <Badge label="Badge" className="bg-amber-400" />
+              <Badge label="Badge" variant="success" />
             </StyledView>
           </View>
           <View className="flex gap-2">
@@ -167,7 +154,7 @@ export default function App() {
           </View>
           <View>
             <Text className="font-semibold text-xl dark:text-white">Toast</Text>
-            <View className="flex mx-auto">
+            <View className="flex mx-auto mb-32">
               <ExampleToast />
             </View>
           </View>
