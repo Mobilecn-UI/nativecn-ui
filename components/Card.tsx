@@ -18,7 +18,6 @@ function CardTitle({
   children,
   className = 'text-2xl font-semibold tracking-tight text-black dark:text-white',
 }: React.ComponentPropsWithoutRef<typeof View>) {
-  console.log(className);
   return <Text className={className}>{children}</Text>;
 }
 

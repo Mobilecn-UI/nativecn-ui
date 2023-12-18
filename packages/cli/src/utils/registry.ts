@@ -1,9 +1,13 @@
+// TODO: get this value dynamically
 export const ALL_COMPONENTS = [
   'Avatar',
   'Badge',
   'Button',
   'Card',
+  'Input',
+  'Skeleton',
   'Tabs',
+  'Toast',
   'Toggle',
 ];
 const baseUrl =
