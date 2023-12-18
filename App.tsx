@@ -68,26 +68,17 @@ export default function App() {
               Button
             </Text>
             <StyledView className="flex flex-row space-x-2">
-              <View>
-                <Button
-                  label="Button"
-                  onPress={() => Alert.alert('Pressed 1')}
-                />
-              </View>
-              <View>
-                <Button
-                  label="Button"
-                  variant="secondary"
-                  onPress={() => Alert.alert('Pressed 2')}
-                />
-              </View>
-              <View>
-                <Button
-                  label="Button"
-                  variant="destructive"
-                  onPress={() => Alert.alert('Pressed 3')}
-                />
-              </View>
+              <Button label="Button" onPress={() => Alert.alert('Pressed 1')} />
+              <Button
+                label="Button"
+                variant="secondary"
+                onPress={() => Alert.alert('Pressed 2')}
+              />
+              <Button
+                label="Button"
+                variant="destructive"
+                onPress={() => Alert.alert('Pressed 3')}
+              />
             </StyledView>
           </View>
           <View className="flex gap-2">

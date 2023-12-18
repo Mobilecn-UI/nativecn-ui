@@ -1,8 +1,8 @@
 ## Overview
 
 `Button` is a React Native component designed for creating styled buttons. It provides quick style
-customization through the `variant` prop, automatically adapting to the device's current color scheme. If you
-want to control style using Tailwind CSS classes, use the `containerClasses` and `labelClasses` props.
+customization through the `variant` and `size` props, automatically adapting to the device's current color scheme. If you
+want to control style using Tailwind CSS classes, use the `className` and `labelClasses` props.
 
 ## Preview
 
@@ -24,10 +24,10 @@ Include the `Button.tsx` file in your React Native project. [File Link](https://
 ## Properties
 
 - `label: string` (required) - The label displayed on the button.
-- `containerClasses?: string (optional)` - The classes for the parent container (overrides `variant`).
 - `labelClasses?: string (optional)` - The classes for the button's text.
-- `variant?: Variant` (optional) - The variant of the button. Can be one of 'default', 'secondary', 'ghost', or 'destructive'.
-- `onPress?: ` (optional) - The handler called when the button is pressed. The signature is `() => void`.
+- `className?: string (optional)` - The classes for the parent container.
+- `variant?: Variant` (optional) - The variant of the button. Can be one of 'default', 'secondary', 'ghost', 'destructive', or 'link'.
+- `size?: Variant` (optional) - The size of the button. Can be one of 'default', 'sm', or 'lg'.
 
 > **Note**: The `variant` property determines the background color of the button. The color scheme (light/dark mode) is automatically detected.
 
@@ -41,9 +41,16 @@ Include the `Button.tsx` file in your React Native project. [File Link](https://
 <Button label="Button" variant="destructive" />
 ```
 
+### Basic usage with `size`
+
+```jsx
+<Button label="Button" size="sm" />
+<Button label="Button" size="lg" />
+```
+
 ### Basic usage with custom classes
 
 ```jsx
-<Button label="Button" containerClasses="px-4 py-3 rounded-md" />
+<Button label="Button" className="px-6 py-3 rounded-lg" />
 <Button label="Button" labelClasses="font-semibold text-lg" />
 ```
