@@ -56,7 +56,7 @@ export default function App() {
           <View className="flex gap-2">
             <Text className="font-semibold text-xl dark:text-white">Badge</Text>
             <StyledView className="flex flex-row space-x-2">
-              <Badge className="asd" label="Badge" />
+              <Badge label="Badge" />
               <Badge label="Badge" variant="secondary" />
               <Badge label="Badge" variant="destructive" />
               <Badge label="Badge" className="bg-amber-400" />

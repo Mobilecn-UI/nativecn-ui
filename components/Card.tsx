@@ -1,41 +1,45 @@
-import { ReactNode } from 'react';
 import { Text, View } from 'react-native';
-
-interface GenericCardProps {
-  children: ReactNode;
-  className?: string;
-}
 
 function Card({
   children,
   className = 'border px-5 py-4 rounded-xl dark:border-gray-700',
-}: GenericCardProps) {
+}: React.ComponentPropsWithoutRef<typeof View>) {
   return <View className={className}>{children}</View>;
 }
 
-function CardHeader({ children, className }: GenericCardProps) {
+function CardHeader({
+  children,
+  className,
+}: React.ComponentPropsWithoutRef<typeof View>) {
   return <View className={className}>{children}</View>;
 }
 
 function CardTitle({
   children,
   className = 'text-2xl font-semibold tracking-tight text-black dark:text-white',
-}: GenericCardProps) {
+}: React.ComponentPropsWithoutRef<typeof View>) {
+  console.log(className);
   return <Text className={className}>{children}</Text>;
 }
 
 function CardDescription({
   children,
   className = 'text-sm text-gray-700 dark:text-gray-400',
-}: GenericCardProps) {
+}: React.ComponentPropsWithoutRef<typeof View>) {
   return <Text className={className}>{children}</Text>;
 }
 
-function CardContent({ children, className = 'py-4' }: GenericCardProps) {
+function CardContent({
+  children,
+  className = 'py-4',
+}: React.ComponentPropsWithoutRef<typeof View>) {
   return <View className={className}>{children}</View>;
 }
 
-function CardFooter({ children, className }: GenericCardProps) {
+function CardFooter({
+  children,
+  className,
+}: React.ComponentPropsWithoutRef<typeof View>) {
   return <View className={className}>{children}</View>;
 }
 

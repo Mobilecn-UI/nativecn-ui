@@ -60,13 +60,11 @@ function Button({
   className,
   variant,
   size,
-  onPress,
   ...props
 }: ButtonProps) {
   return (
     <TouchableOpacity
       className={cn(buttonVariants({ variant, size, className }))}
-      onPress={onPress}
       {...props}
     >
       <Text

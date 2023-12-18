@@ -34,7 +34,7 @@ function Badge({
   ...props
 }: BadgeProps) {
   return (
-    <View className={cn(badgeVariants({ variant }), className)} {...props}>
+    <View className={cn(badgeVariants({ variant, className }))} {...props}>
       <Text
         className={cn(
           labelClasses,
