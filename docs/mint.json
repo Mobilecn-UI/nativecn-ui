@@ -47,6 +47,7 @@
         "button",
         "badge",
         "card",
+        "checkbox",
         "skeleton",
         "tabs",
         "toast",
