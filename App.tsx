@@ -13,6 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from './components/Card';
+import { Checkbox } from './components/Checkbox';
 import { Input } from './components/Input';
 import { Skeleton } from './components/Skeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
@@ -123,6 +124,9 @@ export default function App() {
               <Skeleton classes="w-60 h-4 mb-1" />
               <Skeleton classes="w-36 h-4" />
             </View>
+          </View>
+          <View>
+            <Checkbox label="Checkbox" />
           </View>
           <View className="flex gap-2">
             <Text className="font-semibold text-xl dark:text-white">Tabs</Text>

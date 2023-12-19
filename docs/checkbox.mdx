@@ -1,0 +1,49 @@
+## Overview
+
+`Checkbox` is a React Native component designed for creating interactive checkboxes with customizable styles. This component allows for easy integration into forms and user interfaces, offering properties for label display and style customization. It leverages Tailwind CSS classes to provide a flexible styling approach suitable for both light and dark themes.
+
+## Preview
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <div style={{ marginRight: '40px' }}>
+    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/checkbox-light-enabled.png" />
+    <p>Light mode (Enabled)</p>
+  </div>
+  <div>
+    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/checkbox-dark-enabled.png" />
+    <p>Dark mode (Enabled)</p>
+  </div>
+</div>
+
+<div style={{ display: 'flex', justifyContent: 'center' }}>
+  <div style={{ marginRight: '40px' }}>
+    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/checkbox-light-disabled.png" />
+    <p>Light mode (Disabled)</p>
+  </div>
+  <div>
+    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/checkbox-dark-disabled.png" />
+    <p>Dark mode (Disabled)</p>
+  </div>
+</div>
+
+## Installation
+
+To use the `Checkbox` component, include the `Checkbox.tsx` file in your React Native project.
+
+## Properties
+
+- `label?: string` (optional) - The label text displayed next to the checkbox.
+- `containerClasses?: string` (optional) - Custom classes for the container wrapping the checkbox and its label.
+- `checkboxClasses?: string` (optional) - Custom classes for styling the checkbox.
+- `checkedClasses?: string` (optional) - Custom classes for styling the checkbox when it is checked.
+- `labelClasses?: string` (optional) - Custom classes for styling the label.
+
+> **Note**: This component uses Tailwind CSS for styling, with default styles set for both light and dark modes.
+
+## Usage
+
+### Basic Usage with Label
+
+```jsx
+<Checkbox label="Accept Terms" />
+```
