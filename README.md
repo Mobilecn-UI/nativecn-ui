@@ -44,8 +44,8 @@ npx nativecn-ui add Button
 - [x] Tabs
 - [x] Toast
 - [x] Toggle
-- [ ] Checkbox (WIP)
-- [ ] Form
+- [x] Checkbox
+- [ ] Form (WIP)
 
 ## Contributing
 
