@@ -1,41 +1,40 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useState } from 'react';
+import { Text, TouchableOpacity, View } from 'react-native';
 
-const defaultContainerClasses = 'flex flex-row items-center gap-2';
-const defaultCheckboxClasses =
-  'w-5 h-5 border border-gray-700 rounded bg-black flex justify-center items-center dark:bg-white dark:border-gray-200';
-const defaultCheckedClasses = 'bg-black dark:bg-white ';
-const defaultLabelClasses = ' text-black dark:text-white';
+import { cn } from '../lib/utils';
 
-interface CheckboxProps {
+// TODO: make controlled (optional)
+interface CheckboxProps extends React.ComponentPropsWithoutRef<typeof View> {
   label?: string;
-  containerClasses?: string;
   checkboxClasses?: string;
   checkedClasses?: string;
   labelClasses?: string;
 }
-
-export const Checkbox = ({
+function Checkbox({
   label,
-  containerClasses = defaultContainerClasses,
-  checkboxClasses = defaultCheckboxClasses,
-  checkedClasses = defaultCheckedClasses,
-  labelClasses = defaultLabelClasses,
-}: CheckboxProps) => {
+  className,
+  checkboxClasses = 'w-5 h-5 border border-gray-700 rounded bg-white flex justify-center items-center dark:bg-black dark:border-gray-200',
+  checkedClasses = 'bg-black dark:bg-white',
+  labelClasses = 'text-black dark:text-white',
+  ...props
+}: CheckboxProps) {
   const [isChecked, setChecked] = useState(false);
 
   const toggleCheckbox = () => {
-    setChecked(!isChecked);
+    setChecked(prev => !prev);
   };
 
   return (
-    <View className={containerClasses}>
+    <View
+      className={cn('flex flex-row items-center gap-x-2', className)}
+      {...props}
+    >
       {label && <Text className={labelClasses}>{label}</Text>}
       <TouchableOpacity onPress={toggleCheckbox}>
         <View
-          className={`${checkboxClasses} ${
-            isChecked ? checkedClasses : 'bg-white dark:bg-black'
-          }`}
+          className={cn(checkboxClasses, {
+            'bg-black dark:bg-white': isChecked,
+          })}
         >
           {isChecked && (
             <Text className="text-white dark:text-black text-xs">✓</Text>
@@ -44,4 +43,6 @@ export const Checkbox = ({
       </TouchableOpacity>
     </View>
   );
-};
+}
+
+export { Checkbox };

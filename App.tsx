@@ -56,13 +56,13 @@ export default function App() {
           </View>
           <View className="flex gap-2">
             <Text className="font-semibold text-xl dark:text-white">Badge</Text>
-            <StyledView className="flex flex-row space-x-2">
+            <View className="flex flex-row space-x-2">
               <Badge label="Badge" />
               <Badge label="Badge" variant="secondary" />
               <Badge label="Badge" variant="destructive" />
               <Badge label="Badge" className="bg-amber-400" />
               <Badge label="Badge" variant="success" />
-            </StyledView>
+            </View>
           </View>
           <View className="flex gap-2">
             <Text className="font-semibold text-xl dark:text-white">
@@ -125,8 +125,13 @@ export default function App() {
               <Skeleton classes="w-36 h-4" />
             </View>
           </View>
-          <View>
-            <Checkbox label="Checkbox" />
+          <View className="flex gap-2">
+            <Text className="font-semibold text-xl dark:text-white">
+              Checkbox
+            </Text>
+            <View>
+              <Checkbox label="Accept T&C" />
+            </View>
           </View>
           <View className="flex gap-2">
             <Text className="font-semibold text-xl dark:text-white">Tabs</Text>
