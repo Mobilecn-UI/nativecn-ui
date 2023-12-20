@@ -84,26 +84,24 @@ export default function App() {
           </View>
           <View className="flex gap-2">
             <Text className="font-semibold text-xl dark:text-white">Card</Text>
-            <View>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Accelerate UI</CardTitle>
-                  <CardDescription>
-                    Enter a new development experience
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Text className="text-base text-black dark:text-white">
-                    Sleek, easy to use components to build your next app faster.
-                  </Text>
-                </CardContent>
-                <CardFooter>
-                  <Text className="text-sm text-gray-700 dark:text-gray-400">
-                    Inspired by shadcn/ui
-                  </Text>
-                </CardFooter>
-              </Card>
-            </View>
+            <Card>
+              <CardHeader>
+                <CardTitle>Accelerate UI</CardTitle>
+                <CardDescription>
+                  Enter a new development experience
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Text className="text-base text-black dark:text-white">
+                  Sleek, easy to use components to build your next app faster.
+                </Text>
+              </CardContent>
+              <CardFooter>
+                <Text className="text-sm text-gray-700 dark:text-gray-400">
+                  Inspired by shadcn/ui
+                </Text>
+              </CardFooter>
+            </Card>
           </View>
           <View className="flex gap-2">
             <Text className="font-semibold text-xl dark:text-white">Input</Text>

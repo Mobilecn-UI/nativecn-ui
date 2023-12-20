@@ -1,45 +1,69 @@
 import { Text, View } from 'react-native';
 
+import { cn } from '../lib/utils';
+
 function Card({
-  children,
-  className = 'border px-5 py-4 rounded-xl dark:border-gray-700',
+  className,
+  ...props
 }: React.ComponentPropsWithoutRef<typeof View>) {
-  return <View className={className}>{children}</View>;
+  return (
+    <View
+      className={cn(
+        'rounded-xl border px-5 py-4 shadow-sm dark:border-gray-700',
+        className
+      )}
+      {...props}
+    />
+  );
 }
 
 function CardHeader({
-  children,
   className,
+  ...props
 }: React.ComponentPropsWithoutRef<typeof View>) {
-  return <View className={className}>{children}</View>;
+  return <View className={cn('pb-4', className)} {...props} />;
 }
 
 function CardTitle({
-  children,
-  className = 'text-2xl font-semibold tracking-tight text-black dark:text-white',
+  className,
+  ...props
 }: React.ComponentPropsWithoutRef<typeof View>) {
-  return <Text className={className}>{children}</Text>;
+  return (
+    <Text
+      className={cn(
+        'text-2xl font-semibold tracking-tight text-black dark:text-white',
+        className
+      )}
+      {...props}
+    />
+  );
 }
 
 function CardDescription({
-  children,
-  className = 'text-sm text-gray-700 dark:text-gray-400',
+  className,
+  ...props
 }: React.ComponentPropsWithoutRef<typeof View>) {
-  return <Text className={className}>{children}</Text>;
+  return (
+    <Text
+      className={cn('text-sm text-gray-700 dark:text-gray-400', className)}
+      {...props}
+    />
+  );
 }
 
 function CardContent({
-  children,
-  className = 'py-4',
+  className,
+  ...props
 }: React.ComponentPropsWithoutRef<typeof View>) {
-  return <View className={className}>{children}</View>;
+  return <View className={cn('pb-4', className)} {...props} />;
 }
 
+// TODO: style
 function CardFooter({
-  children,
   className,
+  ...props
 }: React.ComponentPropsWithoutRef<typeof View>) {
-  return <View className={className}>{children}</View>;
+  return <View className={className} {...props} />;
 }
 
 interface SimpleCardProps {
@@ -50,14 +74,19 @@ interface SimpleCardProps {
   footer?: string;
 }
 function SimpleCard({
-  className = 'px-5 py-4 rounded-lg border shadow-sm dark:border-gray-700',
+  className,
   title,
   description,
   content,
   footer,
 }: SimpleCardProps) {
   return (
-    <View className={className}>
+    <View
+      className={cn(
+        'px-5 py-4 rounded-lg border shadow-sm dark:border-gray-700',
+        className
+      )}
+    >
       <View>
         {title && (
           <Text className="text-2xl font-semibold tracking-tight text-black dark:text-white">
