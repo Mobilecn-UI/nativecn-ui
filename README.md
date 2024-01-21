@@ -2,8 +2,6 @@
 
 Beautiful and customizable React Native components, inspired by [shadcn-ui](https://github.com/shadcn-ui/ui).
 
-Start building apps faster.
-
 |               Dark mode               |               Light mode               |
 | :-----------------------------------: | :------------------------------------: |
 | ![](assets/examples/example-dark.png) | ![](assets/examples/example-light.png) |
@@ -13,9 +11,9 @@ Start building apps faster.
 ### How do I run this locally?
 
 ```bash
-# Clone the repo and cd into it
-git clone git@github.com:Swiftcn-UI/nativecn-ui.git
-cd nativecn-ui/
+# Clone the repo
+git clone git@github.com:Mobilecn-UI/nativecn-ui.git
+cd nativecn-ui
 
 # Install deps
 yarn
@@ -39,18 +37,19 @@ npx nativecn-ui add Button
 - [x] Badge
 - [x] Button
 - [x] Card
+- [x] Checkbox
 - [x] Input
 - [x] Skeleton
 - [x] Tabs
 - [x] Toast
 - [x] Toggle
-- [x] Checkbox
+- [ ] Alert (WIP)
 - [ ] Form (WIP)
 
 ## Contributing
 
-Check out the [contributing guide](https://github.com/Swiftcn-UI/nativecn-ui/blob/main/CONTRIBUTING.md)
+Check out the [contributing guide](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/CONTRIBUTING.md)
 
 ## License
 
-Distributed under the [MIT license](https://github.com/Swiftcn-UI/nativecn-ui/blob/main/LICENSE).
+Distributed under the [MIT license](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/LICENSE).

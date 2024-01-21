@@ -1,8 +1,7 @@
-import { styled } from 'nativewind';
 import { useState } from 'react';
 import { Alert, ScrollView, Text, View } from 'react-native';
 
-import { Avatar } from './components/Avatar';
+import { Avatar, AvatarFallback, AvatarImage } from './components/Avatar';
 import { Badge } from './components/Badge';
 import { Button } from './components/Button';
 import {
@@ -22,45 +21,48 @@ import {
   ToastVariant,
   useToast,
 } from './components/ToastContext';
-
-const StyledView = styled(View);
+import './styles/globals.css';
 
 export default function App() {
   const [inputText, onChangeText] = useState('');
 
   return (
     <ToastProvider position="top">
-      <ScrollView className="bg-white dark:bg-black flex-1 py-16 px-10">
+      <ScrollView className="bg-background dark:bg-black flex-1 py-16 px-10">
         <Text className="mb-2 text-3xl underline dark:text-white">
           nativecn-ui
         </Text>
-        <StyledView className="flex gap-y-2">
+        <View className="flex gap-3">
           <View className="flex gap-2">
             <Text className="font-semibold text-xl dark:text-white">
               Avatar
             </Text>
-            <StyledView className="flex justify-center flex-row space-x-4">
-              <View>
-                <Avatar
-                  src="https://pbs.twimg.com/profile_images/1706762093876453376/_d_KcNjw_400x400.jpg"
-                  fallback="CGM"
+            <View className="flex justify-center items-center flex-row gap-4">
+              <Avatar className="h-14 w-14">
+                <AvatarImage
+                  source={{
+                    uri: 'https://pbs.twimg.com/profile_images/1745949238519803904/ZHwM5B07_400x400.jpg',
+                  }}
                 />
-              </View>
-              <View>
-                <Avatar
-                  src="https://pbs.twimg.com/profile_images/1603610343905058816/PsPEWMOJ_400x400.jpg"
-                  fallback="SS"
+                <AvatarFallback>CG</AvatarFallback>
+              </Avatar>
+              <Avatar className="h-14 w-14">
+                <AvatarImage
+                  source={{
+                    uri: 'https://pbs.twimg.com/profile_images/1603610343905058816/PsPEWMOJ_400x400.jpg',
+                  }}
                 />
-              </View>
-            </StyledView>
+                <AvatarFallback>SS</AvatarFallback>
+              </Avatar>
+            </View>
           </View>
           <View className="flex gap-2">
             <Text className="font-semibold text-xl dark:text-white">Badge</Text>
-            <View className="flex flex-row space-x-2">
+            <View className="flex flex-row gap-2">
               <Badge label="Badge" />
               <Badge label="Badge" variant="secondary" />
               <Badge label="Badge" variant="destructive" />
-              <Badge label="Badge" className="bg-amber-400" />
+              <Badge label="Badge" className="bg-amber-400 dark:bg-amber-400" />
               <Badge label="Badge" variant="success" />
             </View>
           </View>
@@ -68,7 +70,7 @@ export default function App() {
             <Text className="font-semibold text-xl dark:text-white">
               Button
             </Text>
-            <StyledView className="flex flex-row space-x-2">
+            <View className="flex flex-row gap-2">
               <Button label="Button" onPress={() => Alert.alert('Pressed 1')} />
               <Button
                 label="Button"
@@ -80,7 +82,7 @@ export default function App() {
                 variant="destructive"
                 onPress={() => Alert.alert('Pressed 3')}
               />
-            </StyledView>
+            </View>
           </View>
           <View className="flex gap-2">
             <Text className="font-semibold text-xl dark:text-white">Card</Text>
@@ -104,6 +106,12 @@ export default function App() {
             </Card>
           </View>
           <View className="flex gap-2">
+            <Text className="font-semibold text-xl dark:text-white">
+              Checkbox
+            </Text>
+            <Checkbox label="Accept T&C" />
+          </View>
+          <View className="flex gap-2">
             <Text className="font-semibold text-xl dark:text-white">Input</Text>
             <View>
               <Input
@@ -120,18 +128,11 @@ export default function App() {
             <View className="flex">
               <Skeleton classes="w-48 h-4 mb-1" />
               <Skeleton classes="w-60 h-4 mb-1" />
+              <Skeleton classes="w-56 h-4 mb-1" />
               <Skeleton classes="w-36 h-4" />
             </View>
           </View>
-          <View className="flex gap-2">
-            <Text className="font-semibold text-xl dark:text-white">
-              Checkbox
-            </Text>
-            <View>
-              <Checkbox label="Accept T&C" />
-            </View>
-          </View>
-          <View className="flex gap-2">
+          <View className="flex gap-2 mt-1">
             <Text className="font-semibold text-xl dark:text-white">Tabs</Text>
             <Tabs defaultValue="account">
               <TabsList>
@@ -150,13 +151,13 @@ export default function App() {
               </TabsContent>
             </Tabs>
           </View>
-          <View>
+          {/* <View>
             <Text className="font-semibold text-xl dark:text-white">Toast</Text>
             <View className="flex mx-auto mb-32">
               <ExampleToast />
             </View>
-          </View>
-        </StyledView>
+          </View> */}
+        </View>
       </ScrollView>
     </ToastProvider>
   );

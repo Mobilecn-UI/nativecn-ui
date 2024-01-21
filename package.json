@@ -15,12 +15,14 @@
     "clsx": "^2.1.0",
     "expo": "~50.0.2",
     "expo-image": "~1.10.4",
+    "expo-splash-screen": "~0.26.3",
     "expo-status-bar": "~1.11.1",
-    "nativewind": "^2.0.11",
+    "nativewind": "^4.0.1",
     "react": "18.2.0",
     "react-native": "0.73.2",
+    "react-native-reanimated": "~3.6.0",
     "tailwind-merge": "^2.2.0",
-    "expo-splash-screen": "~0.26.3"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@babel/core": "^7.23.7",

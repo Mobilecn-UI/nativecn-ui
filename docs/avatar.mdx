@@ -1,7 +1,7 @@
 ## Overview
 
-`Avatar` is a React Native component designed for displaying user avatars. It offers the ability to
-show an image avatar from a given source URL. If the image fails to load, a fallback text can be displayed.
+`Avatar` is a React Native component designed for displaying user avatars. It can show an image avatar
+from a given source. If the image fails to load, a fallback text can be displayed.
 
 ## Preview
 
@@ -25,56 +25,36 @@ show an image avatar from a given source URL. If the image fails to load, a fall
 ## Installation
 
 1. [Download](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Avatar.tsx) the `Avatar` component
-2. Install `expo-image`
-
-```bash
-npx expo install expo-image
-```
-
-3. Import the module
+2. Import the modules
 
 ```jsx
-import { Avatar } from './components/Avatar';
+import { Avatar, AvatarFallback, AvatarImage } from './components/Avatar';
 ```
-
-## Properties
-
-- `src: string` - The source URL of the avatar image.
-- `width?: number` - The width of the avatar. Defaults to `60`.
-- `height?: number` - The height of the avatar. Defaults to `60`.
-- `fallback?: string` - The fallback text to display if the image fails to load. Defaults to `''` (empty string).
-- `imageClasses?: string` - The classes for the image. Defaults to `'rounded-full'`.
-- `fallbackViewClasses?: string` - The classes for the fallback container. Defaults to `'border border-black p-4 rounded-full dark:border-white'`.
-- `fallbackTextClasses?: string` - The classes for the fallback text. Defaults to `'text-base text-black dark:text-white'`.
 
 ## Usage
 
 ### Basic usage
 
 ```jsx
-<Avatar
-  src="https://pbs.twimg.com/profile_images/1256841238298292232/ycqwaMI2_400x400.jpg"
-  fallback="NR"
-/>
+<Avatar>
+  <AvatarImage
+    source={{
+      uri: 'https://pbs.twimg.com/profile_images/1745949238519803904/ZHwM5B07_400x400.jpg',
+    }}
+  />
+  <AvatarFallback>CG</AvatarFallback>
+</Avatar>
 ```
 
-### Custom size
+### Custom fallback style
 
 ```jsx
-<Avatar
-  src="https://example.com/path/to/avatar.jpg"
-  width={100}
-  height={100}
-  fallback="CGM"
-/>
-```
-
-### Custom style
-
-```jsx
-<Avatar
-  src="https://example.com/path/to/avatar.jpg"
-  fallback="CGM"
-  imageClasses="rounded-md"
-/>
+<Avatar>
+  <AvatarImage
+    source={{
+      uri: 'https://pbs.twimg.com/profile_images/1603610343905058816/PsPEWMOJ_400x400.jpgx',
+    }}
+  />
+  <AvatarFallback textClassname="text-amber-400">SS</AvatarFallback>
+</Avatar>
 ```

@@ -1,6 +1,7 @@
-import React, { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { View } from 'react-native';
 
+import { cn } from '../lib/utils';
 import { Toast, toastVariants } from './Toast';
 
 export type ToastVariant = keyof typeof toastVariants;
@@ -63,9 +64,10 @@ export function ToastProvider({
     <ToastContext.Provider value={{ toast, removeToast }}>
       {children}
       <View
-        className={`absolute ${
-          position === 'top' ? 'top-[45px]' : 'bottom-0'
-        } left-0 right-0`}
+        className={cn('absolute left-0 right-0', {
+          'top-[45px]': position === 'top',
+          'bottom-0': position === 'bottom',
+        })}
       >
         {messages.map(message => (
           <Toast

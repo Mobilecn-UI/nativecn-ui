@@ -1,38 +1,60 @@
-import { Image } from 'expo-image';
-import { useState } from 'react';
-import { Text, View } from 'react-native';
+import { forwardRef, useState } from 'react';
+import { Image, Text, View } from 'react-native';
 
-interface AvatarProps {
-  src: string;
-  width?: number;
-  height?: number;
-  fallback?: string;
-  imageClasses?: string;
-  fallbackViewClasses?: string;
-  fallbackTextClasses?: string;
-}
-export function Avatar({
-  src,
-  width = 60,
-  height = 60,
-  fallback = '',
-  imageClasses = 'rounded-full',
-  fallbackViewClasses = 'border border-black p-4 rounded-full dark:border-white',
-  fallbackTextClasses = 'text-base text-black dark:text-white',
-}: AvatarProps) {
-  const [hasImageError, setHasImageError] = useState(false);
+import { cn } from '../lib/utils';
 
-  return hasImageError ? (
-    <View className={fallbackViewClasses}>
-      <Text className={fallbackTextClasses}>{fallback}</Text>
-    </View>
-  ) : (
+const Avatar = forwardRef<
+  React.ElementRef<typeof View>,
+  React.ComponentPropsWithoutRef<typeof View>
+>(({ className, ...props }, ref) => (
+  <View
+    ref={ref}
+    className={cn(
+      'relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full',
+      className
+    )}
+    {...props}
+  />
+));
+Avatar.displayName = 'Avatar';
+
+const AvatarImage = forwardRef<
+  React.ElementRef<typeof Image>,
+  React.ComponentPropsWithoutRef<typeof Image>
+>(({ className, ...props }, ref) => {
+  const [hasError, setHasError] = useState(false);
+
+  if (hasError) {
+    return null;
+  }
+  return (
     <Image
-      className={imageClasses}
-      contentFit="cover"
-      source={src}
-      style={{ width, height }}
-      onError={() => setHasImageError(prevState => !prevState)}
+      ref={ref}
+      onError={() => setHasError(true)}
+      className={cn('aspect-square h-full w-full', className)}
+      {...props}
     />
   );
-}
+});
+AvatarImage.displayName = 'AvatarImage';
+
+const AvatarFallback = forwardRef<
+  React.ElementRef<typeof View>,
+  React.ComponentPropsWithoutRef<typeof View> & { textClassname?: string }
+>(({ children, className, textClassname, ...props }, ref) => (
+  <View
+    ref={ref}
+    className={cn(
+      'flex h-full w-full items-center justify-center rounded-full bg-muted dark:bg-primary',
+      className
+    )}
+    {...props}
+  >
+    <Text className={cn('text-lg text-primary dark:text-muted', textClassname)}>
+      {children}
+    </Text>
+  </View>
+));
+AvatarFallback.displayName = 'AvatarFallback';
+
+export { Avatar, AvatarImage, AvatarFallback };

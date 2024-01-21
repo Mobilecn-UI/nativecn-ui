@@ -13,7 +13,7 @@ interface CheckboxProps extends React.ComponentPropsWithoutRef<typeof View> {
 function Checkbox({
   label,
   className,
-  checkboxClasses = 'w-5 h-5 border border-gray-700 rounded bg-white flex justify-center items-center dark:bg-black dark:border-gray-200',
+  checkboxClasses = 'w-4 h-4 border border-gray-700 rounded bg-white flex justify-center items-center dark:bg-black dark:border-gray-200',
   checkedClasses = 'bg-black dark:bg-white',
   labelClasses = 'text-black dark:text-white',
   ...props
@@ -26,10 +26,9 @@ function Checkbox({
 
   return (
     <View
-      className={cn('flex flex-row items-center gap-x-2', className)}
+      className={cn('flex flex-row items-center gap-2', className)}
       {...props}
     >
-      {label && <Text className={labelClasses}>{label}</Text>}
       <TouchableOpacity onPress={toggleCheckbox}>
         <View
           className={cn(checkboxClasses, {
@@ -41,6 +40,7 @@ function Checkbox({
           )}
         </View>
       </TouchableOpacity>
+      {label && <Text className={labelClasses}>{label}</Text>}
     </View>
   );
 }
