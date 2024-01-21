@@ -8,9 +8,9 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-black dark:bg-white',
-        destructive: 'bg-red-500',
-        secondary: 'bg-gray-500',
+        default: 'bg-primary',
+        secondary: 'bg-secondary',
+        destructive: 'bg-destructive',
         ghost: 'bg-slate-700',
         link: 'text-primary underline-offset-4',
       },
@@ -30,11 +30,11 @@ const buttonVariants = cva(
 const buttonTextVariants = cva('text-center font-medium', {
   variants: {
     variant: {
-      default: 'text-white dark:text-black',
-      destructive: 'text-white dark:text-black',
-      secondary: 'text-white dark:text-black',
-      ghost: 'text-white dark:text-black',
-      link: 'text-primary underline',
+      default: 'text-primary-foreground',
+      secondary: 'text-secondary-foreground',
+      destructive: 'text-destructive-foreground',
+      ghost: 'text-primary-foreground',
+      link: 'text-primary-foreground underline',
     },
     size: {
       default: 'text-base',

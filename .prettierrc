@@ -8,7 +8,7 @@
     "<THIRD_PARTY_MODULES>",
     "^@/components/.*$",
     "^@/lib/.*$",
-    "^@/src/.*$",
+    "^@/styles/.*$",
     "^[./]"
   ],
   "importOrderSeparation": true,

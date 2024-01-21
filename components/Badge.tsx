@@ -8,10 +8,10 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-black dark:bg-white',
-        secondary: 'bg-gray-500',
-        destructive: 'bg-destructive text-destructive',
-        success: 'bg-green-500',
+        default: 'bg-primary',
+        secondary: 'bg-secondary',
+        destructive: 'bg-destructive',
+        success: 'bg-green-500 dark:bg-green-700',
       },
     },
     defaultVariants: {
@@ -19,6 +19,20 @@ const badgeVariants = cva(
     },
   }
 );
+
+const badgeTextVariants = cva('font-medium text-center text-xs', {
+  variants: {
+    variant: {
+      default: 'text-primary-foreground',
+      secondary: 'text-secondary-foreground',
+      destructive: 'text-destructive-foreground',
+      success: 'text-green-100',
+    },
+  },
+  defaultVariants: {
+    variant: 'default',
+  },
+});
 
 export interface BadgeProps
   extends React.ComponentPropsWithoutRef<typeof View>,
@@ -34,13 +48,8 @@ function Badge({
   ...props
 }: BadgeProps) {
   return (
-    <View className={cn(badgeVariants({ variant, className }))} {...props}>
-      <Text
-        className={cn(
-          labelClasses,
-          'font-medium text-center text-xs text-white dark:text-black'
-        )}
-      >
+    <View className={cn(badgeVariants({ variant }), className)} {...props}>
+      <Text className={cn(badgeTextVariants({ variant }), labelClasses)}>
         {label}
       </Text>
     </View>
