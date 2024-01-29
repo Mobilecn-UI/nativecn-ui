@@ -43,6 +43,7 @@ npx nativecn-ui add Button
 - [x] Tabs
 - [x] Toast
 - [x] Toggle
+- [x] Dialog
 - [ ] Alert (WIP)
 - [ ] Form (WIP)
 
