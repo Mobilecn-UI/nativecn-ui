@@ -56,20 +56,6 @@ export default function App() {
               </Avatar>
             </View>
           </View>
-
-          <DialogComponent>
-            <DialogTrigger>
-              <Button label="Open Dialog" />
-            </DialogTrigger>
-            <DialogContent>
-              <Text className="text-primary">Dialog Content Here</Text>
-              <Button label="Button" variant="default" />
-              <Text className="text-primary">
-                Click outside the dialog to close it.
-              </Text>
-            </DialogContent>
-          </DialogComponent>
-
           <View className="flex gap-2">
             <Text className="font-semibold text-xl text-primary">Badge</Text>
             <View className="flex flex-row gap-2">
@@ -120,6 +106,20 @@ export default function App() {
           <View className="flex gap-2">
             <Text className="font-semibold text-xl text-primary">Checkbox</Text>
             <Checkbox label="Accept T&C" />
+          </View>
+          <View className="flex gap-2">
+            <DialogComponent>
+              <DialogTrigger>
+                <Button label="Open Dialog" />
+              </DialogTrigger>
+              <DialogContent>
+                <Text className="text-primary">Dialog Content Here</Text>
+                <Button label="Button" variant="default" />
+                <Text className="text-primary">
+                  Click outside the dialog to close it.
+                </Text>
+              </DialogContent>
+            </DialogComponent>
           </View>
           <View className="flex gap-2">
             <Text className="font-semibold text-xl text-primary">Input</Text>
