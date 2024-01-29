@@ -13,6 +13,8 @@ import {
   CardTitle,
 } from './components/Card';
 import { Checkbox } from './components/Checkbox';
+import Dialog, { DialogContent, DialogTrigger } from './components/Dialog';
+import DialogComponent from './components/Dialog';
 import { Input } from './components/Input';
 import { Skeleton } from './components/Skeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
@@ -54,6 +56,20 @@ export default function App() {
               </Avatar>
             </View>
           </View>
+
+          <DialogComponent>
+            <DialogTrigger>
+              <Button label="Open Dialog" />
+            </DialogTrigger>
+            <DialogContent>
+              <Text className="text-primary">Dialog Content Here</Text>
+              <Button label="Button" variant="default" />
+              <Text className="text-primary">
+                Click outside the dialog to close it.
+              </Text>
+            </DialogContent>
+          </DialogComponent>
+
           <View className="flex gap-2">
             <Text className="font-semibold text-xl text-primary">Badge</Text>
             <View className="flex flex-row gap-2">
