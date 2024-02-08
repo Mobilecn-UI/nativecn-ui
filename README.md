@@ -38,12 +38,12 @@ npx nativecn-ui add Button
 - [x] Button
 - [x] Card
 - [x] Checkbox
+- [x] Dialog
 - [x] Input
 - [x] Skeleton
 - [x] Tabs
 - [x] Toast
 - [x] Toggle
-- [x] Dialog
 - [ ] Alert (WIP)
 - [ ] Form (WIP)
 

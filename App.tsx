@@ -13,8 +13,7 @@ import {
   CardTitle,
 } from './components/Card';
 import { Checkbox } from './components/Checkbox';
-import Dialog, { DialogContent, DialogTrigger } from './components/Dialog';
-import DialogComponent from './components/Dialog';
+import { Dialog, DialogContent, DialogTrigger } from './components/Dialog';
 import { Input } from './components/Input';
 import { Skeleton } from './components/Skeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
@@ -108,18 +107,21 @@ export default function App() {
             <Checkbox label="Accept T&C" />
           </View>
           <View className="flex gap-2">
-            <DialogComponent>
+            <Text className="font-semibold text-xl text-primary">Dialog</Text>
+            <Dialog>
               <DialogTrigger>
                 <Button label="Open Dialog" />
               </DialogTrigger>
               <DialogContent>
-                <Text className="text-primary">Dialog Content Here</Text>
-                <Button label="Button" variant="default" />
-                <Text className="text-primary">
-                  Click outside the dialog to close it.
-                </Text>
+                <View className="flex gap-4">
+                  <Text className="text-primary">Dialog Content</Text>
+                  <Button label="Button" variant="default" />
+                  <Text className="text-primary">
+                    Click outside the dialog to close it.
+                  </Text>
+                </View>
               </DialogContent>
-            </DialogComponent>
+            </Dialog>
           </View>
           <View className="flex gap-2">
             <Text className="font-semibold text-xl text-primary">Input</Text>

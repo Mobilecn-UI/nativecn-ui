@@ -1,31 +1,36 @@
-// DialogComponent.js
-import React from 'react';
-import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { cloneElement, createContext, useContext, useState } from 'react';
+import { Modal, TouchableOpacity, View } from 'react-native';
 
-import { DialogProvider, useDialog } from './DialogContext';
+interface DialogContextType {
+  visible: boolean;
+  setVisible: (visible: boolean) => void;
+}
 
-const DialogComponent = ({ children }: any) => {
+const DialogContext = createContext<DialogContextType | undefined>(undefined);
+
+function Dialog({ children }: { children: React.ReactNode }) {
+  const [visible, setVisible] = useState(false);
+
   return (
-    <DialogProvider>
-      <View>{children}</View>
-    </DialogProvider>
+    <DialogContext.Provider value={{ visible, setVisible }}>
+      {children}
+    </DialogContext.Provider>
   );
-};
+}
 
-export const DialogTrigger = ({ children }: any) => {
+function DialogTrigger({ children }: any) {
   const { setVisible } = useDialog();
 
-  return React.cloneElement(children, { onPress: () => setVisible(true) });
-};
+  return cloneElement(children, { onPress: () => setVisible(true) });
+}
 
-export default DialogComponent;
-export const DialogContent = ({ children }: any) => {
+function DialogContent({ children }: { children: React.ReactNode }) {
   const { visible, setVisible } = useDialog();
 
   return (
     <Modal
+      transparent
       animationType="fade"
-      transparent={true}
       visible={visible}
       onRequestClose={() => setVisible(false)}
     >
@@ -44,4 +49,14 @@ export const DialogContent = ({ children }: any) => {
       </TouchableOpacity>
     </Modal>
   );
+}
+
+const useDialog = () => {
+  const context = useContext(DialogContext);
+  if (!context) {
+    throw new Error('useDialog must be used within a DialogProvider');
+  }
+  return context;
 };
+
+export { Dialog, DialogTrigger, DialogContent, useDialog };
