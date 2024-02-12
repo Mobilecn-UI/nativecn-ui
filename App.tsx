@@ -16,6 +16,7 @@ import { Checkbox } from './components/Checkbox';
 import { Dialog, DialogContent, DialogTrigger } from './components/Dialog';
 import { Input } from './components/Input';
 import { Skeleton } from './components/Skeleton';
+import Switch from './components/Switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
 import {
   ToastProvider,
@@ -26,6 +27,7 @@ import './styles/globals.css';
 
 export default function App() {
   const [inputText, onChangeText] = useState('');
+  const [isEnabled, setIsEnabled] = useState(false);
 
   return (
     <ToastProvider position="top">
@@ -33,7 +35,7 @@ export default function App() {
         <Text className="mb-2 text-3xl underline text-primary">
           nativecn-ui
         </Text>
-        <View className="flex gap-3">
+        <View className="flex gap-3 mb-36">
           <View className="flex gap-2">
             <Text className="font-semibold text-xl text-primary">Avatar</Text>
             <View className="flex justify-center items-center flex-row gap-4">
@@ -140,6 +142,12 @@ export default function App() {
               <Skeleton classes="w-60 h-4 mb-1" />
               <Skeleton classes="w-56 h-4 mb-1" />
               <Skeleton classes="w-36 h-4" />
+            </View>
+          </View>
+          <View className="flex gap-2">
+            <Text className="font-semibold text-xl text-primary">Switch</Text>
+            <View className="flex">
+              <Switch onValueChange={setIsEnabled} value={isEnabled} />
             </View>
           </View>
           <View className="flex gap-2 mt-1">

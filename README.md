@@ -41,11 +41,12 @@ npx nativecn-ui add Button
 - [x] Dialog
 - [x] Input
 - [x] Skeleton
+- [x] Switch
 - [x] Tabs
 - [x] Toast
-- [x] Toggle
 - [ ] Alert (WIP)
 - [ ] Form (WIP)
+- [ ] Select (WIP)
 
 ## Contributing
 
