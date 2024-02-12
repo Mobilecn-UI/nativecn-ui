@@ -4,6 +4,7 @@ export const ALL_COMPONENTS = [
   'Badge',
   'Button',
   'Card',
+  'Dialog',
   'Input',
   'Skeleton',
   'Tabs',
