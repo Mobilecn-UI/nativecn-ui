@@ -131,7 +131,7 @@ export default function App() {
               <Input
                 placeholder="Email"
                 value={inputText}
-                onChange={onChangeText}
+                onChangeText={onChangeText}
               />
             </View>
           </View>

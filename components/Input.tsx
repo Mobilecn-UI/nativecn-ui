@@ -1,43 +1,27 @@
-import { useState } from 'react';
-import { KeyboardTypeOptions, Text, TextInput, View } from 'react-native';
+import { forwardRef } from 'react';
+import { Text, TextInput, View } from 'react-native';
 
-const defaultContainerClasses = 'flex flex-col gap-1.5';
-const defaultLabelClasses = 'text-base text-black dark:text-white';
-const defaultInputClasses =
-  'border border-gray-700 bg-white py-2.5 px-4 rounded-lg dark:bg-black text-black dark:text-white';
+import { cn } from '../lib/utils';
 
-interface InputProps {
+export interface InputProps
+  extends React.ComponentPropsWithoutRef<typeof TextInput> {
   label?: string;
-  placeholder?: string;
-  keyboardType?: KeyboardTypeOptions;
-  value?: string;
-  onChange?: (value: string) => void;
-  containerClasses?: string;
-  inputClasses?: string;
   labelClasses?: string;
+  inputClasses?: string;
 }
-export function Input({
-  label,
-  placeholder,
-  keyboardType = 'default',
-  value,
-  onChange,
-  containerClasses = defaultContainerClasses,
-  inputClasses = defaultInputClasses,
-  labelClasses = defaultLabelClasses,
-}: InputProps) {
-  const [text, onChangeText] = useState('');
-
-  return (
-    <View className={containerClasses}>
-      {label && <Text className={labelClasses}>{label}</Text>}
+const Input = forwardRef<React.ElementRef<typeof TextInput>, InputProps>(
+  ({ className, label, labelClasses, inputClasses, ...props }, ref) => (
+    <View className={cn('flex flex-col gap-1.5', className)}>
+      {label && <Text className={cn('text-base', labelClasses)}>{label}</Text>}
       <TextInput
-        className={inputClasses}
-        keyboardType={keyboardType}
-        onChangeText={onChange || onChangeText}
-        placeholder={placeholder}
-        value={value || text}
+        className={cn(
+          inputClasses,
+          'border border-gray-700 dark:border-gray-400 py-2.5 px-4 rounded-lg'
+        )}
+        {...props}
       />
     </View>
-  );
-}
+  )
+);
+
+export { Input };
