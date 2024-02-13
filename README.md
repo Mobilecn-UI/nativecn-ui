@@ -1,12 +1,28 @@
 # nativecn-ui
 
-Beautiful and customizable React Native components, inspired by [shadcn-ui](https://github.com/shadcn-ui/ui).
+Beautiful and customizable React Native components, inspired by [shadcn-ui](https://github.com/shadcn-ui/ui). Built-in dark mode, CSS variables, and NativeWind support.
 
 |               Dark mode               |               Light mode               |
 | :-----------------------------------: | :------------------------------------: |
 | ![](assets/examples/example-dark.png) | ![](assets/examples/example-light.png) |
 
 ## Usage
+
+### I have an Expo project, how do I get started?
+
+First, initialize nativecn from your project's root directory.
+
+```bash
+npx nativecn-ui init
+```
+
+Then, you can start adding components.
+
+```bash
+npx nativecn-ui add Avatar
+```
+
+> Tip: run `npx nativecn-ui add -a` to add all components.
 
 ### How do I run this locally?
 
@@ -22,29 +38,21 @@ yarn
 yarn start
 ```
 
-### How do I add components to my Expo project?
-
-We have an npx command for that.
-
-```bash
-# Run this inside your project's root dir
-npx nativecn-ui add Button
-```
-
 ## Components
 
-- [x] Avatar
-- [x] Badge
-- [x] Button
-- [x] Card
-- [x] Checkbox
-- [x] Dialog
-- [x] Input
-- [x] Skeleton
-- [x] Switch
-- [x] Tabs
-- [x] Toast
+- [x] [Avatar](components/Avatar.tsx)
+- [x] [Badge](components/Badge.tsx)
+- [x] [Button](components/Button.tsx)
+- [x] [Card](components/Card.tsx)
+- [x] [Checkbox](components/Checkbox.tsx)
+- [x] [Dialog](components/Dialog.tsx)
+- [x] [Input](components/Input.tsx)
+- [x] [Skeleton](components/Skeleton.tsx)
+- [x] [Switch](components/Switch.tsx)
+- [x] [Tabs](components/Tabs.tsx)
+- [x] [Toast](components/Toast.tsx)
 - [ ] Alert (WIP)
+- [ ] Dropdown (WIP)
 - [ ] Form (WIP)
 - [ ] Select (WIP)
 
