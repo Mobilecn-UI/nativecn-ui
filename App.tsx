@@ -18,11 +18,7 @@ import { Input } from './components/Input';
 import { Skeleton } from './components/Skeleton';
 import Switch from './components/Switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
-import {
-  ToastProvider,
-  ToastVariant,
-  useToast,
-} from './components/ToastContext';
+import { ToastProvider, ToastVariant, useToast } from './components/Toast';
 import './styles/globals.css';
 
 export default function App() {
@@ -167,12 +163,12 @@ export default function App() {
               </TabsContent>
             </Tabs>
           </View>
-          {/* <View>
+          <View>
             <Text className="font-semibold text-xl dark:text-white">Toast</Text>
             <View className="flex mx-auto mb-32">
               <ExampleToast />
             </View>
-          </View> */}
+          </View>
         </View>
       </ScrollView>
     </ToastProvider>
