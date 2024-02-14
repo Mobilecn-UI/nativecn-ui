@@ -22,7 +22,7 @@ Then, you can start adding components.
 npx nativecn-ui add Avatar
 ```
 
-> Tip: run `npx nativecn-ui add -a` to add all components.
+> **Tip**: run `npx nativecn-ui add -a` to add all components.
 
 ### How do I run this locally?
 
