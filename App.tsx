@@ -15,6 +15,11 @@ import {
 import { Checkbox } from './components/Checkbox';
 import { Dialog, DialogContent, DialogTrigger } from './components/Dialog';
 import { Input } from './components/Input';
+import {
+  RadioGroup,
+  RadioGroupItem,
+  RadioGroupLabel,
+} from './components/RadioGroup';
 import { Skeleton } from './components/Skeleton';
 import Switch from './components/Switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
@@ -130,6 +135,26 @@ export default function App() {
                 onChangeText={onChangeText}
               />
             </View>
+          </View>
+          <View className="flex gap-2">
+            <Text className="font-semibold text-xl text-primary">
+              Radio Group
+            </Text>
+            <RadioGroup defaultValue="dark">
+              <RadioGroupItem value="light" label="Light" />
+              <RadioGroupItem value="dark" label="Dark" />
+              <View className="flex flex-row items-center gap-2">
+                <RadioGroupItem value="system" />
+                <RadioGroupLabel value="system">
+                  <AvatarImage
+                    className="h-8 w-8 rounded-full"
+                    source={{
+                      uri: 'https://avatars.githubusercontent.com/u/75042455?s=200&v=4',
+                    }}
+                  />
+                </RadioGroupLabel>
+              </View>
+            </RadioGroup>
           </View>
           <View className="flex gap-2">
             <Text className="font-semibold text-xl text-primary">Skeleton</Text>
