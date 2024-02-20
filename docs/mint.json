@@ -50,6 +50,7 @@
         "checkbox",
         "radio-group",
         "skeleton",
+        "switch",
         "tabs",
         "toast",
         "toggle"
