@@ -2,18 +2,39 @@
 
 `RadioGroup` is a set of flexible React Native components designed for creating radio buttons.
 
-## Preview
-
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <div style={{ marginRight: '40px' }}>
-    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/radio-group-light.png" />
-    <p>Light mode</p>
-  </div>
-  <div style={{ marginRight: '40px' }}>
-    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/radio-group-dark.png" />
-    <p>Dark mode</p>
-  </div>
-</div>
+<Tabs>
+  <Tab title="Preview">
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ marginRight: '40px' }}>
+        <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/radio-group-light.png" />
+        <p>Light mode</p>
+      </div>
+      <div style={{ marginRight: '40px' }}>
+        <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/radio-group-dark.png" />
+        <p>Dark mode</p>
+      </div>
+    </div>
+  </Tab>
+  <Tab title="Code">
+    ```jsx
+    <RadioGroup defaultValue="dark">
+      <RadioGroupItem value="light" label="Light" />
+      <RadioGroupItem value="dark" label="Dark" />
+      <View className="flex flex-row items-center gap-2">
+        <RadioGroupItem value="system" />
+        <RadioGroupLabel value="system">
+          <AvatarImage
+            className="h-8 w-8 rounded-full"
+            source={{
+              uri: 'https://avatars.githubusercontent.com/u/75042455?s=200&v=4',
+            }}
+          />
+        </RadioGroupLabel>
+      </View>
+    </RadioGroup>
+    ```
+  </Tab>
+</Tabs>
 
 ## Installation
 
@@ -23,7 +44,7 @@
     npx nativecn-ui add RadioGroup
     ```
   </Tab>
-  <Tab title="Second Tab">
+  <Tab title="Manual">
     1. Install the dependencies
 
     ```bash
@@ -35,7 +56,7 @@
   </Tab>
 </Tabs>
 
-## Properties
+## API
 
 ### `RadioGroup`
 

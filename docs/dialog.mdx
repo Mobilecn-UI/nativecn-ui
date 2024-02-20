@@ -1,43 +1,67 @@
 ## Overview
 
-`Dialog` component in React Native is designed to manage modal dialogs within your application. It utilizes a context-based approach to control the visibility of the modal, making it easier to implement across different parts of your app. The component is split into three key parts: `Dialog`, which acts as the context provider; `DialogTrigger`, which handles the action to open the dialog; and `DialogContent`, which contains the actual content to be displayed in the dialog.
+`Dialog` component in React Native is designed to manage modal dialogs within your application. The component is split into three key parts: `Dialog`, which acts as the context provider; `DialogTrigger`, which handles the action to open the dialog; and `DialogContent`, which contains the actual content to be displayed in the dialog.
 
 ## Preview
 
-<div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
-  <div>
-    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/dialog-light.png" />
-    <p>Light mode</p>
-  </div>
-  <div>
-    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/dialog-dark.png" />
-    <p>Dark mode</p>
-  </div>
-</div>
+<Tabs>
+  <Tab title="Preview">
+    <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+      <div>
+        <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/dialog-light.png" />
+        <p>Light mode</p>
+      </div>
+      <div>
+        <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/dialog-dark.png" />
+        <p>Dark mode</p>
+      </div>
+    </div>
+  </Tab>
+  <Tab title="Code">
+    ```jsx
+    <View className="flex gap-2">
+      <Text className="font-semibold text-xl text-primary">Dialog</Text>
+      <Dialog>
+        <DialogTrigger>
+          <Button label="Open Dialog" />
+        </DialogTrigger>
+        <DialogContent>
+          <View className="flex gap-4">
+            <Text className="text-primary">Dialog Content</Text>
+            <Button label="Button" />
+            <Text className="text-primary">
+              Click outside the dialog to close it.
+            </Text>
+          </View>
+        </DialogContent>
+      </Dialog>
+    </View>
+    ```
+  </Tab>
+</Tabs>
 
 ## Installation
 
-### Automatic
-
-```bash
-npx nativecn-ui add Dialog
-```
-
-### Manual
-
-Include the `Dialog.tsx` file in your React Native project. [Source](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Dialog.tsx)
+<Tabs>
+  <Tab title="CLI">```bash npx nativecn-ui add Dialog ```</Tab>
+  <Tab title="Manual">
+    1. Include
+    [Dialog.tsx](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Dialog.tsx)
+    in your project.
+  </Tab>
+</Tabs>
 
 ## Properties
 
-### Dialog
+### `Dialog`
 
 This component doesn't accept any props directly but acts as a context provider for dialog visibility.
 
-### DialogTrigger
+### `DialogTrigger`
 
 - `children`: The React element that will trigger the dialog to open. It should be a component that accepts an `onPress` prop, like a button.
 
-### DialogContent
+### `DialogContent`
 
 - `children`: The content that will be displayed inside the dialog. This can be any React Node.
 
@@ -52,9 +76,9 @@ To use the Dialog component, wrap your entire dialog structure with `Dialog`. Th
   </DialogTrigger>
   <DialogContent>
     <View className="flex gap-4">
-      <Text className="text-primary dark:text-black">Dialog Content</Text>
+      <Text className="text-primary">Dialog Content</Text>
       <Button label="Button" variant="destructive" />
-      <Text className="text-primary dark:text-black">
+      <Text className="text-primary">
         Click outside the dialog to close it.
       </Text>
     </View>

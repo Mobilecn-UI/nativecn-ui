@@ -5,31 +5,59 @@ from a given source. If the image fails to load, a fallback text can be displaye
 
 ## Preview
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <div style={{ marginRight: '40px' }}>
-    <img
-      src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/avatar-light.png"
-      width="150px"
-    />
-    <p>Light Mode</p>
-  </div>
-  <div>
-    <img
-      src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/avatar-dark.png"
-      width="150px"
-    />
-    <p>Dark Mode</p>
-  </div>
-</div>
+<Tabs>
+  <Tab title="Preview">
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ marginRight: '40px' }}>
+        <img
+          src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/avatar-light.png"
+          width="150px"
+        />
+        <p>Light Mode</p>
+      </div>
+      <div>
+        <img
+          src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/avatar-dark.png"
+          width="150px"
+        />
+        <p>Dark Mode</p>
+      </div>
+    </div>
+  </Tab>
+  <Tab title="Code">
+    ```jsx
+    <View className="flex justify-center items-center flex-row gap-4">
+      <Avatar className="h-14 w-14">
+        <AvatarImage
+          source={{
+            uri: 'https://pbs.twimg.com/profile_images/1745949238519803904/ZHwM5B07_400x400.jpg',
+          }}
+        />
+        <AvatarFallback>CG</AvatarFallback>
+      </Avatar>
+      <Avatar className="h-14 w-14">
+        <AvatarImage
+          source={{
+            uri: 'https://pbs.twimg.com/profile_images/1603610343905058816/PsPEWMOJ_400x400.jpg',
+          }}
+        />
+        <AvatarFallback>SS</AvatarFallback>
+      </Avatar>
+    </View>
+    ```
+  </Tab>
+</Tabs>
 
 ## Installation
 
-1. [Download](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Avatar.tsx) the `Avatar` component
-2. Import the modules
-
-```jsx
-import { Avatar, AvatarFallback, AvatarImage } from './components/Avatar';
-```
+<Tabs>
+  <Tab title="CLI">```bash npx nativecn-ui add Avatar ```</Tab>
+  <Tab title="Manual">
+    1. Include
+    [Avatar.tsx](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Avatar.tsx)
+    in your project.
+  </Tab>
+</Tabs>
 
 ## Usage
 

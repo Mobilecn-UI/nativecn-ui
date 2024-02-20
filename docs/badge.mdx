@@ -4,22 +4,44 @@
 customization through the `variant` prop, automatically adapting to the device's current color scheme. If you
 want to control style using Tailwind CSS classes, use the `className` and `labelClasses` props.
 
-## Preview
-
-<div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
-  <div>
-    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/badges-light.png" />
-    <p>Light mode</p>
-  </div>
-  <div>
-    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/badges-dark.png" />
-    <p>Dark mode</p>
-  </div>
-</div>
+<Tabs>
+  <Tab title="Preview">
+    <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+      <div>
+        <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/badges-light.png" />
+        <p>Light mode</p>
+      </div>
+      <div>
+        <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/badges-dark.png" />
+        <p>Dark mode</p>
+      </div>
+    </div>
+  </Tab>
+  <Tab title="Code">
+    ```jsx
+    <View className="flex flex-row gap-2">
+      <Badge label="Badge" />
+      <Badge label="Badge" variant="secondary" />
+      <Badge label="Badge" variant="destructive" />
+      <Badge label="Badge" className="bg-amber-400 dark:bg-amber-600" />
+      <Badge label="Badge" variant="success" />
+    </View>
+    ```
+  </Tab>
+</Tabs>
 
 ## Installation
 
-Include the `Badge.tsx` file in your React Native project. [File Link](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Badge.tsx)
+## Installation
+
+<Tabs>
+  <Tab title="CLI">```bash npx nativecn-ui add Badge ```</Tab>
+  <Tab title="Manual">
+    1. Include
+    [Badge.tsx](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Badge.tsx)
+    in your project.
+  </Tab>
+</Tabs>
 
 ## Properties
 

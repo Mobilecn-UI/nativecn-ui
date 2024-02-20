@@ -21,7 +21,7 @@ import {
   RadioGroupLabel,
 } from './components/RadioGroup';
 import { Skeleton } from './components/Skeleton';
-import Switch from './components/Switch';
+import { Switch } from './components/Switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
 import { ToastProvider, ToastVariant, useToast } from './components/Toast';
 import './styles/globals.css';
@@ -118,7 +118,7 @@ export default function App() {
               <DialogContent>
                 <View className="flex gap-4">
                   <Text className="text-primary">Dialog Content</Text>
-                  <Button label="Button" variant="destructive" />
+                  <Button label="Button" />
                   <Text className="text-primary">
                     Click outside the dialog to close it.
                   </Text>

@@ -2,7 +2,7 @@ import { Switch as NativeSwitch, useColorScheme } from 'react-native';
 
 import { theme } from '../styles/theme';
 
-export default function Switch({
+function Switch({
   ...props
 }: React.ComponentPropsWithoutRef<typeof NativeSwitch>) {
   const colorScheme = useColorScheme();
@@ -25,3 +25,5 @@ export default function Switch({
     />
   );
 }
+
+export { Switch };

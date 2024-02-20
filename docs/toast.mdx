@@ -4,56 +4,88 @@
 
 ## Preview
 
-<div>
+<Tabs>
+  <Tab title="Preview">
+    <div>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div style={{ marginRight: '40px' }}>
+          <img
+            src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/toast-light.png"
+            width="300px"
+          />
+          <p>Light Mode</p>
+        </div>
+        <div>
+          <img
+            src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/toast-dark.png"
+            width="300px"
+          />
+          <p>Dark Mode</p>
+        </div>
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div style={{ marginRight: '40px' }}>
+          <img
+            src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/toast-light-progress.png"
+            width="300px"
+          />
+          <p>Light Mode (with progress)</p>
+        </div>
+        <div>
+          <img
+            src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/toast-dark-progress.png"
+            width="300px"
+          />
+          <p>Dark Mode (with progress)</p>
+        </div>
+      </div>
+    </div>
+  </Tab>
+  <Tab title="Code">
+```jsx
+import { ToastProvider, ToastVariant, useToast } from './components/Toast';
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <div style={{ marginRight: '40px' }}>
-    <img
-      src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/toast-light.png"
-      width="300px"
-    />
-    <p>Light Mode</p>
-  </div>
-  <div>
-    <img
-      src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/toast-dark.png"
-      width="300px"
-    />
-    <p>Dark Mode</p>
-  </div>
-</div>
+function DemoToast() {
+const { toast } = useToast();
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <div style={{ marginRight: '40px' }}>
-    <img
-      src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/toast-light-progress.png"
-      width="300px"
-    />
-    <p>Light Mode (with progress)</p>
-  </div>
-  <div>
-    <img
-      src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/toast-dark-progress.png"
-      width="300px"
-    />
-    <p>Dark Mode (with progress)</p>
-  </div>
-</div>
+return (
+<Button
+label="Show Default Toast"
+onPress={() => {
+toast('This is a default toast');
+}}
+/>
+);
+}
 
-</div>
+<ToastProvider position="top">
+  <DemoToast />
+</ToastProvider>;
+```
+  </Tab>
+</Tabs>
 
 ## Installation
 
-1. Ensure you have both the [Toast](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Toast.tsx) and [ToastContext](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/ToastContext.tsx) in your `Components` folder.
-2. Wrap your main component, or the part of your app where you want to use the toast, with the `ToastProvider`.
-3. Import and use the `useToast` hook to get access to the `toast` function.
+<Tabs>
+  <Tab title="CLI">```bash npx nativecn-ui add Toast ```</Tab>
+  <Tab title="Manual">
+    1. Include
+    [Toast.tsx](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Toast.tsx)
+    in your project. 2. Wrap your main component, or the part of your app where
+    you want to use the toast, with the `ToastProvider`. 3. Import and use the
+    `useToast` hook to get access to the `toast` function.
+  </Tab>
+</Tabs>
 
 ## Usage
 
 ### Basic usage
 
 ```jsx
-export function ExampleButtonComponent() {
+import { ToastProvider, ToastVariant, useToast } from './components/Toast';
+
+function DemoToast() {
   const { toast } = useToast();
 
   return (
@@ -66,9 +98,8 @@ export function ExampleButtonComponent() {
   );
 }
 
-// Wrapping the ExampleButtonComponent with ToastProvider
 <ToastProvider position="top">
-  <ExampleButtonComponent />
+  <DemoToast />
 </ToastProvider>;
 ```
 

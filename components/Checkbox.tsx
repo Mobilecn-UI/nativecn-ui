@@ -6,16 +6,14 @@ import { cn } from '../lib/utils';
 // TODO: make controlled (optional)
 interface CheckboxProps extends React.ComponentPropsWithoutRef<typeof View> {
   label?: string;
-  checkboxClasses?: string;
-  checkedClasses?: string;
   labelClasses?: string;
+  checkboxClasses?: string;
 }
 function Checkbox({
   label,
+  labelClasses,
+  checkboxClasses,
   className,
-  checkboxClasses = 'w-4 h-4 border border-gray-700 rounded bg-white flex justify-center items-center dark:bg-black dark:border-gray-200',
-  checkedClasses = 'bg-black dark:bg-white',
-  labelClasses = 'text-black dark:text-white',
   ...props
 }: CheckboxProps) {
   const [isChecked, setChecked] = useState(false);
@@ -31,16 +29,20 @@ function Checkbox({
     >
       <TouchableOpacity onPress={toggleCheckbox}>
         <View
-          className={cn(checkboxClasses, {
-            'bg-black dark:bg-white': isChecked,
-          })}
-        >
-          {isChecked && (
-            <Text className="text-white dark:text-black text-xs">✓</Text>
+          className={cn(
+            'w-4 h-4 border border-gray-700 rounded bg-background flex justify-center items-center',
+            {
+              'bg-foreground': isChecked,
+            },
+            checkboxClasses
           )}
+        >
+          {isChecked && <Text className="text-background text-xs">✓</Text>}
         </View>
       </TouchableOpacity>
-      {label && <Text className={labelClasses}>{label}</Text>}
+      {label && (
+        <Text className={cn('text-primary', labelClasses)}>{label}</Text>
+      )}
     </View>
   );
 }

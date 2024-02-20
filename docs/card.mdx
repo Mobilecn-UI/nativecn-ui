@@ -5,32 +5,54 @@ Cards can display title, description, content, and footer. It also adapts automa
 
 ## Preview
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <div>
-    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/card-light.png" />
-    <p>Light mode</p>
-  </div>
-  <div>
-    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/card-dark.png" />
-    <p>Dark mode</p>
-  </div>
-</div>
+<Tabs>
+  <Tab title="Preview">
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div>
+        <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/card-light.png" />
+        <p>Light mode</p>
+      </div>
+      <div>
+        <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/card-dark.png" />
+        <p>Dark mode</p>
+      </div>
+    </div>
+  </Tab>
+  <Tab title="Code">
+    ```jsx
+    <View className="flex gap-2">
+      <Text className="font-semibold text-xl text-primary">Card</Text>
+      <Card>
+        <CardHeader>
+          <CardTitle>Accelerate UI</CardTitle>
+          <CardDescription>Enter a new development experience</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Text className="text-base text-primary">
+            Sleek, easy to use components to build your next app faster.
+          </Text>
+        </CardContent>
+        <CardFooter>
+          <Text className="text-sm text-muted-foreground">
+            Inspired by shadcn/ui
+          </Text>
+        </CardFooter>
+      </Card>
+    </View>
+    ```
+  </Tab>
+</Tabs>
 
 ## Installation
 
-1. [Download](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Card.tsx) the `Card` component
-2. Import the modules
-
-```jsx
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from './components/Card';
-```
+<Tabs>
+  <Tab title="CLI">```bash npx nativecn-ui add Card ```</Tab>
+  <Tab title="Manual">
+    1. Include
+    [Card.tsx](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Card.tsx)
+    in your project.
+  </Tab>
+</Tabs>
 
 ## Components
 

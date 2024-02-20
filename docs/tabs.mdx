@@ -1,29 +1,50 @@
 ## Overview
 
-`Tabs` is a versatile controlled component designed for creating tab-based user interfaces.
-This component set comprises `Tabs`, `TabsList`, `TabsTrigger`, and `TabsContent`, which work together to deliver a seamless tabbing experience.
+A set of layered sections of content —known as tab panels— that are displayed one at a time.
 
 ## Preview
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <div>
-    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/tabs-light.png" />
-    <p>Light mode</p>
-  </div>
-  <div>
-    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/tabs-dark.png" />
-    <p>Dark mode</p>
-  </div>
-</div>
+<Tabs>
+  <Tab title="Preview">
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div>
+        <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/tabs-light.png" />
+        <p>Light mode</p>
+      </div>
+      <div>
+        <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/tabs-dark.png" />
+        <p>Dark mode</p>
+      </div>
+    </div>
+  </Tab>
+  <Tab title="Code">
+    ```jsx
+    <Tabs defaultValue="account">
+      <TabsList>
+        <TabsTrigger id="account" title="Account" />
+        <TabsTrigger id="password" title="Password" />
+      </TabsList>
+      <TabsContent value="account">
+        <Text className="text-primary">Make changes to your account here.</Text>
+      </TabsContent>
+      <TabsContent value="password">
+        <Text className="text-primary">Change your password here.</Text>
+      </TabsContent>
+    </Tabs>
+    ```
+  </Tab>
+</Tabs>
 
 ## Installation
 
-1. [Download](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Tabs.tsx) the `Tabs` component
-2. Import the module
-
-```jsx
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
-```
+<Tabs>
+  <Tab title="CLI">```bash npx nativecn-ui add Tabs ```</Tab>
+  <Tab title="Manual">
+    1. Include
+    [Tabs.tsx](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Tabs.tsx)
+    in your project.
+  </Tab>
+</Tabs>
 
 ## Components
 
@@ -65,14 +86,10 @@ Container for the content of each tab.
     <TabsTrigger id="password" title="Password" />
   </TabsList>
   <TabsContent value="account">
-    <Text className="text-black dark:text-white">
-      Make changes to your account here.
-    </Text>
+    <Text className="text-primary">Make changes to your account here.</Text>
   </TabsContent>
   <TabsContent value="password">
-    <Text className="text-black dark:text-white">
-      Change your password here.
-    </Text>
+    <Text className="text-primary">Change your password here.</Text>
   </TabsContent>
 </Tabs>
 ```

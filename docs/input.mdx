@@ -4,20 +4,36 @@
 
 ## Preview
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <div style={{ marginRight: '40px' }}>
-    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/input-light.png" />
-    <p>Light mode</p>
-  </div>
-  <div style={{ marginRight: '40px' }}>
-    <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/input-dark.png" />
-    <p>Dark mode</p>
-  </div>
-</div>
+<Tabs>
+  <Tab title="Preview">
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ marginRight: '40px' }}>
+        <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/input-light.png" />
+        <p>Light mode</p>
+      </div>
+      <div style={{ marginRight: '40px' }}>
+        <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/input-dark.png" />
+        <p>Dark mode</p>
+      </div>
+    </div>
+  </Tab>
+  <Tab title="Code">
+    ```jsx
+    <Input placeholder="Email" />
+    ```
+  </Tab>
+</Tabs>
 
 ## Installation
 
-To use the `Input` component, include the `Input.tsx` file in your React Native project.
+<Tabs>
+  <Tab title="CLI">```bash npx nativecn-ui add Input ```</Tab>
+  <Tab title="Manual">
+    1. Include
+    [Input.tsx](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Input.tsx)
+    in your project.
+  </Tab>
+</Tabs>
 
 ## Properties
 
@@ -26,8 +42,6 @@ To use the `Input` component, include the `Input.tsx` file in your React Native 
 - `inputClasses?: string` (optional) - Custom classes for styling the input field.
 - `labelClasses?: string` (optional) - Custom classes for styling the label.
 - See React Native's [TextInput props](https://reactnative.dev/docs/textinput#props)
-
-> **Note**: Tailwind CSS is used for styling the component, and the default styles are set for both light and dark modes.
 
 ## Usage
 
