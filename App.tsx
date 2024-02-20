@@ -36,7 +36,7 @@ export default function App() {
         <Text className="mb-2 text-3xl underline text-primary">
           nativecn-ui
         </Text>
-        <View className="flex gap-3 mb-36">
+        <View className="flex gap-3 mb-8">
           <View className="flex gap-2">
             <Text className="font-semibold text-xl text-primary">Avatar</Text>
             <View className="flex justify-center items-center flex-row gap-4">
@@ -117,11 +117,9 @@ export default function App() {
               </DialogTrigger>
               <DialogContent>
                 <View className="flex gap-4">
-                  <Text className="text-primary dark:text-black">
-                    Dialog Content
-                  </Text>
+                  <Text className="text-primary">Dialog Content</Text>
                   <Button label="Button" variant="destructive" />
-                  <Text className="text-primary dark:text-black">
+                  <Text className="text-primary">
                     Click outside the dialog to close it.
                   </Text>
                 </View>
