@@ -1,7 +1,6 @@
 ## Overview
 
-`Badge` is a React Native component for displaying brief labels or tags with optional variants. It provides quick style
-customization through the `variant` prop, automatically adapting to the device's current color scheme. If you
+`Badge` is a React Native component for displaying brief labels or tags with optional variants. If you
 want to control style using Tailwind CSS classes, use the `className` and `labelClasses` props.
 
 <Tabs>
@@ -41,9 +40,14 @@ want to control style using Tailwind CSS classes, use the `className` and `label
   ```
   </Tab>
   <Tab title="Manual">
-    1. Include
-    [Badge.tsx](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Badge.tsx)
-    in your project.
+    <Steps>
+      <Step title="First Step">
+        Include [Badge.tsx](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Badge.tsx) in your project.
+        </Step>
+      <Step title="Second Step">
+        Update the import paths to match your project setup.
+      </Step>
+    </Steps>
   </Tab>
 </Tabs>
 
@@ -53,8 +57,6 @@ want to control style using Tailwind CSS classes, use the `className` and `label
 - `labelClasses?: string (optional)` - The classes for the label's text.
 - `className?: string (optional)` - The classes for the parent container.
 - `variant?: Variant` (optional) - The variant of the badge. Can be one of 'default', 'secondary', 'destructive', or 'success'.
-
-> **Note**: The `variant` property determines the background color of the badge. The color scheme (light/dark mode) is automatically detected.
 
 ## Usage
 

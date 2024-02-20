@@ -46,17 +46,19 @@
 import { ToastProvider, ToastVariant, useToast } from './components/Toast';
 
 function DemoToast() {
-const { toast } = useToast();
+  const { toast } = useToast();
 
-return (
-<Button
-label="Show Default Toast"
-onPress={() => {
-toast('This is a default toast');
-}}
-/>
-);
+  return (
+    <Button
+      label="Show Default Toast"
+      onPress={() => {
+        toast('This is a default toast');
+      }}
+    />
+  );
 }
+
+// ...
 
 <ToastProvider position="top">
   <DemoToast />
@@ -74,11 +76,20 @@ toast('This is a default toast');
   ```
   </Tab>
   <Tab title="Manual">
-    1. Include
-    [Toast.tsx](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Toast.tsx)
-    in your project. 2. Wrap your main component, or the part of your app where
-    you want to use the toast, with the `ToastProvider`. 3. Import and use the
-    `useToast` hook to get access to the `toast` function.
+    <Steps>
+      <Step title="First Step">
+        Include [Toast.tsx](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Toast.tsx) in your project.
+        </Step>
+      <Step title="Second Step">
+        Update the import paths to match your project setup.
+      </Step>
+      <Step title="Third Step">
+        Wrap your main component, or the part of your app where you want to use the toast, with the `ToastProvider`
+      </Step>
+      <Step title="Fourth Step">
+        Import and use the `useToast` hook to get access to the `toast` function
+      </Step>
+    </Steps>
   </Tab>
 </Tabs>
 

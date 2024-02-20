@@ -52,9 +52,14 @@ Cards can display title, description, content, and footer. It also adapts automa
   ```
   </Tab>
   <Tab title="Manual">
-    1. Include
-    [Card.tsx](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Card.tsx)
-    in your project.
+    <Steps>
+      <Step title="First Step">
+        Include [Card.tsx](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Card.tsx) in your project.
+        </Step>
+      <Step title="Second Step">
+        Update the import paths to match your project setup.
+      </Step>
+    </Steps>
   </Tab>
 </Tabs>
 
@@ -123,12 +128,12 @@ A pre-built `Card` component taking text as input.
     <CardDescription>Enter a new development experience</CardDescription>
   </CardHeader>
   <CardContent>
-    <Text className="text-base text-black dark:text-white">
+    <Text className="text-base text-primary">
       Sleek, easy to use components to build your next app faster.
     </Text>
   </CardContent>
   <CardFooter>
-    <Text className="text-sm text-gray-700 dark:text-gray-400">
+    <Text className="text-sm text-muted-foreground">
       Inspired by shadcn/ui
     </Text>
   </CardFooter>

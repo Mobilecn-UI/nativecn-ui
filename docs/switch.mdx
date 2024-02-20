@@ -1,6 +1,8 @@
 ## Overview
 
-`Switch` is a React Native component designed for creating a switch or toggle control. It's built on top of React Native's [Switch](https://reactnative.dev/docs/switch). It can be customized with Tailwind classes through the `className`.
+`Switch` is a React Native component designed for creating a switch or toggle control. It's built on
+top of React Native's [Switch](https://reactnative.dev/docs/switch). It can be customized with Tailwind
+classes through the `className` prop.
 
 ## Preview
 
@@ -22,12 +24,12 @@
 import { Switch } from './components/Switch';
 
 function SwitchDemo() {
-const [isEnabled, setIsEnabled] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(false);
 
-return <Switch onValueChange={setIsEnabled} value={isEnabled} />
+  return <Switch onValueChange={setIsEnabled} value={isEnabled} />
 }
 
-````
+```
   </Tab>
 </Tabs>
 
@@ -40,7 +42,14 @@ return <Switch onValueChange={setIsEnabled} value={isEnabled} />
     ```
   </Tab>
   <Tab title="Manual">
-    1. Include [Switch.tsx](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Switch.tsx) in your project.
+    <Steps>
+      <Step title="First Step">
+        Include [Switch.tsx](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Switch.tsx) in your project.
+      </Step>
+      <Step title="Second Step">
+        Update the import paths to match your project setup.
+      </Step>
+    </Steps>
   </Tab>
 </Tabs>
 
@@ -59,4 +68,4 @@ Here's how you can use the `Switch` component:
 const [isEnabled, setIsEnabled] = useState(false);
 
 return <Switch onValueChange={setIsEnabled} value={isEnabled} />;
-````
+```
