@@ -117,9 +117,11 @@ export default function App() {
               </DialogTrigger>
               <DialogContent>
                 <View className="flex gap-4">
-                  <Text className="text-primary">Dialog Content</Text>
-                  <Button label="Button" variant="default" />
-                  <Text className="text-primary">
+                  <Text className="text-primary dark:text-black">
+                    Dialog Content
+                  </Text>
+                  <Button label="Button" variant="destructive" />
+                  <Text className="text-primary dark:text-black">
                     Click outside the dialog to close it.
                   </Text>
                 </View>
