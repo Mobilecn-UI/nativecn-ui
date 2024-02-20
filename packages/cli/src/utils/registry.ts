@@ -4,12 +4,14 @@ export const ALL_COMPONENTS = [
   'Badge',
   'Button',
   'Card',
+  'Checkbox',
   'Dialog',
   'Input',
+  'RadioGroup',
   'Skeleton',
+  'Switch',
   'Tabs',
   'Toast',
-  'Toggle',
 ];
 const baseUrl =
   'https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main';
