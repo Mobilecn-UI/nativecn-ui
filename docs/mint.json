@@ -48,6 +48,7 @@
         "badge",
         "card",
         "checkbox",
+        "radio-group",
         "skeleton",
         "tabs",
         "toast",
