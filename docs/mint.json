@@ -48,6 +48,7 @@
         "badge",
         "card",
         "checkbox",
+        "input",
         "radio-group",
         "skeleton",
         "switch",
