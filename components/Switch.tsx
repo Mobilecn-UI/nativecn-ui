@@ -1,16 +1,21 @@
-import { Switch as NativeSwitch } from 'react-native';
+import { Switch as NativeSwitch, useColorScheme } from 'react-native';
 
 import { theme } from '../styles/theme';
 
-// TODO: use current theme's colors
-export interface SwitchProps
-  extends React.ComponentPropsWithoutRef<typeof NativeSwitch> {}
 export default function Switch({
-  trackColor = { false: theme.light.background, true: theme.light.foreground },
-  thumbColor = theme.light.background,
-  ios_backgroundColor = theme.light.background,
   ...props
-}: SwitchProps) {
+}: React.ComponentPropsWithoutRef<typeof NativeSwitch>) {
+  const colorScheme = useColorScheme();
+  const currentTheme = colorScheme === 'dark' ? theme.dark : theme.light;
+
+  const trackColor = props.trackColor || {
+    false: currentTheme.background,
+    true: currentTheme.foreground,
+  };
+  const thumbColor = props.thumbColor || currentTheme.background;
+  const ios_backgroundColor =
+    props.ios_backgroundColor || currentTheme.background;
+
   return (
     <NativeSwitch
       trackColor={trackColor}
