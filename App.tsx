@@ -159,10 +159,10 @@ export default function App() {
           <View className="flex gap-2">
             <Text className="font-semibold text-xl text-primary">Skeleton</Text>
             <View className="flex">
-              <Skeleton classes="w-48 h-4 mb-1" />
-              <Skeleton classes="w-60 h-4 mb-1" />
-              <Skeleton classes="w-56 h-4 mb-1" />
-              <Skeleton classes="w-36 h-4" />
+              <Skeleton className="w-48 h-4 mb-1" />
+              <Skeleton className="w-60 h-4 mb-1" />
+              <Skeleton className="w-56 h-4 mb-1" />
+              <Skeleton className="w-36 h-4" />
             </View>
           </View>
           <View className="flex gap-2">

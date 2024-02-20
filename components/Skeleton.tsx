@@ -1,9 +1,12 @@
 import { useEffect, useRef } from 'react';
-import { Animated } from 'react-native';
+import { Animated, type View } from 'react-native';
 
 import { cn } from '../lib/utils';
 
-export function Skeleton({ classes }: { classes: string }) {
+export function Skeleton({
+  className,
+  ...props
+}: { className?: string } & React.ComponentPropsWithoutRef<typeof View>) {
   const fadeAnim = useRef(new Animated.Value(0.5)).current;
 
   useEffect(() => {
@@ -25,8 +28,9 @@ export function Skeleton({ classes }: { classes: string }) {
 
   return (
     <Animated.View
-      className={cn('bg-gray-300 rounded-md', classes)}
+      className={cn('bg-muted rounded-md', className)}
       style={[{ opacity: fadeAnim }]}
+      {...props}
     />
   );
 }
