@@ -8,10 +8,7 @@ function Card({
 }: React.ComponentPropsWithoutRef<typeof View>) {
   return (
     <View
-      className={cn(
-        'rounded-xl border px-5 py-4 shadow-sm dark:border-gray-700',
-        className
-      )}
+      className={cn('rounded-xl border border-border', className)}
       {...props}
     />
   );
@@ -21,7 +18,7 @@ function CardHeader({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<typeof View>) {
-  return <View className={cn('pb-4', className)} {...props} />;
+  return <View className={cn('p-4', className)} {...props} />;
 }
 
 function CardTitle({
@@ -31,7 +28,7 @@ function CardTitle({
   return (
     <Text
       className={cn(
-        'text-2xl font-semibold tracking-tight text-black dark:text-white',
+        'text-2xl font-semibold tracking-tight text-primary',
         className
       )}
       {...props}
@@ -45,7 +42,7 @@ function CardDescription({
 }: React.ComponentPropsWithoutRef<typeof View>) {
   return (
     <Text
-      className={cn('text-sm text-gray-700 dark:text-gray-400', className)}
+      className={cn('text-sm text-muted-foreground', className)}
       {...props}
     />
   );
@@ -55,7 +52,7 @@ function CardContent({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<typeof View>) {
-  return <View className={cn('pb-4', className)} {...props} />;
+  return <View className={cn('p-4 pt-0', className)} {...props} />;
 }
 
 // TODO: style
@@ -63,7 +60,12 @@ function CardFooter({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<typeof View>) {
-  return <View className={className} {...props} />;
+  return (
+    <View
+      className={cn(className, 'flex flex-row items-center p-4 pt-0')}
+      {...props}
+    />
+  );
 }
 
 interface SimpleCardProps {
@@ -81,37 +83,28 @@ function SimpleCard({
   footer,
 }: SimpleCardProps) {
   return (
-    <View
-      className={cn(
-        'px-5 py-4 rounded-lg border shadow-sm dark:border-gray-700',
-        className
-      )}
-    >
-      <View>
+    <Card className={className}>
+      <CardHeader>
         {title && (
-          <Text className="text-2xl font-semibold tracking-tight text-black dark:text-white">
+          <Text className="text-2xl font-semibold tracking-tight text-primary">
             {title}
           </Text>
         )}
         {description && (
-          <Text className="text-sm text-gray-700 dark:text-gray-400">
-            {description}
-          </Text>
+          <Text className="text-sm text-muted-foreground">{description}</Text>
         )}
-      </View>
+      </CardHeader>
       {content && (
-        <View className="py-4">
-          <Text className="text-base text-black dark:text-white">
-            {content}
-          </Text>
-        </View>
+        <CardContent>
+          <Text className="text-base text-primary">{content}</Text>
+        </CardContent>
       )}
       {footer && (
-        <Text className="text-sm text-gray-700 dark:text-gray-400">
-          {footer}
-        </Text>
+        <CardFooter>
+          <Text className="text-sm text-muted-foreground">{footer}</Text>
+        </CardFooter>
       )}
-    </View>
+    </Card>
   );
 }
 
