@@ -3,7 +3,7 @@ import { Animated, type View } from 'react-native';
 
 import { cn } from '../lib/utils';
 
-export function Skeleton({
+function Skeleton({
   className,
   ...props
 }: { className?: string } & React.ComponentPropsWithoutRef<typeof View>) {
@@ -34,3 +34,5 @@ export function Skeleton({
     />
   );
 }
+
+export { Skeleton };

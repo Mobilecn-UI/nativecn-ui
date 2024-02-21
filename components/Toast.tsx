@@ -1,12 +1,11 @@
-import { useEffect, useRef } from 'react';
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { Animated, Text, View } from 'react-native';
 
 import { cn } from '../lib/utils';
 
-export const toastVariants = {
-  default: 'bg-black dark:bg-white',
-  destructive: 'bg-red-500',
+const toastVariants = {
+  default: 'bg-foreground',
+  destructive: 'bg-destructive',
   success: 'bg-green-500',
   info: 'bg-blue-500',
 };
@@ -19,7 +18,7 @@ interface ToastProps {
   duration?: number;
   showProgress?: boolean;
 }
-export function Toast({
+function Toast({
   id,
   message,
   onHide,
@@ -68,9 +67,7 @@ export function Toast({
         ],
       }}
     >
-      <Text className="font-semibold text-left text-white dark:text-black">
-        {message}
-      </Text>
+      <Text className="font-semibold text-left text-background">{message}</Text>
       {showProgress && (
         <View className="mt-2 rounded">
           <Animated.View
@@ -88,7 +85,7 @@ export function Toast({
   );
 }
 
-export type ToastVariant = keyof typeof toastVariants;
+type ToastVariant = keyof typeof toastVariants;
 
 interface ToastMessage {
   id: number;
@@ -111,7 +108,7 @@ interface ToastContextProps {
 const ToastContext = createContext<ToastContextProps | undefined>(undefined);
 
 // TODO: refactor to pass position to Toast instead of ToastProvider
-export function ToastProvider({
+function ToastProvider({
   children,
   position = 'top',
 }: {
@@ -169,10 +166,12 @@ export function ToastProvider({
   );
 }
 
-export function useToast() {
+function useToast() {
   const context = useContext(ToastContext);
   if (!context) {
     throw new Error('useToast must be used within ToastProvider');
   }
   return context;
 }
+
+export { ToastProvider, ToastVariant, Toast, toastVariants, useToast };

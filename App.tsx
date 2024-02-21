@@ -175,8 +175,8 @@ export default function App() {
             <Text className="font-semibold text-xl text-primary">Tabs</Text>
             <Tabs defaultValue="account">
               <TabsList>
-                <TabsTrigger id="account" title="Account" />
-                <TabsTrigger id="password" title="Password" />
+                <TabsTrigger value="account" title="Account" />
+                <TabsTrigger value="password" title="Password" />
               </TabsList>
               <TabsContent value="account">
                 <Text className="text-primary">

@@ -1,5 +1,7 @@
-import React, { ReactNode, createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
+
+import { cn } from '../lib/utils';
 
 interface TabsContextProps {
   activeTab: string;
@@ -12,46 +14,60 @@ const TabsContext = createContext<TabsContextProps>({
 
 interface TabsProps {
   defaultValue: string;
-  children: ReactNode;
+  children: React.ReactNode;
 }
-export function Tabs({ defaultValue, children }: TabsProps) {
+function Tabs({ defaultValue, children }: TabsProps) {
   const [activeTab, setActiveTab] = useState(defaultValue);
 
   return (
-    <View className="px-2 py-2">
-      <TabsContext.Provider value={{ activeTab, setActiveTab }}>
-        {children}
-      </TabsContext.Provider>
-    </View>
+    <TabsContext.Provider value={{ activeTab, setActiveTab }}>
+      {children}
+    </TabsContext.Provider>
   );
 }
 
-export function TabsList({ children }: { children: ReactNode }) {
-  return <View className="flex flex-row justify-center">{children}</View>;
+function TabsList({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof View>) {
+  return (
+    <View
+      className={cn('flex flex-row justify-center', className)}
+      {...props}
+    />
+  );
 }
 
-interface TabsTriggerProps {
-  id: string;
+interface TabsTriggerProps
+  extends React.ComponentPropsWithoutRef<typeof TouchableOpacity> {
+  value: string;
   title: string;
+  textClasses?: string;
 }
-export function TabsTrigger({ id, title }: TabsTriggerProps) {
+function TabsTrigger({
+  value,
+  title,
+  className,
+  textClasses,
+  ...props
+}: TabsTriggerProps) {
   const { activeTab, setActiveTab } = useContext(TabsContext);
 
   return (
     <TouchableOpacity
-      className={`px-8 py-3 rounded-md w-1/2 ${
-        activeTab === id
-          ? 'bg-black dark:bg-white'
-          : 'bg-gray-200 dark:bg-gray-800'
-      }`}
-      onPress={() => setActiveTab(id)}
+      className={cn('px-8 py-3 rounded-md w-1/2 bg-muted', {
+        'bg-foreground': activeTab === value,
+        className,
+      })}
+      onPress={() => setActiveTab(value)}
+      {...props}
     >
       <Text
-        className={`font-bold text-center ${
-          activeTab === id
-            ? 'text-white dark:text-black'
-            : 'text-gray-400 dark:text-gray-300'
-        }`}
+        className={cn(
+          'font-medium text-center text-muted-foreground',
+          { 'text-background': activeTab === value },
+          textClasses
+        )}
       >
         {title}
       </Text>
@@ -59,19 +75,24 @@ export function TabsTrigger({ id, title }: TabsTriggerProps) {
   );
 }
 
-interface TabsContentProps {
+interface TabsContentProps extends React.ComponentPropsWithoutRef<typeof View> {
   value: string;
-  children: ReactNode;
 }
-export function TabsContent({ value, children }: TabsContentProps) {
+function TabsContent({ value, className, ...props }: TabsContentProps) {
   const { activeTab } = useContext(TabsContext);
 
   if (value === activeTab)
     return (
-      <View className="border border-gray-600 mt-2 px-4 py-4 rounded-xl">
-        {children}
-      </View>
+      <View
+        className={cn(
+          'border border-border mt-2 px-4 py-4 rounded-xl',
+          className
+        )}
+        {...props}
+      />
     );
 
   return null;
 }
+
+export { Tabs, TabsList, TabsTrigger, TabsContent };
