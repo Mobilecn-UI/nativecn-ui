@@ -40,7 +40,7 @@ function DialogContent({ children }: { children: React.ReactNode }) {
       >
         <View className="flex flex-1 justify-center items-center bg-black/75 ">
           <TouchableOpacity
-            className="m-5 bg-white rounded-lg p-6 items-center"
+            className="m-5 bg-secondary rounded-lg p-6 items-center"
             activeOpacity={1}
           >
             {children}
