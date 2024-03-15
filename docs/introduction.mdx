@@ -1,48 +1,50 @@
 ---
 title: Introduction
-description: 'A UI library of customizable and easy-to-use React Native components.'
+description: 'A UI library of beautiful and customizable React Native components.'
 ---
 
-Inspired by [shadcn/ui](https://ui.shadcn.com/)
+A project inspired by [shadcn/ui](https://ui.shadcn.com/).
 
 ## Why Nativecn UI?
 
-- **Beautifully Designed**: With a focus on aesthetics, each component is carefully crafted to provide a great UI/UX experience.
-- **Customizable**: Modify components easily using Tailwind CSS classes.
-- **Effortless Integration**: Import components into your project as needed. No package installs.
-- **TypeScript Integrated**: Static typing for all components.
+- **Beautifully Designed**: Components are designed with a focus on aesthetics, delivering a great UI/UX.
+- **Customizable**: Modify components easily using Tailwind CSS classes —no `style` needed.
+- **Easy Integration**: Import components into your project as needed. No package installs.
+- **TypeScript-first**: Static typing for all components.
 
 ## Installation
 
-#### 1. Create a new Typescript Expo project
-
+<Steps>
+  <Step title="Create a new Expo project">
 ```bash
 npx create-expo-app -t expo-template-blank-typescript
 ```
-
-#### 2. Setup [NativeWind](https://www.nativewind.dev/quick-starts/expo) for using Tailwind CSS classes
+  </Step>
+  <Step title="Set up [NativeWind](https://www.nativewind.dev/quick-starts/expo)">
+    NativeWind allows you to style components using Tailwind CSS classes.
 
 ```bash
 # Install dependencies
-yarn add nativewind
+yarn add nativewind@^4.0.1 react-native-reanimated
 yarn add --dev tailwindcss
 
 # Create a tailwind.config.js file
 npx tailwindcss init
 ```
 
-Finally, add `"nativewind/babel"` to your `babel.config.js` file.
-
-#### 3. Add nativecn-ui components
-
-You can use our CLI:
+  Finally, add `"nativewind/babel"` to your `babel.config.js` file.
+  </Step>
+  <Step title="3. Add nativecn-ui components">
+    Run the CLI to initialize your project and add components easily:
 
 ```bash
 npx nativecn-ui init
 npx nativecn-ui add Button
 ```
 
-Or simply copy-paste from the [components directory](https://github.com/Mobilecn-UI/nativecn-ui/tree/main/components).
+    Or simply copy-paste from the [components directory](https://github.com/Mobilecn-UI/nativecn-ui/tree/main/components).
+  </Step>
+</Steps>
 
 ## Examples
 
