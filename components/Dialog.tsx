@@ -1,46 +1,57 @@
 import { cloneElement, createContext, useContext, useState } from 'react';
 import { Modal, TouchableOpacity, View } from 'react-native';
 
+import { cn } from '../lib/utils';
+
 interface DialogContextType {
-  visible: boolean;
-  setVisible: (visible: boolean) => void;
+  open: boolean;
+  setOpen: (open: boolean) => void;
 }
 
 const DialogContext = createContext<DialogContextType | undefined>(undefined);
 
 function Dialog({ children }: { children: React.ReactNode }) {
-  const [visible, setVisible] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
-    <DialogContext.Provider value={{ visible, setVisible }}>
+    <DialogContext.Provider value={{ open, setOpen }}>
       {children}
     </DialogContext.Provider>
   );
 }
 
 function DialogTrigger({ children }: any) {
-  const { setVisible } = useDialog();
+  const { setOpen } = useDialog();
 
-  return cloneElement(children, { onPress: () => setVisible(true) });
+  return cloneElement(children, { onPress: () => setOpen(true) });
 }
 
-function DialogContent({ children }: { children: React.ReactNode }) {
-  const { visible, setVisible } = useDialog();
+function DialogContent({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) {
+  const { open, setOpen } = useDialog();
 
   return (
     <Modal
       transparent
       animationType="fade"
-      visible={visible}
-      onRequestClose={() => setVisible(false)}
+      visible={open}
+      onRequestClose={() => setOpen(false)}
     >
       <TouchableOpacity
         className="w-full h-full"
-        onPress={() => setVisible(false)}
+        onPress={() => setOpen(false)}
       >
-        <View className="flex flex-1 justify-center items-center bg-black/75 ">
+        <View className="flex flex-1 justify-center items-center bg-black/75">
           <TouchableOpacity
-            className="m-5 bg-white rounded-lg p-6 items-center"
+            className={cn(
+              'border border-border bg-background rounded-lg p-6 shadow-lg',
+              className
+            )}
             activeOpacity={1}
           >
             {children}
