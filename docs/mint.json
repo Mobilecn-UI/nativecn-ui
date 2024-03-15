@@ -38,7 +38,7 @@
   "navigation": [
     {
       "group": "Getting Started",
-      "pages": ["introduction"]
+      "pages": ["introduction", "dark-mode"]
     },
     {
       "group": "Components",

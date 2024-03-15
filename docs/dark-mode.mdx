@@ -1,0 +1,36 @@
+---
+title: Dark mode
+description: 'Toggle between light and dark mode using NativeWind.'
+---
+
+<Steps>
+  <Step title="Set up dark mode">
+```js
+module.exports = {
+  darkMode: "class",
+  // ...
+};
+```
+  </Step>
+  <Step title="Add a mode toggle">
+    Place a mode toggle on your app to toggle between light and dark mode.
+```jsx
+import { colorScheme, useColorScheme } from "nativewind";
+
+export function ModeToggle() {
+  const { colorScheme, setColorScheme } = useColorScheme();
+
+  return (
+    <Button
+      variant="outline"
+      onClick={() => setColorScheme(colorScheme === "dark" ? "light" : "dark")}
+    >
+      Toggle mode
+    </Button>
+  )
+}
+```
+  </Step>
+</Steps>
+
+<Note>Reference: [NativeWind docs](https://www.nativewind.dev/v4/core-concepts/dark-mode#manual-color-scheme-control)</Note>
