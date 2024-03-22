@@ -71,8 +71,8 @@ function CollapsibleContent({
 
   useEffect(() => {
     Animated.timing(heightAnim, {
-      toValue: isExpanded ? 0 : 4000, // Defina a altura que deseja para o conteúdo expandido
-      duration: 300, // Defina a duração da animação
+      toValue: isExpanded ? 0 : 4000,
+      duration: 400,
       useNativeDriver: false,
     }).start();
   }, [isExpanded]);
