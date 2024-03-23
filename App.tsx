@@ -1,8 +1,20 @@
-import { useState } from 'react';
-import { Alert, ScrollView, Text, View } from 'react-native';
+import { Circle, CircleDot } from 'lucide-react-native';
+import React, { useState } from 'react';
+import { Alert, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 import { Avatar, AvatarFallback, AvatarImage } from './components/Avatar';
 import { Badge } from './components/Badge';
+import {
+  BottomSheetProvider,
+  Root,
+  SheetClose,
+  SheetContent,
+  SheetContentScrollable,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  useBottomSheetHook,
+} from './components/BottomSheet';
 import { Button } from './components/Button';
 import {
   Card,
@@ -31,175 +43,274 @@ export default function App() {
   const [isEnabled, setIsEnabled] = useState(false);
 
   return (
-    <ToastProvider position="top">
-      <ScrollView className="bg-background flex-1 py-16 px-10">
-        <Text className="mb-2 text-3xl underline text-primary">
-          nativecn-ui
-        </Text>
-        <View className="flex gap-3 mb-8">
-          <View className="flex gap-2">
-            <Text className="font-semibold text-xl text-primary">Avatar</Text>
-            <View className="flex justify-center items-center flex-row gap-4">
-              <Avatar className="h-14 w-14">
-                <AvatarImage
-                  source={{
-                    uri: 'https://pbs.twimg.com/profile_images/1745949238519803904/ZHwM5B07_400x400.jpg',
-                  }}
-                />
-                <AvatarFallback>CG</AvatarFallback>
-              </Avatar>
-              <Avatar className="h-14 w-14">
-                <AvatarImage
-                  source={{
-                    uri: 'https://pbs.twimg.com/profile_images/1603610343905058816/PsPEWMOJ_400x400.jpg',
-                  }}
-                />
-                <AvatarFallback>SS</AvatarFallback>
-              </Avatar>
-            </View>
-          </View>
-          <View className="flex gap-2">
-            <Text className="font-semibold text-xl text-primary">Badge</Text>
-            <View className="flex flex-row gap-2">
-              <Badge label="Badge" />
-              <Badge label="Badge" variant="secondary" />
-              <Badge label="Badge" variant="destructive" />
-              <Badge label="Badge" className="bg-amber-400 dark:bg-amber-600" />
-              <Badge label="Badge" variant="success" />
-            </View>
-          </View>
-          <View className="flex gap-2">
-            <Text className="font-semibold text-xl text-primary">Button</Text>
-            <View className="flex flex-row gap-3">
-              <Button label="Button" onPress={() => Alert.alert('Pressed 1')} />
-              <Button
-                label="Button"
-                variant="secondary"
-                onPress={() => Alert.alert('Pressed 2')}
-              />
-              <Button
-                label="Button"
-                variant="destructive"
-                onPress={() => Alert.alert('Pressed 3')}
-              />
-            </View>
-          </View>
-          <View className="flex gap-2">
-            <Text className="font-semibold text-xl text-primary">Card</Text>
-            <Card>
-              <CardHeader>
-                <CardTitle>Accelerate UI</CardTitle>
-                <CardDescription>
-                  Enter a new development experience
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Text className="text-base text-primary">
-                  Sleek, easy to use components to build your next app faster.
-                </Text>
-              </CardContent>
-              <CardFooter>
-                <Text className="text-sm text-muted-foreground">
-                  Inspired by shadcn/ui
-                </Text>
-              </CardFooter>
-            </Card>
-          </View>
-          <View className="flex gap-2">
-            <Text className="font-semibold text-xl text-primary">Checkbox</Text>
-            <Checkbox label="Accept T&C" />
-          </View>
-          <View className="flex gap-2">
-            <Text className="font-semibold text-xl text-primary">Dialog</Text>
-            <Dialog>
-              <DialogTrigger>
-                <Button label="Open Dialog" />
-              </DialogTrigger>
-              <DialogContent>
-                <View className="flex gap-4">
-                  <Text className="font-semibold text-xl text-primary">
-                    Dialog Content
-                  </Text>
-                  <Text className="text-primary">
-                    Tap outside the dialog to close it.
-                  </Text>
-                </View>
-              </DialogContent>
-            </Dialog>
-          </View>
-          <View className="flex gap-2">
-            <Text className="font-semibold text-xl text-primary">Input</Text>
-            <View>
-              <Input
-                placeholder="Email"
-                value={inputText}
-                onChangeText={onChangeText}
-              />
-            </View>
-          </View>
-          <View className="flex gap-2">
-            <Text className="font-semibold text-xl text-primary">
-              Radio Group
-            </Text>
-            <RadioGroup defaultValue="dark">
-              <RadioGroupItem value="light" label="Light" />
-              <RadioGroupItem value="dark" label="Dark" />
-              <View className="flex flex-row items-center gap-2">
-                <RadioGroupItem value="system" />
-                <RadioGroupLabel value="system">
+    <BottomSheetProvider>
+      <ToastProvider position="top">
+        <ScrollView className="bg-background flex-1 py-16 px-10">
+          <Text className="mb-2 text-3xl underline text-primary">
+            nativecn-ui
+          </Text>
+          <View className="flex gap-3 mb-8">
+            <View className="flex gap-2">
+              <Text className="font-semibold text-xl text-primary">Avatar</Text>
+              <View className="flex justify-center items-center flex-row gap-4">
+                <Avatar className="h-14 w-14">
                   <AvatarImage
-                    className="h-8 w-8 rounded-full"
                     source={{
-                      uri: 'https://avatars.githubusercontent.com/u/75042455?s=200&v=4',
+                      uri: 'https://pbs.twimg.com/profile_images/1745949238519803904/ZHwM5B07_400x400.jpg',
                     }}
                   />
-                </RadioGroupLabel>
+                  <AvatarFallback>CG</AvatarFallback>
+                </Avatar>
+                <Avatar className="h-14 w-14">
+                  <AvatarImage
+                    source={{
+                      uri: 'https://pbs.twimg.com/profile_images/1603610343905058816/PsPEWMOJ_400x400.jpg',
+                    }}
+                  />
+                  <AvatarFallback>SS</AvatarFallback>
+                </Avatar>
               </View>
-            </RadioGroup>
-          </View>
-          <View className="flex gap-2">
-            <Text className="font-semibold text-xl text-primary">Skeleton</Text>
-            <View className="flex">
-              <Skeleton className="w-48 h-4 mb-1" />
-              <Skeleton className="w-60 h-4 mb-1" />
-              <Skeleton className="w-56 h-4 mb-1" />
-              <Skeleton className="w-36 h-4" />
+            </View>
+            <View className="flex gap-2">
+              <Text className="font-semibold text-xl text-primary">Badge</Text>
+              <View className="flex flex-row gap-2">
+                <Badge label="Badge" />
+                <Badge label="Badge" variant="secondary" />
+                <Badge label="Badge" variant="destructive" />
+                <Badge
+                  label="Badge"
+                  className="bg-amber-400 dark:bg-amber-600"
+                />
+                <Badge label="Badge" variant="success" />
+              </View>
+            </View>
+            <View className="flex gap-2">
+              <Text className="font-semibold text-xl text-primary">Button</Text>
+              <View className="flex flex-row gap-3">
+                <Button
+                  label="Button"
+                  onPress={() => Alert.alert('Pressed 1')}
+                />
+                <Button
+                  label="Button"
+                  variant="secondary"
+                  onPress={() => Alert.alert('Pressed 2')}
+                />
+                <Button
+                  label="Button"
+                  variant="destructive"
+                  onPress={() => Alert.alert('Pressed 3')}
+                />
+              </View>
+            </View>
+            <View className="flex gap-2">
+              <Text className="font-semibold text-xl text-primary">Card</Text>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Accelerate UI</CardTitle>
+                  <CardDescription>
+                    Enter a new development experience
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Text className="text-base text-primary">
+                    Sleek, easy to use components to build your next app faster.
+                  </Text>
+                </CardContent>
+                <CardFooter>
+                  <Text className="text-sm text-muted-foreground">
+                    Inspired by shadcn/ui
+                  </Text>
+                </CardFooter>
+              </Card>
+            </View>
+            <View className="flex gap-2">
+              <Text className="font-semibold text-xl text-primary">
+                Checkbox
+              </Text>
+              <Checkbox label="Accept T&C" />
+            </View>
+            <View className="flex gap-2">
+              <Text className="font-semibold text-xl text-primary">Dialog</Text>
+              <Dialog>
+                <DialogTrigger>
+                  <Button label="Open Dialog" />
+                </DialogTrigger>
+                <DialogContent>
+                  <View className="flex gap-4">
+                    <Text className="font-semibold text-xl text-primary">
+                      Dialog Content
+                    </Text>
+                    <Text className="text-primary">
+                      Tap outside the dialog to close it.
+                    </Text>
+                  </View>
+                </DialogContent>
+              </Dialog>
+            </View>
+            <View className="flex gap-2">
+              <Text className="font-semibold text-xl text-primary">Input</Text>
+              <View>
+                <Input
+                  placeholder="Email"
+                  value={inputText}
+                  onChangeText={onChangeText}
+                />
+              </View>
+            </View>
+            <View className="flex gap-2">
+              <Text className="font-semibold text-xl text-primary">
+                Radio Group
+              </Text>
+              <RadioGroup defaultValue="dark">
+                <RadioGroupItem value="light" label="Light" />
+                <RadioGroupItem value="dark" label="Dark" />
+                <View className="flex flex-row items-center gap-2">
+                  <RadioGroupItem value="system" />
+                  <RadioGroupLabel value="system">
+                    <AvatarImage
+                      className="h-8 w-8 rounded-full"
+                      source={{
+                        uri: 'https://avatars.githubusercontent.com/u/75042455?s=200&v=4',
+                      }}
+                    />
+                  </RadioGroupLabel>
+                </View>
+              </RadioGroup>
+            </View>
+            <View className="flex gap-2">
+              <Text className="font-semibold text-xl text-primary">
+                Skeleton
+              </Text>
+              <View className="flex">
+                <Skeleton className="w-48 h-4 mb-1" />
+                <Skeleton className="w-60 h-4 mb-1" />
+                <Skeleton className="w-56 h-4 mb-1" />
+                <Skeleton className="w-36 h-4" />
+              </View>
+            </View>
+            <View className="flex gap-2">
+              <Text className="font-semibold text-xl text-primary">Switch</Text>
+              <View className="flex">
+                <Switch onValueChange={setIsEnabled} value={isEnabled} />
+              </View>
+            </View>
+            <View className="flex gap-2 mt-1">
+              <Text className="font-semibold text-xl text-primary">Tabs</Text>
+              <Tabs defaultValue="account">
+                <TabsList>
+                  <TabsTrigger value="account" title="Account" />
+                  <TabsTrigger value="password" title="Password" />
+                </TabsList>
+                <TabsContent value="account">
+                  <Text className="text-primary">
+                    Make changes to your account here.
+                  </Text>
+                </TabsContent>
+                <TabsContent value="password">
+                  <Text className="text-primary">
+                    Change your password here.
+                  </Text>
+                </TabsContent>
+              </Tabs>
+            </View>
+            <View>
+              <Text className="font-semibold text-xl dark:text-white">
+                Toast
+              </Text>
+              <View className="flex mx-auto mb-32">
+                <ExampleToast />
+              </View>
+            </View>
+            <View>
+              <Text className="font-semibold text-xl dark:text-white">
+                Bottom Sheet
+              </Text>
+              <View className="flex mb-32">
+                <Select />
+              </View>
             </View>
           </View>
-          <View className="flex gap-2">
-            <Text className="font-semibold text-xl text-primary">Switch</Text>
-            <View className="flex">
-              <Switch onValueChange={setIsEnabled} value={isEnabled} />
-            </View>
-          </View>
-          <View className="flex gap-2 mt-1">
-            <Text className="font-semibold text-xl text-primary">Tabs</Text>
-            <Tabs defaultValue="account">
-              <TabsList>
-                <TabsTrigger value="account" title="Account" />
-                <TabsTrigger value="password" title="Password" />
-              </TabsList>
-              <TabsContent value="account">
-                <Text className="text-primary">
-                  Make changes to your account here.
-                </Text>
-              </TabsContent>
-              <TabsContent value="password">
-                <Text className="text-primary">Change your password here.</Text>
-              </TabsContent>
-            </Tabs>
-          </View>
-          <View>
-            <Text className="font-semibold text-xl dark:text-white">Toast</Text>
-            <View className="flex mx-auto mb-32">
-              <ExampleToast />
-            </View>
-          </View>
-        </View>
-      </ScrollView>
-    </ToastProvider>
+        </ScrollView>
+      </ToastProvider>
+    </BottomSheetProvider>
   );
 }
+
+const Select = () => {
+  const data = [
+    {
+      label: 'Brazil',
+      value: 'Brazil',
+    },
+    {
+      label: 'United States',
+      value: 'United States',
+    },
+    {
+      label: 'China',
+      value: 'China',
+    },
+    {
+      label: 'India',
+      value: 'India',
+    },
+    {
+      label: 'Russia',
+      value: 'Russia',
+    },
+  ];
+  const [select, setSelect] = useState({
+    label: 'India',
+    value: 'India',
+  });
+  const { openModal, closeModal } = useBottomSheetHook();
+
+  return (
+    <>
+      <View className="flex-1 mb-60">
+        <SheetTitle>Country: {select.label}</SheetTitle>
+        <Button onPress={openModal} label="Present Modal" />
+        <Root>
+          <SheetHeader>
+            <SheetTitle>Title here</SheetTitle>
+            <SheetClose onPress={closeModal} />
+          </SheetHeader>
+          <SheetContent className="flex-1 gap-4">
+            <SheetDescription>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
+              cupiditate.
+            </SheetDescription>
+            <SheetContentScrollable
+              className="flex-1 gap-2"
+              showsVerticalScrollIndicator={false}
+            >
+              {data.map(({ label, value }) => {
+                return (
+                  <TouchableOpacity
+                    key={value}
+                    onPress={() => {
+                      setSelect({ label, value });
+                      closeModal();
+                    }}
+                    className="flex flex-row items-center py-4 rounded"
+                  >
+                    <Text className="flex-1 font-medium">{label}</Text>
+                    {select.value === value ? (
+                      <CircleDot color="black" />
+                    ) : (
+                      <Circle color="black" />
+                    )}
+                  </TouchableOpacity>
+                );
+              })}
+            </SheetContentScrollable>
+          </SheetContent>
+        </Root>
+      </View>
+    </>
+  );
+};
 
 function ExampleToast() {
   const { toast } = useToast();

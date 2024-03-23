@@ -11,6 +11,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
+    "@gorhom/bottom-sheet": "^4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "expo": "~50.0.6",
@@ -21,6 +23,7 @@
     "nativewind": "^4.0.1",
     "react": "18.2.0",
     "react-native": "0.73.4",
+    "react-native-gesture-handler": "~2.14.0",
     "react-native-reanimated": "~3.6.2",
     "react-native-svg": "^14.1.0",
     "tailwind-merge": "^2.2.1",
