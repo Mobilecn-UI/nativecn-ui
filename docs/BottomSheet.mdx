@@ -1,0 +1,229 @@
+## Overview
+
+The `BottomSheetProvider` is a React Native component that provides a context to manage bottom sheets. It allows for programmatically opening, closing, and modifying bottom sheets. It's typically applied in contexts where you want to display additional content without occupying the entire screen, such as forms, settings menus, notifications, and alerts.
+
+## Preview
+
+<Tabs>
+  <Tab title="Preview">
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div>
+        <img src="https://github.com/Mobilecn-UI/nativecn-ui/assets/72309855/43da3793-c726-41a3-b14b-bab649678536" />
+        <p>Pressable Button</p>
+      </div>
+      <div>
+        <img src="https://github.com/Mobilecn-UI/nativecn-ui/assets/72309855/cc1753cc-35c5-4775-b5ae-bd5e8a2d63ff" />
+        <p>BottomSheet Select Exemple</p>
+      </div>
+    </div>
+  </Tab>
+  <Tab title="Code">
+    ```jsx
+    <BottomSheetProvider>
+      <Root>
+        <SheetHeader>
+          <SheetTitle>My Title</SheetTitle>
+          <SheetDescription>My description</SheetDescription>
+          <SheetClose />
+        </SheetHeader>
+        <SheetContent>
+          <Text>Easy to use components to build your next app faster.</Text>
+        </SheetContent>
+      </Root>
+    </BottomSheetProvider>
+    ```
+  </Tab>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <Tab title="CLI">```bash npx nativecn-ui add bottomSheet ```</Tab>
+  <Tab title="Manual">
+    <Steps>
+      <Step title="First Step">
+        Install the @gorhom/bottom-sheet package and its dependencies in your
+        project: ```bash npm install @gorhom/bottom-sheet && npm install
+        react-native-gesture-handler && npm install
+        @babel/plugin-proposal-export-namespace-from ```
+      </Step>
+      <Step title="Second Step">
+        Update the babel.config file to match your project: ```javascript ...
+        plugins: [ '@babel/plugin-proposal-export-namespace-from',
+        'react-native-reanimated/plugin', ], ... ```.
+      </Step>
+      <Step title="Third Step">
+        Include
+        [BottomSheet.tsx](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/BottomSheet.tsx)
+        in your project.
+      </Step>
+      <Step title="Fourth Step">
+        Update the import paths to match your project setup.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Components & Hooks
+
+### BottomSheetProvider
+
+A provider that provides a context to manage bottom sheets.
+
+- `children: React.ReactNode` - The child components to be rendered within the provider.
+
+### Root
+
+A component that encapsulates the main bottom sheet.
+
+- `snap?: (string | number)[] | SharedValue<(string | number)[]>` - Snap points for the bottom sheet.
+- `children: React.ReactNode` - The child components to be rendered within the bottom sheet.
+
+### SheetHeader
+
+The header of a bottom sheet.
+
+- `className?: string` - Tailwind CSS classes to be applied to the `View`.
+
+### SheetContent
+
+The main content of a bottom sheet.
+
+- `className?: string` - Tailwind CSS classes to be applied to the `View`.
+
+### SheetContentScrollable
+
+The scrollable content of a bottom sheet.
+
+- `className?: string` - Tailwind CSS classes to be applied to the `ScrollView`.
+- `children: React.ReactNode` - The child components to be rendered within the scrollable content.
+
+### SheetTitle
+
+The title of a bottom sheet.
+
+- `className?: string` - Tailwind CSS classes to be applied to the `Text`.
+- `children: React.ReactNode` - The text to be displayed as the title.
+
+### SheetDescription
+
+The description of a bottom sheet.
+
+- `className?: string` - Tailwind CSS classes to be applied to the `Text`.
+- `children: React.ReactNode` - The text to be displayed as the description.
+
+### SheetClose
+
+A button to close a bottom sheet.
+
+- `className?: string` - Tailwind CSS classes to be applied to the `TouchableOpacity`.
+- `iconColor?: string` - The color of the icon.
+- `iconSize?: number` - The size of the icon.
+
+### useBottomSheetHook
+
+A hook to access the context of bottom sheets.
+
+Returns:
+
+- `openModal: () => void` - Function to open a bottom sheet.
+- `closeModal: () => void` - Function to close a bottom sheet.
+- `onChange: (index: number) => void` - Function called when the bottom sheet changes.
+
+## Usage
+
+### Basic usage
+
+```jsx
+<BottomSheetProvider>
+  <Root>
+    <SheetHeader>
+      <SheetTitle>My Title</SheetTitle>
+      <SheetDescription>My description</SheetDescription>
+      <SheetClose />
+    </SheetHeader>
+    <SheetContent>
+      <Text>Easy to use components to build your next app faster.</Text>
+    </SheetContent>
+  </Root>
+</BottomSheetProvider>
+```
+
+### Example usage with a Select component
+
+```jsx
+const Select = () => {
+  const data = [
+    {
+      label: 'Brazil',
+      value: 'Brazil',
+    },
+    {
+      label: 'United States',
+      value: 'United States',
+    },
+    {
+      label: 'China',
+      value: 'China',
+    },
+    {
+      label: 'India',
+      value: 'India',
+    },
+    {
+      label: 'Russia',
+      value: 'Russia',
+    },
+  ];
+  const [select, setSelect] = useState({
+    label: 'India',
+    value: 'India',
+  });
+  const { openModal, closeModal } = useBottomSheetHook();
+
+  return (
+    <>
+      <View className="flex-1 mb-60">
+        <SheetTitle>Country: {select.label}</SheetTitle>
+        <Button onPress={openModal} label="Present Modal" />
+        <Root>
+          <SheetHeader>
+            <SheetTitle>Title here</SheetTitle>
+            <SheetClose onPress={closeModal} />
+          </SheetHeader>
+          <SheetContent className="flex-1 gap-4">
+            <SheetDescription>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat
+              cupiditate.
+            </SheetDescription>
+            <SheetContentScrollable
+              className="flex-1 gap-2"
+              showsVerticalScrollIndicator={false}
+            >
+              {data.map(({ label, value }) => {
+                return (
+                  <TouchableOpacity
+                    key={value}
+                    onPress={() => {
+                      setSelect({ label, value });
+                      closeModal();
+                    }}
+                    className="flex flex-row items-center py-4 rounded"
+                  >
+                    <Text className="flex-1 font-medium">{label}</Text>
+                    {select.value === value ? (
+                      <CircleDot color="black" />
+                    ) : (
+                      <Circle color="black" />
+                    )}
+                  </TouchableOpacity>
+                );
+              })}
+            </SheetContentScrollable>
+          </SheetContent>
+        </Root>
+      </View>
+    </>
+  );
+};
+```
