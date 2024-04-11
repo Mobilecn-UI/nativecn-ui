@@ -1,5 +1,7 @@
+/* eslint-disable prettier/prettier */
+import { CircleUser, CreditCard, Settings } from 'lucide-react-native';
 import { useState } from 'react';
-import { Alert, ScrollView, Text, View } from 'react-native';
+import { Alert, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 import { Avatar, AvatarFallback, AvatarImage } from './components/Avatar';
 import { Badge } from './components/Badge';
@@ -14,6 +16,14 @@ import {
 } from './components/Card';
 import { Checkbox } from './components/Checkbox';
 import { Dialog, DialogContent, DialogTrigger } from './components/Dialog';
+import {
+  DropDown,
+  DropDownContent,
+  DropDownItem,
+  DropDownItemSeparator,
+  DropDownLabel,
+  DropDownTrigger,
+} from './components/DropDown';
 import { Input } from './components/Input';
 import {
   RadioGroup,
@@ -109,6 +119,55 @@ export default function App() {
             <Text className="font-semibold text-xl text-primary">Checkbox</Text>
             <Checkbox label="Accept T&C" />
           </View>
+
+          {/* DropDown ComponentView */}
+          <View className="flex gap-2">
+            <Text className="font-semibold text-xl text-primary">DropDown</Text>
+            <Text className="text-primary text-base">
+              Displays a menu to the user - such as a set of actions of
+              functions - triggered by a button
+            </Text>
+
+            <View className="rounded-xl border border-border p-4">
+              <DropDown>
+                <DropDownTrigger>
+                  <Button label="Open" />
+                </DropDownTrigger>
+                <DropDownContent>
+                  <DropDownLabel labelTitle="My Account" />
+                  <DropDownItemSeparator />
+                  <DropDownItem>
+                    <TouchableOpacity className="flex flex-row gap-2 items-center">
+                      <CircleUser size={18} color="#fff" />
+                      <Text className="text-primary text-xl">Profile</Text>
+                    </TouchableOpacity>
+                  </DropDownItem>
+                  <DropDownItem>
+                    <TouchableOpacity className="flex flex-row gap-2 items-center">
+                      <Settings size={18} color="#fff" />
+                      <Text className="text-primary text-xl">Settings</Text>
+                    </TouchableOpacity>
+                  </DropDownItem>
+                  <DropDownItem>
+                    <TouchableOpacity className="flex flex-row gap-2 items-center">
+                      <CreditCard size={18} color="#fff" />
+                      <Text className="text-primary text-xl">Billing</Text>
+                    </TouchableOpacity>
+                  </DropDownItem>
+                  <DropDownLabel labelTitle="Team" />
+                  <DropDownItemSeparator />
+                  <DropDownItem>
+                    <TouchableOpacity className="flex flex-row gap-2 items-center">
+                      <CreditCard size={18} color="#fff" />
+                      <Text className="text-primary text-xl">Billing</Text>
+                    </TouchableOpacity>
+                  </DropDownItem>
+                </DropDownContent>
+              </DropDown>
+            </View>
+          </View>
+
+          {/* Dialog ComponentView */}
           <View className="flex gap-2">
             <Text className="font-semibold text-xl text-primary">Dialog</Text>
             <Dialog>
