@@ -9,18 +9,20 @@ import { Text, View } from 'react-native';
 
 import { cn } from '../lib/utils';
 
-interface DialogContextType {
+interface DropDownContextType {
   open: boolean;
   setOpen: (open: boolean) => void;
 }
 
-const DropDownContext = createContext<DialogContextType | undefined>(undefined);
+const DropDownContext = createContext<DropDownContextType | undefined>(
+  undefined
+);
 
 const DropDown = ({ children }: { children: React.ReactNode }) => {
   const [open, setOpen] = useState<boolean>(false);
   return (
     <DropDownContext.Provider value={{ open, setOpen }}>
-      {children}
+      <View className="relative">{children}</View>
     </DropDownContext.Provider>
   );
 };
@@ -44,7 +46,7 @@ const DropDownContent = ({ className, children }: DropDownContentTypes) => {
       {open && (
         <View
           className={cn(
-            'z-50 min-w-[8rem] flex gap-3 overflow-hidden rounded-md border border-border bg-popover text-popover-foreground shadow-md mt-3 p-3',
+            'min-w-[8rem] w-full absolute flex gap-3 overflow-hidden rounded-md border border-border bg-background text-popover-foreground shadow-md mt-3 p-3 top-12 mx-auto justify-center z-50',
             className
           )}
         >
@@ -72,16 +74,15 @@ type DropDownItemProps = {
 
 const DropDownItem = ({ children, className }: DropDownItemProps) => {
   return (
-    <View className={cn('p-2 border border-zinc-600 rounded-md', className)}>
+    <View className={cn('p-2 border border-border rounded-md', className)}>
       {children}
     </View>
   );
 };
 
 const DropDownItemSeparator = () => {
-  return <View className="h-[1px] bg-zinc-600 flex-1" />;
+  return <View className="h-[1px] bg-border flex-1" />;
 };
-
 const useDropdown = () => {
   const context = useContext(DropDownContext);
   if (!context) {

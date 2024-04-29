@@ -128,10 +128,10 @@ export default function App() {
               functions - triggered by a button
             </Text>
 
-            <View className="rounded-xl border border-border p-4">
+            <View className="rounded-xl border border-border z-50">
               <DropDown>
                 <DropDownTrigger>
-                  <Button label="Open" />
+                  <Button label="Open Dropdown" />
                 </DropDownTrigger>
                 <DropDownContent>
                   <DropDownLabel labelTitle="My Account" />
