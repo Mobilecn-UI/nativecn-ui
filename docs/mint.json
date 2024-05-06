@@ -49,6 +49,7 @@
         "card",
         "checkbox",
         "dialog",
+        "drop-down",
         "input",
         "radio-group",
         "skeleton",
