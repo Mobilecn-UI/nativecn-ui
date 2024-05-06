@@ -52,7 +52,7 @@ yarn start
 - [x] [Switch](components/Switch.tsx)
 - [x] [Tabs](components/Tabs.tsx)
 - [x] [Toast](components/Toast.tsx)
-- [x] Dropdown (WIP)
+- [x] [Dropdown](components/DropDown.tsx)
 - [ ] Alert (WIP)
 - [ ] Form (WIP)
 - [ ] Select (WIP)
