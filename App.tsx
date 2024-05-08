@@ -15,6 +15,11 @@ import {
   CardTitle,
 } from './components/Card';
 import { Checkbox } from './components/Checkbox';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleHeader,
+} from './components/Collapsible';
 import { Dialog, DialogContent, DialogTrigger } from './components/Dialog';
 import {
   DropDown,
@@ -252,6 +257,38 @@ export default function App() {
             <Text className="font-semibold text-xl dark:text-white">Toast</Text>
             <View className="flex mx-auto mb-32">
               <ExampleToast />
+            </View>
+          </View>
+          <View>
+            <Text className="font-semibold text-xl dark:text-white mb-5">
+              Collapsible
+            </Text>
+            <View className="flex mx-auto mb-16">
+              <Collapsible>
+                <CollapsibleHeader>
+                  <View className="p-3 rounded-full bg-primary">
+                    <Text className="font-semibold text-xl text-white">
+                      Collapsible
+                    </Text>
+                  </View>
+                </CollapsibleHeader>
+                <CollapsibleContent>
+                  <View className="bg-primary p-3 rounded-md">
+                    <Text className="font-semibold text-xl text-white">
+                      Lorem ipsum dolor sit amet. Vel maxime repudiandae aut
+                      delectus neque eos excepturi exercitationem ut sapiente
+                      voluptates ex fugit ullam.
+                    </Text>
+                  </View>
+                  <View className="bg-primary p-3 rounded-md">
+                    <Text className="font-semibold text-xl text-white">
+                      Lorem ipsum dolor sit amet. Vel maxime repudiandae aut
+                      delectus neque eos excepturi exercitationem ut sapiente
+                      voluptates ex fugit ullam.
+                    </Text>
+                  </View>
+                </CollapsibleContent>
+              </Collapsible>
             </View>
           </View>
         </View>
