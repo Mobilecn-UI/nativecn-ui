@@ -31,6 +31,7 @@ import {
   RadioGroupLabel,
 } from './components/RadioGroup';
 import { Skeleton } from './components/Skeleton';
+import { Slider } from './components/Slider';
 import { Switch } from './components/Switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
 import { ToastProvider, ToastVariant, useToast } from './components/Toast';
@@ -252,6 +253,14 @@ export default function App() {
             <Text className="font-semibold text-xl dark:text-white">Toast</Text>
             <View className="flex mx-auto mb-32">
               <ExampleToast />
+            </View>
+          </View>
+          <View>
+            <Text className="font-semibold text-xl dark:text-white">
+              Slider
+            </Text>
+            <View className="flex mb-32 mt-5">
+              <Slider min={0} max={100} value={0} />
             </View>
           </View>
         </View>
