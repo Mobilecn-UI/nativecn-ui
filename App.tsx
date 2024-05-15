@@ -25,6 +25,7 @@ import {
   DropDownTrigger,
 } from './components/DropDown';
 import { Input } from './components/Input';
+import { Progress } from './components/Progress';
 import {
   RadioGroup,
   RadioGroupItem,
@@ -250,8 +251,14 @@ export default function App() {
           </View>
           <View>
             <Text className="font-semibold text-xl dark:text-white">Toast</Text>
-            <View className="flex mx-auto mb-32">
+            <View className="flex mx-auto">
               <ExampleToast />
+            </View>
+          </View>
+          <View className="gap-2 mb-32">
+            <Text className="font-semibold text-xl text-primary">Progress</Text>
+            <View>
+              <Progress value={50} className="mb-2" />
             </View>
           </View>
         </View>
