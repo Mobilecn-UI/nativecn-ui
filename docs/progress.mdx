@@ -1,0 +1,60 @@
+## Overview
+
+`Progress` Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+
+## Preview
+
+<Tabs>
+  <Tab title="Preview">
+    <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+      <div>
+        <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/progress-light.png" />
+        <p>Light mode</p>
+      </div>
+      <div>
+        <img src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/progress-dark.png" />
+        <p>Dark mode</p>
+      </div>
+    </div>
+  </Tab>
+  <Tab title="Code">
+    ```jsx
+    <Progress value={25} className="mb-2" />
+    <Progress value={50} className="mb-2" />
+    <Progress value={75} className="mb-2" />
+    ```
+  </Tab>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <Tab title="CLI">
+  ```bash
+  npx nativecn-ui add Progress 
+  ```
+  </Tab>
+  <Tab title="Manual">
+    <Steps>
+      <Step title="First Step">
+        Include [Progress.tsx](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Progress.tsx) in your project.
+      </Step>
+      <Step title="Second Step">
+        Update the import paths to match your project setup.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Properties
+
+- `className?: string` (optional) - The classes for the `View` bar.
+- `value: number` - The value of the progress bar. It should be a number between 0 and 100.
+
+## Usage
+
+```jsx
+<Progress value={25} className="mb-2" />
+<Progress value={50} className="mb-2" />
+<Progress value={75} className="mb-2" />
+```
