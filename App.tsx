@@ -41,6 +41,8 @@ export default function App() {
   const [inputText, onChangeText] = useState('');
   const [isEnabled, setIsEnabled] = useState(false);
 
+  const [sliderValue, setSliderValue] = useState<number>(0);
+
   return (
     <ToastProvider position="top">
       <ScrollView className="bg-background flex-1 py-16 px-10">
@@ -260,7 +262,12 @@ export default function App() {
               Slider
             </Text>
             <View className="flex mb-32 mt-5">
-              <Slider min={0} max={100} value={0} />
+              <Slider
+                value={sliderValue}
+                onValueChange={value => setSliderValue(value)}
+                maximumValue={100}
+                minimumValue={0}
+              />
             </View>
           </View>
         </View>
