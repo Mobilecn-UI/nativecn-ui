@@ -51,6 +51,7 @@
         "dialog",
         "drop-down",
         "input",
+        "progress",
         "radio-group",
         "skeleton",
         "switch",

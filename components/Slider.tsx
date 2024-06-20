@@ -31,9 +31,8 @@ function Slider({
   const [sliderWidth, setSliderWidth] = useState(0);
 
   const calcPosition = (sliderWidth * value) / (maximumValue - minimumValue);
-
-  const translationX = useSharedValue(calcPosition);
-  const prevTranslationX = useSharedValue(translationX.value);
+  const translationX = useSharedValue<number>(calcPosition);
+  const prevTranslationX = useSharedValue<number>(translationX.value);
   useEffect(() => {}, [sliderWidth]);
 
   const animatedStyles = useAnimatedStyle(() => ({
@@ -77,92 +76,14 @@ function Slider({
           </GestureDetector>
         </View>
       </GestureHandlerRootView>
-      <Text style={{ color: 'red', marginTop: 20 }}>{value}</Text>
+      <View style={{ marginVertical: 40, backgroundColor: 'red' }}>
+        <Text>sliderWidth:{sliderWidth}</Text>
+        <Text>value:{value}</Text>
+        <Text>translationX.value:{translationX.value}</Text>
+        <Text>prevTranslationX.value:{prevTranslationX.value}</Text>
+      </View>
     </>
   );
 }
 
 export { Slider };
-
-// import { useState, useRef, useEffect } from 'react';
-// import { View, Text } from 'react-native';
-// import Animated, {
-//   useSharedValue,
-//   useAnimatedStyle,
-//   animate,
-// } from 'react-native-reanimated';
-// import {
-//   Gesture,
-//   GestureDetector,
-//   GestureHandlerRootView,
-// } from 'react-native-gesture-handler';
-
-// export default function CustomSlider({
-//   value,
-//   onValueChange,
-//   minimumValue = 0,
-//   maximumValue = 100,
-//   step = 1,
-// }) {
-//   const [sliderWidth, setSliderWidth] = useState(0);
-
-//   var calcPosition = (sliderWidth * value) / (maximumValue - minimumValue);
-
-//   const translationX = useSharedValue(calcPosition);
-//   const prevTranslationX = useSharedValue(translationX.value);
-//   useEffect(() => {}, [sliderWidth]);
-
-//   const animatedStyles = useAnimatedStyle(() => ({
-//     transform: [{ translateX: translationX.value }],
-//   }));
-
-//   const panGesture = Gesture.Pan()
-//     .minDistance(1)
-//     // .onStart(() => {
-//     //   translationX.value = calcPosition;
-//     //   prevTranslationX.value = translationX.value;
-//     // })
-//     .onUpdate((event) => {
-//       // creates a limitation for the element
-//       var positionValue = !onValueChange
-//         ? calcPosition
-//         : prevTranslationX.value + event.translationX;
-
-//       translationX.value = Math.min(Math.max(positionValue, 0), sliderWidth);
-
-//       var calcReturn =
-//         ((maximumValue - minimumValue) * translationX.value) / sliderWidth;
-//       onValueChange?.(calcReturn);
-//       //console.log(translationX.value, sliderWidth);
-//     })
-//     .runOnJS(true);
-
-//   return (
-//     <GestureHandlerRootView style={{ width: '100%' }}>
-//       <View
-//         onLayout={(e) => setSliderWidth(e.nativeEvent.layout.width)}
-//         style={{
-//           backgroundColor: '#333',
-//           width: '100%',
-//           height: 5,
-//           borderRadius: 10,
-//           justifyContent: 'center',
-//         }}>
-//         <GestureDetector gesture={panGesture}>
-//           <Animated.View
-//             style={[
-//               {
-//                 width: 20,
-//                 height: 20,
-//                 backgroundColor: '#f00',
-//                 borderRadius: 10,
-//                 marginLeft: -10,
-//               },
-//               animatedStyles,
-//             ]}
-//           />
-//         </GestureDetector>
-//       </View>
-//     </GestureHandlerRootView>
-//   );
-// }
