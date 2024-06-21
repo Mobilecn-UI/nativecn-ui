@@ -260,12 +260,22 @@ export default function App() {
           </View>
           <View>
             <Text className="font-semibold text-xl dark:text-white">
+              Progress
+            </Text>
+            <View className="flex mx-auto mb-32">
+              <Progress value={50} className="mb-2" />
+            </View>
+          </View>
+          <View>
+            <Text className="font-semibold text-xl dark:text-white">
               Slider
             </Text>
             <View className="flex mb-32 mt-5">
               <Slider
                 value={sliderValue}
-                onValueChange={value => setSliderValue(value)}
+                onValueChange={(value: React.SetStateAction<number>) =>
+                  setSliderValue(value)
+                }
                 maximumValue={100}
                 minimumValue={0}
               />
