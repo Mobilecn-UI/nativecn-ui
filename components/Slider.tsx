@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import debounce from 'lodash.debounce';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Text, View } from 'react-native';
 import {
   Gesture,
@@ -17,7 +18,7 @@ interface SliderProps {
   maximumValue: number;
   value: number;
   onValueChange?: any;
-  thumbVisible?: boolean;
+  thumbVisible?: true | false;
 }
 
 function Slider({
@@ -29,70 +30,80 @@ function Slider({
 }: SliderProps) {
   const [sliderWidth, setSliderWidth] = useState(0);
 
-  const calcPosition = (v: number) =>
-    (sliderWidth * v) / (maximumValue - minimumValue);
+  const calcPosition = useMemo(() => {
+    return (v: number) => (sliderWidth * v) / (maximumValue - minimumValue);
+  }, [sliderWidth, maximumValue, minimumValue]);
 
   const translationX = useSharedValue(0);
   translationX.value = calcPosition(value);
 
   const prevTranslationX = useSharedValue(0);
+  const isDragging = useSharedValue(false);
+
+  useEffect(() => {
+    translationX.value = calcPosition(value);
+  }, [value, calcPosition]);
 
   const animatedStyles = useAnimatedStyle(() => ({
     transform: [{ translateX: translationX.value }],
   }));
+  const sizeAnimatedStyles = useAnimatedStyle(() => ({
+    width: translationX.value,
+  }));
+
+  const debounceOnValueChange = useCallback(debounce(onValueChange, 100), []);
 
   const panGesture = Gesture.Pan()
     .minDistance(1)
-    .onStart(event => {
-      //console.log(event),
+    .onStart(() => {
       prevTranslationX.value = calcPosition(value);
+      isDragging.value = true;
     })
     .onUpdate(event => {
-      const positionValue = !onValueChange
-        ? calcPosition(value)
-        : prevTranslationX.value + event.translationX;
-      // creates a limitation for the element
+      const positionValue = prevTranslationX.value + event.translationX;
       translationX.value = Math.min(Math.max(positionValue, 0), sliderWidth);
+
       const calcReturn =
         ((maximumValue - minimumValue) * translationX.value) / sliderWidth;
-      onValueChange?.(calcReturn);
+      debounceOnValueChange(calcReturn);
+    })
+    .onEnd(() => {
+      isDragging.value = false;
     })
     .runOnJS(true);
 
   return (
-    <>
-      <GestureHandlerRootView style={{ width: '100%' }}>
+    <GestureHandlerRootView
+      style={{
+        backgroundColor: 'red',
+        height: 20,
+        justifyContent: 'center',
+      }}
+    >
+      <View
+        onLayout={e => setSliderWidth(e.nativeEvent.layout.width)}
+        className={cn(
+          'mx-3 h-2 rounded-xl w-auto bg-foreground/20 justify-center'
+        )}
+      >
+        <Animated.View
+          style={sizeAnimatedStyles}
+          className={cn(
+            'h-2 rounded-l-xl bg-foreground absolute',
+            value === maximumValue ? 'rounded-r-xl' : null
+          )}
+        />
         <GestureDetector gesture={panGesture}>
-          <View
-            onLayout={e => setSliderWidth(e.nativeEvent.layout.width)}
+          <Animated.View
+            style={[animatedStyles]}
             className={cn(
-              'mx-3 h-2 rounded-xl w-auto bg-foreground/20 justify-center'
+              'h-6 w-6 -mx-3 rounded-full bg-background border border-foreground',
+              thumbVisible ? '' : 'opacity-0'
             )}
-          >
-            <View
-              className={cn(
-                'h-2 rounded-xl bg-foreground absolute',
-                value === maximumValue ? null : 'rounded-r-none'
-              )}
-              style={{ width: calcPosition(value) }}
-            />
-            <Animated.View
-              style={[animatedStyles]}
-              className={cn(
-                'h-6 w-6 -mx-3 rounded-full bg-background border border-foreground',
-                thumbVisible ? '' : 'opacity-0'
-              )}
-            />
-          </View>
+          />
         </GestureDetector>
-      </GestureHandlerRootView>
-      <View style={{ marginVertical: 40, backgroundColor: 'red' }}>
-        <Text>sliderWidth:{sliderWidth}</Text>
-        <Text>value:{value}</Text>
-        <Text>translationX.value:{translationX.value}</Text>
-        <Text>prevTranslationX.value:{prevTranslationX.value}</Text>
       </View>
-    </>
+    </GestureHandlerRootView>
   );
 }
 

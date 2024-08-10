@@ -42,7 +42,7 @@ export default function App() {
   const [inputText, onChangeText] = useState('');
   const [isEnabled, setIsEnabled] = useState(false);
 
-  const [sliderValue, setSliderValue] = useState<number>(0);
+  const [sliderValue, setSliderValue] = useState<number>(70);
 
   return (
     <ToastProvider position="top">
