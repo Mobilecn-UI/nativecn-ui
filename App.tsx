@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { CircleUser, CreditCard, Settings } from 'lucide-react-native';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Alert, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 
 import { Avatar, AvatarFallback, AvatarImage } from './components/Avatar';
@@ -32,6 +32,7 @@ import {
   RadioGroupLabel,
 } from './components/RadioGroup';
 import { Skeleton } from './components/Skeleton';
+import { Slider } from './components/Slider';
 import { Switch } from './components/Switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
 import { ToastProvider, ToastVariant, useToast } from './components/Toast';
@@ -40,6 +41,8 @@ import './styles/globals.css';
 export default function App() {
   const [inputText, onChangeText] = useState('');
   const [isEnabled, setIsEnabled] = useState(false);
+
+  const [sliderValue, setSliderValue] = useState<number>(70);
 
   return (
     <ToastProvider position="top">
@@ -251,14 +254,31 @@ export default function App() {
           </View>
           <View>
             <Text className="font-semibold text-xl dark:text-white">Toast</Text>
-            <View className="flex mx-auto">
+            <View className="flex mx-auto mb-32">
               <ExampleToast />
             </View>
           </View>
-          <View className="gap-2 mb-32">
-            <Text className="font-semibold text-xl text-primary">Progress</Text>
-            <View>
+          <View>
+            <Text className="font-semibold text-xl dark:text-white">
+              Progress
+            </Text>
+            <View className="flex mx-auto mb-32">
               <Progress value={50} className="mb-2" />
+            </View>
+          </View>
+          <View>
+            <Text className="font-semibold text-xl dark:text-white">
+              Slider
+            </Text>
+            <View className="flex mb-32 mt-5">
+              <Slider
+                value={sliderValue}
+                onValueChange={(value: React.SetStateAction<number>) =>
+                  setSliderValue(value)
+                }
+                maximumValue={100}
+                minimumValue={0}
+              />
             </View>
           </View>
         </View>
