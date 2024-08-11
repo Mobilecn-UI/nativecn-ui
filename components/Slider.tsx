@@ -35,7 +35,6 @@ function Slider({
       (sliderWidth * (v - minimumValue)) / (maximumValue - minimumValue);
   }, [sliderWidth, maximumValue, minimumValue]);
 
-  // Shared values para animação e estado do gesto
   const translationX = useSharedValue(0);
   const prevTranslationX = useSharedValue(0);
   const isDragging = useSharedValue(false);
@@ -44,14 +43,6 @@ function Slider({
     translationX.value = calcPosition(value);
   }, [value, calcPosition]);
 
-  const animatedStyles = useAnimatedStyle(() => ({
-    transform: [{ translateX: translationX.value }],
-  }));
-  const sizeAnimatedStyles = useAnimatedStyle(() => ({
-    width: translationX.value,
-  }));
-
-  // Debounce para a função de mudança de valor
   const debounceOnValueChange = useCallback(
     debounce((value: number) => {
       if (onValueChange) onValueChange(value);
@@ -88,6 +79,13 @@ function Slider({
         .runOnJS(true),
     [calcPosition, sliderWidth, value, debounceOnValueChange]
   );
+
+  const animatedStyles = useAnimatedStyle(() => ({
+    transform: [{ translateX: translationX.value }],
+  }));
+  const sizeAnimatedStyles = useAnimatedStyle(() => ({
+    width: translationX.value,
+  }));
 
   return (
     <>
