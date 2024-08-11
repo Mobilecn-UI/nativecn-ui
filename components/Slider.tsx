@@ -21,6 +21,9 @@ interface SliderProps {
   thumbVisible?: boolean;
 }
 
+const clamp = (value: number, min: number, max: number) =>
+  Math.max(min, Math.min(value, max));
+
 function Slider({
   value,
   onValueChange,
@@ -30,18 +33,15 @@ function Slider({
 }: SliderProps) {
   const [sliderWidth, setSliderWidth] = useState(0);
 
-  const calcPosition = useMemo(() => {
-    return (v: number) =>
-      (sliderWidth * (v - minimumValue)) / (maximumValue - minimumValue);
-  }, [sliderWidth, maximumValue, minimumValue]);
+  const calcPosition = useCallback(
+    (v: number) =>
+      (sliderWidth * (v - minimumValue)) / (maximumValue - minimumValue),
+    [sliderWidth, minimumValue, maximumValue]
+  );
 
-  const translationX = useSharedValue(0);
+  const translationX = useSharedValue(calcPosition(value));
   const prevTranslationX = useSharedValue(0);
   const isDragging = useSharedValue(false);
-
-  useEffect(() => {
-    translationX.value = calcPosition(value);
-  }, [value, calcPosition]);
 
   const debounceOnValueChange = useCallback(
     debounce((value: number) => {
@@ -51,41 +51,45 @@ function Slider({
   );
 
   useEffect(() => {
+    translationX.value = calcPosition(value);
     return () => debounceOnValueChange.cancel();
-  }, [debounceOnValueChange]);
+  }, [value, calcPosition, debounceOnValueChange]);
 
   const panGesture = useMemo(
     () =>
       Gesture.Pan()
-        .minDistance(1)
+        .minDistance(0)
         .onStart(() => {
           prevTranslationX.value = calcPosition(value);
           isDragging.value = true;
         })
-        .onUpdate(event => {
+        .onUpdate(async event => {
           const positionValue = prevTranslationX.value + event.translationX;
-          translationX.value = Math.min(
-            Math.max(positionValue, 0),
-            sliderWidth
-          );
+          const clampedPosition = clamp(positionValue, 0, sliderWidth);
+          translationX.value = clampedPosition;
+        })
+        .onEnd(async () => {
+          isDragging.value = false;
           const calcReturn =
             ((maximumValue - minimumValue) * translationX.value) / sliderWidth;
-
-          if (onValueChange) debounceOnValueChange(calcReturn);
-        })
-        .onEnd(() => {
-          isDragging.value = false;
+          if (onValueChange) await debounceOnValueChange(calcReturn);
         })
         .runOnJS(true),
     [calcPosition, sliderWidth, value, debounceOnValueChange]
   );
 
-  const animatedStyles = useAnimatedStyle(() => ({
-    transform: [{ translateX: translationX.value }],
-  }));
-  const sizeAnimatedStyles = useAnimatedStyle(() => ({
-    width: translationX.value,
-  }));
+  const animatedStyles = useAnimatedStyle(
+    () => ({
+      transform: [{ translateX: translationX.value }],
+    }),
+    [translationX]
+  );
+  const sizeAnimatedStyles = useAnimatedStyle(
+    () => ({
+      width: translationX.value,
+    }),
+    [translationX]
+  );
 
   return (
     <>
@@ -93,6 +97,7 @@ function Slider({
         style={{
           backgroundColor: 'red',
           height: 20,
+          paddingVertical: 18,
           justifyContent: 'center',
         }}
       >

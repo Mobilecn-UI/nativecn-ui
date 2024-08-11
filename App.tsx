@@ -258,7 +258,7 @@ export default function App() {
               <ExampleToast />
             </View>
           </View>
-          <View className="gap-2 mb-32">
+          <View className="gap-2 ">
             <Text className="font-semibold text-xl text-primary">Progress</Text>
             <View>
               <Progress value={50} className="mb-2" />
