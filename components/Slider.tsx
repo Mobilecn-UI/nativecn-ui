@@ -95,7 +95,6 @@ function Slider({
     <>
       <GestureHandlerRootView
         style={{
-          backgroundColor: 'red',
           height: 20,
           paddingVertical: 18,
           justifyContent: 'center',
@@ -126,13 +125,13 @@ function Slider({
         </View>
       </GestureHandlerRootView>
       {/* Debugging info - remove or hide in production */}
-      <View style={{ marginVertical: 40, backgroundColor: 'red' }}>
+      {/* <View style={{ marginVertical: 40, backgroundColor: 'red' }}>
         <Text>sliderWidth:{sliderWidth.toFixed(2)}</Text>
         <Text>value:{value.toFixed(2)}</Text>
         <Text>max:{maximumValue}</Text>
         <Text>translationX.value:{translationX.value.toFixed(2)}</Text>
         <Text>prevTranslationX.value:{prevTranslationX.value.toFixed(2)}</Text>
-      </View>
+      </View> */}
     </>
   );
 }
