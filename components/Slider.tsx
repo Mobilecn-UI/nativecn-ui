@@ -1,6 +1,6 @@
 import debounce from 'lodash.debounce';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import {
   Gesture,
   GestureDetector,
@@ -92,47 +92,37 @@ function Slider({
   );
 
   return (
-    <>
-      <GestureHandlerRootView
-        style={{
-          height: 20,
-          paddingVertical: 18,
-          justifyContent: 'center',
-        }}
+    <GestureHandlerRootView
+      style={{
+        height: 20,
+        paddingVertical: 18,
+        justifyContent: 'center',
+      }}
+    >
+      <View
+        onLayout={e => setSliderWidth(e.nativeEvent.layout.width)}
+        className={cn(
+          'mx-3 h-2 rounded-xl w-auto bg-foreground/20 justify-center'
+        )}
       >
-        <View
-          onLayout={e => setSliderWidth(e.nativeEvent.layout.width)}
+        <Animated.View
+          style={sizeAnimatedStyles}
           className={cn(
-            'mx-3 h-2 rounded-xl w-auto bg-foreground/20 justify-center'
+            'h-2 rounded-l-xl bg-foreground absolute',
+            value === maximumValue ? 'rounded-r-xl' : null
           )}
-        >
+        />
+        <GestureDetector gesture={panGesture}>
           <Animated.View
-            style={sizeAnimatedStyles}
+            style={[animatedStyles]}
             className={cn(
-              'h-2 rounded-l-xl bg-foreground absolute',
-              value === maximumValue ? 'rounded-r-xl' : null
+              'h-6 w-6 -mx-3 rounded-full bg-background border border-foreground',
+              thumbVisible ? '' : ' bg-transparent border-transparent'
             )}
           />
-          <GestureDetector gesture={panGesture}>
-            <Animated.View
-              style={[animatedStyles]}
-              className={cn(
-                'h-6 w-6 -mx-3 rounded-full bg-background border border-foreground',
-                thumbVisible ? '' : ' bg-transparent border-transparent'
-              )}
-            />
-          </GestureDetector>
-        </View>
-      </GestureHandlerRootView>
-      {/* Debugging info - remove or hide in production */}
-      {/* <View style={{ marginVertical: 40, backgroundColor: 'red' }}>
-        <Text>sliderWidth:{sliderWidth.toFixed(2)}</Text>
-        <Text>value:{value.toFixed(2)}</Text>
-        <Text>max:{maximumValue}</Text>
-        <Text>translationX.value:{translationX.value.toFixed(2)}</Text>
-        <Text>prevTranslationX.value:{prevTranslationX.value.toFixed(2)}</Text>
-      </View> */}
-    </>
+        </GestureDetector>
+      </View>
+    </GestureHandlerRootView>
   );
 }
 
