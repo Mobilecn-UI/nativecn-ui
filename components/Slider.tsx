@@ -40,7 +40,7 @@ function Slider({
   );
 
   const translationX = useSharedValue(calcPosition(value));
-  const prevTranslationX = useSharedValue(0);
+  const prevTranslationX = useSharedValue(translationX.value);
   const isDragging = useSharedValue(false);
 
   const debounceOnValueChange = useCallback(
@@ -52,6 +52,7 @@ function Slider({
 
   useEffect(() => {
     translationX.value = calcPosition(value);
+    prevTranslationX.value = translationX.value;
     return () => debounceOnValueChange.cancel();
   }, [value, calcPosition, debounceOnValueChange]);
 
@@ -60,10 +61,10 @@ function Slider({
       Gesture.Pan()
         .minDistance(0)
         .onStart(() => {
-          prevTranslationX.value = calcPosition(value);
+          prevTranslationX.value = translationX.value;
           isDragging.value = true;
         })
-        .onUpdate(async event => {
+        .onUpdate(event => {
           const positionValue = prevTranslationX.value + event.translationX;
           const clampedPosition = clamp(positionValue, 0, sliderWidth);
           translationX.value = clampedPosition;
@@ -114,7 +115,7 @@ function Slider({
         />
         <GestureDetector gesture={panGesture}>
           <Animated.View
-            style={[animatedStyles]}
+            style={animatedStyles}
             className={cn(
               'h-6 w-6 -mx-3 rounded-full bg-background border border-foreground',
               thumbVisible ? '' : ' bg-transparent border-transparent'
