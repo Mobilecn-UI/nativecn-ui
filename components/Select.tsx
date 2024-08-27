@@ -87,22 +87,18 @@ export const Select = ({
             style={{ flex: 1 }}
             onPress={() => setIsDropdownOpen(false)}
           >
-            {/* TODO: change this to tailwind */}
             <View
               style={{
-                position: 'absolute',
                 top: dropdownPosition.y,
                 left: dropdownPosition.x,
                 width: dropdownPosition.width,
-                backgroundColor: 'white',
-                borderRadius: 8,
-                padding: 8,
                 shadowColor: '#000',
                 shadowOpacity: 0.2,
                 shadowOffset: { width: 0, height: 2 },
                 shadowRadius: 8,
                 elevation: 5,
               }}
+              className="absolute bg-white p-2 rounded-md"
             >
               <FlatList
                 data={options}
