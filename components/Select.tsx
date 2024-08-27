@@ -73,7 +73,7 @@ export const Select = ({
         )}
         onPress={openDropdown}
       >
-        <Text>
+        <Text className="text-primary">
           {selectedValue
             ? options.find(option => option.value === selectedValue)?.label
             : placeholder}
@@ -112,7 +112,7 @@ export const Select = ({
                     onPress={() => handleSelect(item.value)}
                     className="p-2 border-b border-gray-200"
                   >
-                    <Text>{item.label}</Text>
+                    <Text className="text-primary">{item.label}</Text>
                   </TouchableOpacity>
                 )}
               />
