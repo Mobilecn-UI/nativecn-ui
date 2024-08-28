@@ -264,17 +264,17 @@ export default function App() {
             </View>
           </View>
           {/* Select Component */}
-          <View className="gap-2 mb-60">
+          <View className="gap-2 mb-40">
             <Select
               label="Choose an option"
               options={[
-                { label: 'Option', value: '1' },
-                { label: 'Option 2', value: '2' },
-                { label: 'Option 3', value: '3' },
+                { id: 1, name: 'Option 1' },
+                { id: 2, name: 'Option 2' },
               ]}
+              labelKey="name"
+              valueKey="id"
               selectedValue={selectedOption}
               onSelect={value => setSelectedOption(value)}
-              placeholder="Select an option"
             />
           </View>
         </View>
