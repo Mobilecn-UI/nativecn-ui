@@ -13,7 +13,7 @@ import { cn } from '../lib/utils';
 // Extra types to you if you need :)
 export interface ISelectedOption {
   label: string;
-  option: string;
+  value: string;
 }
 
 export interface ISelectedOptionsArray {
