@@ -12,6 +12,7 @@ export const ALL_COMPONENTS = [
   'Switch',
   'Tabs',
   'Toast',
+  'Select',
 ];
 const baseUrl =
   'https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main';
