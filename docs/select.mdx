@@ -1,0 +1,216 @@
+
+## Overview
+
+  
+`Select` is a customizable React Native component for selecting options from a dropdown.
+This component converts any array of objects into an array of options compatible with the `label` and `value` fields, facilitating use with different data sources.
+  
+
+## Preview
+
+  
+
+<Tabs>
+
+<Tab  title="Preview">
+
+<div  style={{ display:  'flex', justifyContent:  'center', gap:  '20px' }}>
+
+<div>
+
+<img  src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/select-light.png" />
+
+<p>Light mode</p>
+
+</div>
+
+<div>
+
+<img  src="https://raw.githubusercontent.com/Mobilecn-UI/nativecn-ui/main/assets/examples/components/select-dark.png" />
+
+<p>Dark mode</p>
+
+</div>
+
+</div>
+
+</Tab>
+
+<Tab  title="Code">
+
+```jsx
+<Select
+	label="Choose an option"
+	options={[
+		{id: 1,name:'Option 1'},
+		{id: 2,name:'Option 2'},
+	]}
+	labelKey="name"
+	valueKey="id"
+	selectedValue={selectedOption}
+	onSelect={value  =>  setSelectedOption(value)}
+/>
+
+```
+</Tab>
+</Tabs>
+
+
+## Installation
+
+  
+
+<Tabs>
+
+<Tab  title="CLI">
+
+```bash
+
+npx  nativecn-ui  add  Select
+
+```
+
+</Tab>
+
+<Tab  title="Manual">
+
+<Steps>
+
+<Step  title="First Step">
+
+Include [Select.tsx](https://github.com/Mobilecn-UI/nativecn-ui/blob/main/components/Select.tsx) in your project.
+
+</Step>
+
+<Step  title="Second Step">
+
+Update the import paths to match your project setup.
+
+</Step>
+
+</Steps>
+
+</Tab>
+
+</Tabs>
+
+  
+  
+
+## Properties
+
+-   `label?: string` (optional) - Text displayed as selector label.
+
+-   `labelClasses?: string` (optional) - Style classes for the label.
+
+-   `selectClasses?: string` (optional) - Style classes for the selector button.
+
+-   `options: any[]` (required) - Array of options that will be converted into options compatible with `label` and `value`.
+
+-   `onSelect: (value: string | number) => void` (required) - Callback function called when an option is selected.
+
+-   `selectedValue?: string | number` (optional) - Currently selected value.
+
+-   `placeholder?: string` (optional) - Placeholder to display when nothing is selected (default: 'Select an option').
+
+-   `labelKey: string` (required) - Label key in the options object.
+
+-   `valueKey: string` (required) - Value key in the options object.
+
+
+## Usage
+  
+
+### Basic usage with `label`
+
+  
+
+```jsx
+
+<Select
+
+label="Choose an option"
+
+options={[
+
+{ id:  1, name:  'Option 1' },
+
+{ id:  2, name:  'Option 2' },
+
+]}
+
+labelKey="name"
+
+valueKey="id"
+
+selectedValue={selectedOption}
+
+onSelect={value  =>  setSelectedOption(value)}
+
+/>
+
+```
+
+  
+
+## Usage
+
+
+### Basic usage with `labelKey` and `valueKey`
+
+  
+
+```jsx
+
+<Select
+
+label="Choose an option"
+
+options={[
+
+{ description:  'Option A', code:  'A' },
+
+{ description:  'Option B', code:  'B' },
+
+]}
+
+onSelect={setSelectedValue}
+
+selectedValue={selectedValue}
+
+labelKey="description"
+
+valueKey="code"
+
+/>
+
+```
+
+  
+
+### Usage with custom styles
+  
+
+```jsx
+
+<Select
+
+label="Custom Option"
+
+options={data}
+
+onSelect={setSelectedValue}
+
+selectedValue={selectedValue}
+
+labelKey="name"
+
+valueKey="id"
+
+labelClasses="text-lg font-bold"
+
+selectClasses="bg-amber-400"
+
+/>
+
+```
