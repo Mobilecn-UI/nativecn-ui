@@ -93,12 +93,16 @@ export const Select = ({
 
   return (
     <View className={cn('flex flex-col gap-1.5')}>
-      {label && <Text className={cn('text-base', labelClasses)}>{label}</Text>}
+      {label && (
+        <Text className={cn('text-base text-primary', labelClasses)}>
+          {label}
+        </Text>
+      )}
       <TouchableOpacity
         ref={selectButtonRef}
         className={cn(
           selectClasses,
-          'border border-input py-2.5 px-4 rounded-lg bg-white'
+          'border border-input py-2.5 px-4 rounded-lg bg-white dark:bg-black'
         )}
         onPress={openDropdown}
       >
@@ -121,13 +125,12 @@ export const Select = ({
                 top: dropdownPosition.y,
                 left: dropdownPosition.x,
                 width: dropdownPosition.width,
-                shadowColor: '#000',
                 shadowOpacity: 0.2,
                 shadowOffset: { width: 0, height: 2 },
                 shadowRadius: 8,
                 elevation: 5,
               }}
-              className="absolute bg-white p-2 rounded-md"
+              className="absolute bg-white shadow-sm dark:bg-black p-2 rounded-md shadow-black dark:shadow-white"
             >
               <FlatList
                 data={new_options}
@@ -135,7 +138,7 @@ export const Select = ({
                 renderItem={({ item }) => (
                   <TouchableOpacity
                     onPress={() => handleSelect(item.value)}
-                    className="p-2 border-b border-gray-200"
+                    className="p-2 border-b border-input"
                   >
                     <Text className="text-primary">{item.label}</Text>
                   </TouchableOpacity>
