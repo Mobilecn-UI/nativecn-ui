@@ -264,7 +264,8 @@ export default function App() {
             </View>
           </View>
           {/* Select Component */}
-          <View className="gap-2 mb-40">
+          <View className="gap-4 mb-40">
+            <Text className="font-semibold text-xl text-primary">Select</Text>
             <Select
               label="Choose an option"
               options={[
