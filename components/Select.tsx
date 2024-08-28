@@ -22,6 +22,18 @@ export interface ISelectedOptionsArray {
 
 export type ISelectedValue = string | number | undefined;
 
+const convertToOptions = <T extends Record<string, any>>(
+  data?: T[],
+  labelKey?: keyof T,
+  valueKey?: keyof T
+): ISelectedOption[] => {
+  if (!data || !labelKey || !valueKey) return [];
+  return data.map(item => ({
+    label: String(item[labelKey]),
+    value: item[valueKey],
+  }));
+};
+
 export interface SelectProps {
   /** Add label string */
   label?: string;
@@ -52,11 +64,15 @@ export const Select = ({
   onSelect,
   selectedValue,
   placeholder = 'Select an option',
+  labelKey,
+  valueKey,
 }: SelectProps) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [dropdownPosition, setDropdownPosition] =
     useState<LayoutRectangle | null>(null);
   const selectButtonRef = useRef<TouchableOpacity>(null);
+
+  const new_options = convertToOptions(options, labelKey, valueKey);
 
   const handleSelect = (value: string | number) => {
     onSelect(value);
@@ -88,7 +104,7 @@ export const Select = ({
       >
         <Text className="text-primary">
           {selectedValue
-            ? options.find(option => option.value === selectedValue)?.label
+            ? new_options.find(option => option.value === selectedValue)?.label
             : placeholder}
         </Text>
       </TouchableOpacity>
