@@ -10,6 +10,7 @@ import {
 
 import { cn } from '../lib/utils';
 
+// Extra types to you if you need :)
 export interface ISelectedOption {
   label: string;
   option: string;
@@ -22,15 +23,27 @@ export interface ISelectedOptionsArray {
 export type ISelectedValue = string | number | undefined;
 
 export interface SelectProps {
+  /** Add label string */
   label?: string;
+  /** Add style to label*/
   labelClasses?: string;
+  /** Add style to touchableOpacity selector*/
   selectClasses?: string;
-  options: { label: string; value: string | number }[];
+  /** Add your options array -> send any type (example model: [{item:'',key:''}]) to converter to ISelectedOption > {label, value}*/
+  options: any[];
+  /** Add your selected state changer*/
   onSelect: (value: string | number) => void;
+  /** Add your selected state value*/
   selectedValue?: string | number;
+  /** Add your selected placeholder -> default is 'Select an option' */
   placeholder?: string;
+  /** Define labelKey to options */
+  labelKey: string;
+  /** Define valueKey to options */
+  valueKey: string;
 }
 
+/** Customizable Select Component :) options receive any data type and converter into label and value to render  */
 export const Select = ({
   label,
   labelClasses,
