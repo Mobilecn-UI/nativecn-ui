@@ -130,7 +130,7 @@ export const Select = ({
               className="absolute bg-white p-2 rounded-md"
             >
               <FlatList
-                data={options}
+                data={new_options}
                 keyExtractor={item => item.value.toString()}
                 renderItem={({ item }) => (
                   <TouchableOpacity
