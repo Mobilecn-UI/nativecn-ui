@@ -31,6 +31,7 @@ import {
   RadioGroupItem,
   RadioGroupLabel,
 } from './components/RadioGroup';
+import { ISelectedValue, Select } from './components/Select';
 import { Skeleton } from './components/Skeleton';
 import { Switch } from './components/Switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
@@ -40,6 +41,7 @@ import './styles/globals.css';
 export default function App() {
   const [inputText, onChangeText] = useState('');
   const [isEnabled, setIsEnabled] = useState(false);
+  const [selectedOption, setSelectedOption] = useState<ISelectedValue>();
 
   return (
     <ToastProvider position="top">
@@ -255,11 +257,26 @@ export default function App() {
               <ExampleToast />
             </View>
           </View>
-          <View className="gap-2 mb-32">
+          <View className="gap-2 mb-2">
             <Text className="font-semibold text-xl text-primary">Progress</Text>
             <View>
               <Progress value={50} className="mb-2" />
             </View>
+          </View>
+          {/* Select Component */}
+          <View className="gap-4 mb-40">
+            <Text className="font-semibold text-xl text-primary">Select</Text>
+            <Select
+              label="Choose an option"
+              options={[
+                { id: 1, name: 'Option 1' },
+                { id: 2, name: 'Option 2' },
+              ]}
+              labelKey="name"
+              valueKey="id"
+              selectedValue={selectedOption}
+              onSelect={value => setSelectedOption(value)}
+            />
           </View>
         </View>
       </ScrollView>
