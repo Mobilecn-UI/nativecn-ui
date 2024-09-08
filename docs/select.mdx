@@ -123,32 +123,20 @@ Update the import paths to match your project setup.
 
 ### Basic usage with `label`
 
-  
 
 ```jsx
-
 <Select
-
 label="Choose an option"
-
 options={[
-
 { id:  1, name:  'Option 1' },
-
 { id:  2, name:  'Option 2' },
-
 ]}
 
 labelKey="name"
-
 valueKey="id"
-
 selectedValue={selectedOption}
-
 onSelect={value  =>  setSelectedOption(value)}
-
 />
-
 ```
 
   
@@ -161,29 +149,18 @@ onSelect={value  =>  setSelectedOption(value)}
   
 
 ```jsx
-
 <Select
-
 label="Choose an option"
-
 options={[
-
 { description:  'Option A', code:  'A' },
-
 { description:  'Option B', code:  'B' },
-
 ]}
 
 onSelect={setSelectedValue}
-
 selectedValue={selectedValue}
-
 labelKey="description"
-
 valueKey="code"
-
 />
-
 ```
 
   
@@ -194,23 +171,14 @@ valueKey="code"
 ```jsx
 
 <Select
-
 label="Custom Option"
-
 options={data}
-
 onSelect={setSelectedValue}
-
 selectedValue={selectedValue}
-
 labelKey="name"
-
 valueKey="id"
-
 labelClasses="text-lg font-bold"
-
 selectClasses="bg-amber-400"
-
 />
 
 ```
