@@ -1,4 +1,8 @@
 // Heavily based on https://github.com/shadcn-ui/ui/blob/main/packages/cli/src/commands/init.ts
+import { getPackageManager } from '@/src/utils/get-package-manager';
+import { handleError } from '@/src/utils/handle-error';
+import { logger } from '@/src/utils/logger';
+import * as templates from '@/src/utils/templates';
 import chalk from 'chalk';
 import { Command } from 'commander';
 import { execa } from 'execa';
@@ -6,11 +10,6 @@ import { existsSync, promises as fs } from 'fs';
 import ora from 'ora';
 import path from 'path';
 import * as z from 'zod';
-
-import { getPackageManager } from '@/src/utils/get-package-manager';
-import { handleError } from '@/src/utils/handle-error';
-import { logger } from '@/src/utils/logger';
-import * as templates from '@/src/utils/templates';
 
 const DEPENDENCIES = [
   'class-variance-authority',
@@ -80,7 +79,7 @@ export async function runInit(cwd: string) {
     [
       packageCommand,
       ...DEV_DEPENDENCIES,
-      packageManager === 'npm' ? '--save-dev' : '--dev',
+      packageManager === 'yarn' ? '--dev' : '--save-dev',
     ],
     { cwd }
   );
